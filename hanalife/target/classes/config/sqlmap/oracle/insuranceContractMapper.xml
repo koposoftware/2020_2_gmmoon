@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="insurance.contract.dao.InsuranceContractDAO" >
+	<resultMap type="insurancecontractVO" id="insurancecontractMap">
+		<result column="ic_serialno" property="no"/>
+		<result column="empno" property="empno"/>
+		<result column="cusno" property="cusno"/>
+		<result column="cname" property="name"/>
+		<result column="ipcode" property="code"/>
+		<result column="icjoin" property="join"/>
+		<result column="icmaturity" property="maturity"/>
+		<result column="ictermination" property="termination"/>
+		<result column="icbeneficiary" property="beneficiary"/>
+	</resultMap>
+	
+	<select id="selectInsuranceContract" resultMap="insurancecontractMap" 
+			resultType="insurancecontractVO" parameterType="int">
+		select * from insurance_contract
+			where empno = #{empno}
+	</select>
+</mapper>
