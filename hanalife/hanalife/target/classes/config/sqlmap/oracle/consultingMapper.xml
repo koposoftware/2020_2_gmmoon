@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="consulting.dao.ConsultingDAO" >
+	<resultMap type="consultingVO" id="consultingMap">
+		<result column="cs_serialno" property="no"/>
+		<result column="empno" property="empno"/>
+		<result column="cusno" property="cusno"/>
+		<result column="cname" property="name"/>
+		<result column="cstype" property="type"/>
+		<result column="cscontent" property="content"/>
+		<result column="csdate" property="csdate"/>
+	</resultMap>
+	
+	<select id="inqueryConsulting" resultMap="consultingMap" resultType="consultingVO" parameterType="int">
+		select cs_serialno, empno, cusno, cname, cstype, cscontent, to_char(csdate, 'yyyy-mm-dd') as csdate 
+			from consulting
+		 where cusno = #{cusno}
+	</select>
+	
+	<select id="selectConsulting" resultMap="consultingMap" resultType="consultingVO" parameterType="int">
+		select cs_serialno, empno, cusno, cname, cstype, cscontent, to_char(csdate, 'yyyy-mm-dd') as csdate 
+			from consulting
+		 where empno = #{empno}
+	</select>
+	
+	<insert id="insertConsulting" parameterType="consultingVO">
+		insert into consulting(cs_serialno, empno, cusno, cname, cstype, cscontent )
+			values(#{no}, #{empno}, #{cusno}, #{name}, #{type}, #{content})
+	</insert>
+	
+	<select id="inqueryNumberConsulting" resultMap="consultingMap" resultType="consultingVO">
+		select cs_serialno 
+			from consulting
+	</select>
+</mapper>

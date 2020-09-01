@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="insurance.product.dao.InsuranceProductDAO" >
+	<resultMap type="insuranceproductVO" id="insuranceproductMap">
+		<result column="ipcode" property="code"/>
+		<result column="ipname" property="name"/>
+		<result column="ipguarantee" property="guarantee"/>
+		<result column="ipprice" property="price"/>
+	</resultMap>
+	
+	<select id="searchProduct" parameterType="String" resultType="insuranceproductVO" resultMap="insuranceproductMap">
+		select * from insurance_product
+			where ipcode = #{code}
+	</select>
+	
+</mapper>

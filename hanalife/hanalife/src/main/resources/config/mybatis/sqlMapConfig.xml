@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+  	<typeAlias type="kr.ac.hanalife.member.vo.MemberVO" alias="memberVO"/>
+  	<typeAlias type="kr.ac.hanalife.employee.vo.EmployeeVO" alias="employeeVO"/>
+  	<typeAlias type="kr.ac.hanalife.insurance.product.vo.InsuranceProductVO" alias="insuranceproductVO"/>
+  	<typeAlias type="kr.ac.hanalife.consulting.vo.ConsultingVO" alias="consultingVO"/>
+  	<typeAlias type="kr.ac.hanalife.insurance.contract.vo.InsuranceContractVO" alias="insurancecontractVO"/>
+  	<typeAlias type="kr.ac.hanalife.performance.management.vo.PerformanceManagementVO" alias="performancemanagementVO"/>
+  </typeAliases>
+</configuration>
