@@ -15,6 +15,8 @@
 	</resultMap>
 	
 	<resultMap type="memberVO" id="memberMap">
+		<result column="cusno" property="cusno"/>
+		<result column="empno" property="empno"/>
 		<result column="cid" property="id"/>
 		<result column="cpassword" property="password"/>
 		<result column="cname" property="name"/>
@@ -52,8 +54,8 @@
 		 where e_rank = '사원' or e_rank = '대리'
 	</select>
 	
-	<update id="AssignCustomer">
+	<update id="AssignCustomer" parameterType="memberVO">
 		update customer set empno = #{empno}
-			where empno = 11111
+			where cusno = #{cusno}
 	</update>
 </mapper>

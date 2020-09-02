@@ -68,6 +68,7 @@ public class MemberTest {
 		
 	}
 	
+	@Ignore
 	@Test
 	public void 회원가입테스트() throws Exception {
 		
@@ -119,9 +120,17 @@ public class MemberTest {
 		assertNotNull(member);
 	}
 	
+	@Ignore
 	@Test
 	public void 고객을담당하는사원확인() throws Exception {
 		EmployeeVO member = memberDAO.myChargedStaff(71234);
+		
+		assertNotNull(member);
+	}
+	
+	@Test
+	public void 고객번호로고객정보확인테스트() throws Exception {
+		MemberVO member = memberDAO.selectByCusno(10001);
 		
 		assertNotNull(member);
 	}

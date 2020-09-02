@@ -63,7 +63,12 @@
 									<li class="menu-item"><a href="${ pageContext.request.contextPath }/login">로그인</a></li>
 								</c:when>
 								<c:otherwise>
-									<li class="menu-item"><a href="${ pageContext.request.contextPath }/logout">로그아웃</a></li>
+									<c:if test="${ not empty loginVO }">
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/logout">로그아웃</a></li>
+									</c:if>
+									<c:if test="${ not empty employee }">
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeelogout">로그아웃</a></li>
+									</c:if>
 								</c:otherwise>
 							</c:choose>
 								<li class="menu-item"><a href="about.jsp">하나생명소개</a></li>

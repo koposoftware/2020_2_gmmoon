@@ -113,7 +113,13 @@ public class EmployeeTest {
 	@Ignore
 	@Test
 	public void 사원배정테스트() throws Exception {
-		employeeDAO.AssignCustomer(71234);
+		
+		MemberVO member = new MemberVO();
+		
+		member.setEmpno(71235);
+		member.setCusno(10014);
+		
+		employeeDAO.AssignCustomer(member);
 	}
 	
 }

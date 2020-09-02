@@ -11,6 +11,50 @@
 	$(document).ready(function() {
 		$('#assignBtn').click(function() {
 			
+			if(!confirm('사원을 배정하시겠습니까?')) return;
+			
+			//배열 초기화
+			let checkArr = [];
+			
+			//선택된 사원의 사원번호값 가져오기
+			let checkempno = $('#type option:selected').attr('value');
+			
+			//체크된 값들을 배열에 저장
+			$('input[name="customer"]:checked').each(function(i) {
+				checkArr.push($(this).val());
+			})
+			
+			console.log(checkArr); 
+			console.log(checkempno);
+			
+			//checkArr배열 맨 뒤에 사원번호값 넣기
+			checkArr.push(checkempno);
+			console.log(checkArr);
+			
+			$.ajax({
+				url : '${ pageContext.request.contextPath }/assignCustomer',
+				type : 'post',
+				data : {
+					customerArr : checkArr,
+				},
+				success : function(data) {
+					if(data == 1)
+					alert('성공입니다')
+					
+					let checkRows = $("[name='customer']:checked");
+					
+					for(let i = checkRows.length-1;i>-1;i--){
+						checkRows.eq(i).closest('tr').remove();
+					}
+					
+					
+					if(data == 0)
+					alert('프로세스 중 이상 발견')
+				},
+				error : function(data) {
+					alert('실패')
+				}
+			})
 			
 		})
 	})
@@ -81,10 +125,10 @@
 	            </c:forEach>
 	         </table>
 	         
-	         <select name="type">
+	         <select id="type">
 				<option value="">사원선택</option>
 				<c:forEach items="${ employeeList }" var="list" varStatus="loop">
-					<option value="${ list.empno }">${ list.name }&nbsp;${ list.rank }</option>
+					<option value="${ list.empno }" >${ list.name }&nbsp;${ list.rank }</option>
 				</c:forEach>
 			</select>
 						

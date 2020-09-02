@@ -49,10 +49,11 @@ public interface EmployeeDAO {
 	 */
 	List<EmployeeVO> selectEmployeeAll();
 	
+	
 	/**
 	 * 과장이상직원이 사원배정미정고객에게 사원을 배정해주는 기능
-	 * @param empno 배정될 사원 번호
+	 * @param member 배정될 사원 번호를 가진 고객정보
 	 */
-	void AssignCustomer(int empno);
+	void AssignCustomer(MemberVO member);
 	
 }

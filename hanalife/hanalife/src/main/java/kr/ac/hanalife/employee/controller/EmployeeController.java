@@ -159,8 +159,38 @@ public class EmployeeController {
 		return "/employee/manageEmployee";
 	}
 	
-	@GetMapping("assignCustomer")
-	public int assignCustomer() {
+	@RequestMapping("assignCustomer")
+	@ResponseBody
+	public int assignCustomer(@RequestParam(value = "customerArr[]") List<String> customerArr) {
+		
+		/* ajax에서 보낸 데이터가 잘들어오는지 확인
+		for(String c : customerArr ) {
+			System.out.println(c);
+		}
+		*/
+		try {
+			
+			// ajax에서 가져온 배열의 맨 마지막 번호가 사원번호
+			int empno = Integer.parseInt(customerArr.get(customerArr.size()-1));
+			MemberVO member = new MemberVO();
+			
+			//cusno 초기화
+			int cusno;
+			for(int i = 0;i<customerArr.size() - 1;i++) {
+				
+				cusno = Integer.parseInt(customerArr.get(i));
+				member.setEmpno(empno);
+				member.setCusno(cusno);
+				employeeService.AssignCustomer(member);
+			}
+			
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 업데이트 실패시 0을 반환해준다
 		return 0;
 	}
 	

@@ -70,6 +70,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return employee;
 	}
+
+	@Override
+	public MemberVO selectByCusno(int cusno) {
+		return sqlSession.selectOne("member.dao.MemberDAO.selectByCusno",cusno);
+	}
 	
 		
 }

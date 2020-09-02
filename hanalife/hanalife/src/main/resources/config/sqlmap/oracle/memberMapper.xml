@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.dao.MemberDAO" >
 	<resultMap type="memberVO" id="memberMap">
+		<result column="cusno" property="cusno"/>
+		<result column="empno" property="empno"/>
 		<result column="cid" property="id"/>
 		<result column="cpassword" property="password"/>
 		<result column="cname" property="name"/>
@@ -55,5 +57,10 @@
 		select ename, ehp, e_email
 			from employee
 		 where empno = #{empno}
+	</select>
+	
+	<select id="selectByCusno" resultType="memberVO" resultMap="memberMap" parameterType="int">
+		select * from customer
+		 where cusno = #{cusno} 
 	</select>
 </mapper>

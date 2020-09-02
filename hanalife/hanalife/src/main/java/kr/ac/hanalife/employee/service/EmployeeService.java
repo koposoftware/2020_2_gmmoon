@@ -20,5 +20,5 @@ public interface EmployeeService {
 	
 	List<EmployeeVO> selectEmployeeAll();
 	
-	void AssignCustomer(int empno);
+	void AssignCustomer(MemberVO member);
 }

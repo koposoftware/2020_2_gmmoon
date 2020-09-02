@@ -54,6 +54,11 @@ public class MemberServiceImpl implements MemberService {
 	public EmployeeVO myChargedStaff(int empno) {
 		return memberDAO.myChargedStaff(empno);
 	}
+
+	@Override
+	public MemberVO selectByCusno(int cusno) {
+		return memberDAO.selectByCusno(cusno);
+	}
 		
 	
 }

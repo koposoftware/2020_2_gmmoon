@@ -18,4 +18,6 @@ public interface MemberService {
 	MemberVO myPageProfileMember(String id);
 	
 	EmployeeVO myChargedStaff(int empno);
+	
+	MemberVO selectByCusno(int cusno);
 }

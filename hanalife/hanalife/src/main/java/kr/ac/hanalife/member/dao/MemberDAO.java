@@ -46,5 +46,12 @@ public interface MemberDAO {
 	 * @return 고객에게 배정된 담당 사원
 	 */
 	EmployeeVO myChargedStaff(int empno);
+	
+	/**
+	 * 고객의 고객번호로 고객정보를 불러오는 기능
+	 * @param cusno 고객번호
+	 * @return 해당 고객 정보
+	 */
+	MemberVO selectByCusno(int cusno);
 
 }

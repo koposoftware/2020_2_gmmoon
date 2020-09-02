@@ -47,8 +47,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void AssignCustomer(int empno) {
-		employeeDAO.AssignCustomer(empno);
+	public void AssignCustomer(MemberVO member) {
+		employeeDAO.AssignCustomer(member);
 	}
 		
 	

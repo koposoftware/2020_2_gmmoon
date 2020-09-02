@@ -47,8 +47,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public void AssignCustomer(int empno) {
-		sqlSession.update("employee.dao.EmployeeDAO.AssignCustomer", empno);
+	public void AssignCustomer(MemberVO member) {
+		sqlSession.update("employee.dao.EmployeeDAO.AssignCustomer", member);
 		
 	}
 		
