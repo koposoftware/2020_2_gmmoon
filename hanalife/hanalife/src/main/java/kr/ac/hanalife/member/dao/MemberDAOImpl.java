@@ -75,6 +75,17 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO selectByCusno(int cusno) {
 		return sqlSession.selectOne("member.dao.MemberDAO.selectByCusno",cusno);
 	}
+
+	@Override
+	public void modifyMyInfo(MemberVO member) {
+		sqlSession.update("member.dao.MemberDAO.modifyMyInfo", member);
+	}
+
+	@Override
+	public void deleteMyInfo(MemberVO member) {
+		sqlSession.delete("member.dao.MemberDAO.deleteMyInfo", member);
+	}
+	
 	
 		
 }

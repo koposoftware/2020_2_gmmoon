@@ -143,5 +143,42 @@ public class MemberController {
 		return mav;
 	}
 	
+	@GetMapping("modifyInfo")
+	public String modifyInfoForm() {
+		return "/modifyinfo/modifyInfo";
+	}
+	
+	@PostMapping("modifyInfo")
+	public String modifyInfo(@Valid MemberVO member, BindingResult result) {
+		
+		memberService.modifyMyInfo(member);
+		
+		if(result.hasErrors()) {
+			System.out.println("오류발생!!!...");
+			return "/modifyinfo/modifyInfo";
+		}
+		
+		return "redirect:/myPage";
+		
+	}
+	
+	@GetMapping("withdrawalCustomer")
+	public String withdrawalCustomerForm() {
+		return "/withdrawal/withdrawalCustomer";
+	}
+	
+	@PostMapping("withdrawalCustomer")
+	public String withdrawalCustomer(@Valid MemberVO member, BindingResult result) {
+		
+		memberService.deleteMyInfo(member);
+		
+		if(result.hasErrors()) {
+			System.out.println("오류발생!!!...");
+			return "/withdrawal/withdrawalCustomer";
+		}
+		
+		return "redirect:/logout";
+		
+	}
 	
 }

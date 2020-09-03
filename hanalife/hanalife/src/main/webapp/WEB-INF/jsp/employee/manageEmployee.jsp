@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 	$(document).ready(function() {
 		$('#assignBtn').click(function() {
@@ -57,7 +59,71 @@
 			})
 			
 		})
+	
 	})
+	
+	
+	$(document).ready(function() {
+		$("#modal, .close").on('click',function(){
+			  $("#modal").fadeOut(300);
+			  $(".modal-con").fadeOut(300);
+		});
+		
+		
+	})
+	
+	function openModal(modalname){
+			  document.get
+			  $("#modal").fadeIn(300);
+			  $("."+modalname).fadeIn(300);
+			
+	}
+
+	google.load('visualization', '1', {
+
+		'packages' : [ 'corechart' ]
+
+			});
+
+			google.setOnLoadCallback(drawChart2);
+	 // 차트 그리기 함수
+		function drawChart2() {
+			//json 데이터 받아로기
+			// dataType : "json" 결과값이 json 형식
+			// async :false  비동기식 옵션을 끔(동기식)
+			// ajax 는 비동기식이다. 즉 기본값이 비동기식 true 이다
+			// 즉 차트가 그려지기 전에는 다른 작업은 하지 못한다.
+			//responseText  : 서버의 응답 텍스트
+				var jsonData = $.ajax({
+				
+				url : "${ pageContext.request.contextPath }/employeeCustomer",
+				
+				dataType : "json",
+				
+				async : false
+				
+				}).responseText;
+			//alert(jsonData);
+			//json 데이터를 데이터 테이블로 변환
+			var data = new google.visualization.DataTable(jsonData);
+			
+			// 차트 그리기 (PieChart, LineChart, ColumnChart)
+			var chart = new google.visualization.ColumnChart(document
+			
+				.getElementById('chart_div'));
+				
+				//draw(데이터, 옵션)
+				chart.draw(data, {
+					width : 400,
+					height : 240
+			});
+
+	 }
+	
+    
+ 
+
+	
 </script>
 </head>
 <body>
@@ -96,6 +162,15 @@
 	               </tr>
 	            </c:forEach>
 	         </table>
+	         
+  
+  <!-- 그래프 구현 부분 -->
+	<div id="chart_div">
+ 
+ 	</div>
+	
+
+		         
 	</section>
 	<section>
 				<br>

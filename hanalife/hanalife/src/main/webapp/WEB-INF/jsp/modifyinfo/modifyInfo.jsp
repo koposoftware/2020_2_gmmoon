@@ -9,12 +9,13 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js" ></script>
 <script>
+	
 	//아이디중복체크 기능 AJAX
 	$(document).ready(function() {
 		$('#checkid').click(function() {
 			
 			
-			let id = document.sform.id.value;
+			let id = document.mform.id.value;
 			
 			$.ajax({
 				url : '${ pageContext.request.contextPath }/signUp/checkid?cid=' + id,
@@ -22,26 +23,17 @@
 				success : function(data) {
 					
 					
-					//console.log(data);
+					console.log(data);
 					
 					if(data == 1){
 						// alert('아이디 중복체크를 시작합니다');
 						
 						$('#msgView').text('이미 사용중인 아이디입니다');
-											
-							
-							$('#signUpBtn').attr('disabled', true);
-					
 						
 					} 
 						
 					if( data == 0) {
 						$('#msgView').text('사용할 수 있는 아이디 입니다');
-						//console.log(checkpw)
-						if(checkpw == 1){
-							
-							$('#signUpBtn').attr('disabled', false);
-						}
 					}
 				},
 				error : function(data) {
@@ -50,11 +42,12 @@
 			});	
 			
 		})
-		
-		// 비밀번호 일치 여부
-		let checkpw = 0;
+	})
+
+	//비밀번호 일치 여부
+	$(document).ready(function() {
 		$('#check_pw').keyup(function() {
-			let firstpw = document.sform.password.value;
+			let firstpw = document.mform.password.value;
 			let msg = '';
 			
 			$('#msgView2').hide();	
@@ -65,30 +58,24 @@
 					
 						msg = '비밀번호 값이 일치합니다';
 						$('#msgView2').text(msg).show();
-						return checkpw = 1;
-						
 					} else {
 					
 						msg = '비밀번호 값이 일치하지않습니다';
 						$('#msgView2').text(msg).show();
-						return checkpw = 0;
 					}
 					
 				} else {
 					msg = '비밀번호 값을 먼저 입력해주세요';
 					$('#msgView2').text(msg).show();
-					return checkpw = 0;				
+				
 				}
 		
 			 
 		})
-		
-		
 	})
 	
-
 	
-	 function execDaumPostcode() {
+	function execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -131,49 +118,47 @@
 	</header>
 	
 	<section>
-		<h2>회원가입</h2>
-		<form action="${ pageContext.request.contextPath }/signUp" method="post" name="sform" class="search-form">
+		<hr>
+		<h2>회원수정</h2>
+		<hr>
+		<form action="${ pageContext.request.contextPath }/modifyInfo" method="post" name="mform" class="search-form">
 			<div>
-				<input type="text" name="id" placeholder="ID" required="required"  /> &nbsp;
+				<input type="text" name="id" placeholder="${ loginVO.id }" required="required"  /> &nbsp;
 				<input type="button" value="아이디중복체크"  id="checkid" /> &nbsp; <p  id="msgView"></p>
 			</div>
 			<div>
-				<input type="text" name="password" placeholder="PASSWORD" id="input_pw" required="required" >
+				비밀번호 수정 : <input type="text" name="password" placeholder="${ loginVO.password }" id="input_pw" required="required" >
 			</div>
 			<div>
-				<input type="text" name="password_re" placeholder="PASSWORD 재입력" id="check_pw"> &nbsp;
+				비밀번호 재확인 : <input type="text" name="password_re" placeholder="PASSWORD 재입력" id="check_pw"> &nbsp;
 				<p id="msgView2"></p>
 			</div>
 			<div>
-				<input type="text" name="name" placeholder="이름" required="required" >
+				이름 : <input type="text" name="name" placeholder="${ memberVO.name }" required="required" >
 			</div>
 			<div>
-				<input type="text" name="hp" placeholder="전화번호" required="required" >
+				전화번호 : <input type="text" name="hp" placeholder="${ memberVO.hp }" required="required" >
 			</div>
 			<div>
 				<button onclick="execDaumPostcode();" class="btn btn-outline-info py-2 px-1 px-md-3">주소검색</button>
-				<input type="text" name="post" id="post" placeholder="도로명번호" required="required" >
+				<input type="text" name="post" id="post" placeholder="${ memberVO.post }" required="required" >
 			</div>
 			<div>
-				<input type="text" name="addr" id="addr" placeholder="주소" required="required" >
+				<input type="text" name="addr" id="addr" placeholder="${ memberVO.addr }" required="required" >
 			</div>
 			<div>
-				<input type="text" name="age" placeholder="나이" required="required" >
+				<input type="email" name="email" placeholder="${ memberVO.email }" required="required" >
 			</div>
 			<div>
-				<input type="email" name="email" placeholder="email" required="required" >
-			</div>
-			<div>
-				<button type="submit" id="signUpBtn" disabled="">회원가입</button>
+				<button type="submit">회원정보수정</button>
+				<input type="reset" value="초기화" />
 			</div>
 			
 		</form>
-	
-	
 	</section>
 	
 	<footer>
-		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>		
+		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

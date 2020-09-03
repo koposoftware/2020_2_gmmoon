@@ -50,6 +50,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void AssignCustomer(MemberVO member) {
 		employeeDAO.AssignCustomer(member);
 	}
+
+	@Override
+	public EmployeeVO countEmployeeInCharge(int empno) {
+		return employeeDAO.countEmployeeInCharge(empno);
+	}
 		
 	
 }

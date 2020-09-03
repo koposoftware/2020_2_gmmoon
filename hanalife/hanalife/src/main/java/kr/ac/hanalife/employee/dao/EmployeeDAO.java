@@ -56,4 +56,11 @@ public interface EmployeeDAO {
 	 */
 	void AssignCustomer(MemberVO member);
 	
+	/**
+	 * 사원별 담당 고객 수를 조회하는 기능
+	 * @param empno 사원번호
+	 * @return 담당 고객 수
+	 */
+	EmployeeVO countEmployeeInCharge(int empno);
+	
 }

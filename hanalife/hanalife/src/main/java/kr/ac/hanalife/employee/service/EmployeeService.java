@@ -21,4 +21,6 @@ public interface EmployeeService {
 	List<EmployeeVO> selectEmployeeAll();
 	
 	void AssignCustomer(MemberVO member);
+	
+	EmployeeVO countEmployeeInCharge(int empno);
 }

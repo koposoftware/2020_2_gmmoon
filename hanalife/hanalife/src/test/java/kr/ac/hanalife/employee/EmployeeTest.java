@@ -122,4 +122,16 @@ public class EmployeeTest {
 		employeeDAO.AssignCustomer(member);
 	}
 	
+	@Test
+	public void 사원이담당하는고객수조회테스트() throws Exception {
+		
+		EmployeeVO employee = new EmployeeVO();
+		
+		employee = employeeDAO.countEmployeeInCharge(71250);
+//		System.out.println(employee.getEmpno());
+//		System.out.println(employee.getCount());
+		
+		assertNull(employee);
+	}
+	
 }

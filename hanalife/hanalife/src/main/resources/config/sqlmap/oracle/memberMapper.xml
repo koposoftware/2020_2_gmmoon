@@ -63,4 +63,17 @@
 		select * from customer
 		 where cusno = #{cusno} 
 	</select>
+	
+	<update id="modifyMyInfo" parameterType="memberVO">
+		update customer set  cpassword = #{password}, cname= #{name},
+			chp = #{hp}, cpost = #{post}, caddress = #{addr},
+			 c_email = #{email} 
+			where cid = #{id}			
+	</update>
+	
+	<delete id="deleteMyInfo" parameterType="memberVO">
+		delete from customer
+		 where cid = #{id} and cpassword = #{password}
+	</delete>
+	
 </mapper>

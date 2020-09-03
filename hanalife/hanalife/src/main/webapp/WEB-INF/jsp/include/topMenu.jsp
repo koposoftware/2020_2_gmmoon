@@ -71,13 +71,13 @@
 									</c:if>
 								</c:otherwise>
 							</c:choose>
-								<li class="menu-item"><a href="about.jsp">하나생명소개</a></li>
+								<li class="menu-item"><a href="${ pageContext.request.contextPath }/about.jsp">하나생명소개</a></li>
 								<c:choose>
 									<c:when test="${ not empty employee }">
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">보험상품</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">보험상품</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -85,7 +85,7 @@
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insuranceContractService">보험계약서비스관리</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">보험추천</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">보험추천</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -102,7 +102,7 @@
 										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">찾아오시는길</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">찾아오시는길</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>

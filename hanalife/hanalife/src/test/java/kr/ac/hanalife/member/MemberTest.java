@@ -128,11 +128,41 @@ public class MemberTest {
 		assertNotNull(member);
 	}
 	
+	@Ignore
 	@Test
 	public void 고객번호로고객정보확인테스트() throws Exception {
 		MemberVO member = memberDAO.selectByCusno(10001);
 		
 		assertNotNull(member);
+	}
+	
+	@Ignore
+	@Test
+	public void 고객회원정보수정테스트() throws Exception {
+		
+		MemberVO member = new MemberVO();
+		
+		member.setId("hanalove");
+		member.setPassword("2222");
+		member.setName("송하나");
+		member.setHp("010-0101-2098");
+		member.setPost("87654");
+		member.setAddr("광명시 철산동");
+		member.setEmail("hanalove@naver.com");
+		
+		memberDAO.modifyMyInfo(member);
+		
+	}
+	
+	@Ignore
+	@Test
+	public void 회원탈퇴테스트() throws Exception {
+		MemberVO member = new MemberVO();
+		
+		member.setId("hanalove");
+		member.setPassword("2222");
+		
+		memberDAO.deleteMyInfo(member);
 	}
 
 }

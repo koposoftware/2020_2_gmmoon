@@ -51,6 +51,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		sqlSession.update("employee.dao.EmployeeDAO.AssignCustomer", member);
 		
 	}
+
+	@Override
+	public EmployeeVO countEmployeeInCharge(int empno) {
+		return sqlSession.selectOne("employee.dao.EmployeeDAO.countEmployeeInCharge", empno);
+	}
 		
 		
 }

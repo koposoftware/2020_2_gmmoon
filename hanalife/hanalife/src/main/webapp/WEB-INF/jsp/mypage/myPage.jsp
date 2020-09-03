@@ -60,8 +60,12 @@ table th {
 				<td>${ loginVO.hp }</td>
 			</tr>
 			<tr>
+				<th>도로명번호</th>
+				<td>${ loginVO.post }</td>
+			</tr>
+			<tr>
 				<th>주소</th>
-				<td>${ loginVO.address }</td>
+				<td>${ loginVO.addr }</td>
 			</tr>
 			<tr>
 				<th>나이</th>
@@ -72,8 +76,8 @@ table th {
 				<td>${ loginVO.email }</td>
 			</tr>						
 		</table>
-		<a href="${pageContext.request.contextPath }" class="button">회원정보수정</a>&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }" class="button">회원탈퇴</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/modifyInfo" class="button">회원정보수정</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/withdrawalCustomer" class="button">회원탈퇴</a>&nbsp;&nbsp;
 		<br>
 		<hr>
 		<h2>나의 담당사원</h2>

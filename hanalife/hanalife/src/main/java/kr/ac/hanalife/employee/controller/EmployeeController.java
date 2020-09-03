@@ -6,12 +6,17 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -193,5 +198,108 @@ public class EmployeeController {
 		// 업데이트 실패시 0을 반환해준다
 		return 0;
 	}
+	
+	/*	 구글 차트 JSON 데이터의 형식
+	{
+	    "cols": [
+	        {"label":"Topping","type":"string"},
+	        {"label":"Slices","type":"number"}
+	    ],        
+	    "rows": [
+	        {"c":[{"v":"Mushrooms"},{"v":3}]},
+	        {"c":[{"v":"Onions"},{"v":1}]},
+	        {"c":[{"v":"Olives"},{"v":1}]},
+	        {"c":[{"v":"Zucchini"},{"v":1}]},
+	        {"c":[{"v":"Pepperoni"},{"v":2}]}
+	    ]
+	}
+	*/
+	
+	@RequestMapping(value="employeeCustomer", method = RequestMethod.GET)
+	public ResponseEntity<JSONObject> employee_list(){
+		
+		ResponseEntity<JSONObject>  entity= null;
+		
+		//리스트 형태를 json 형태로 만들어서 리턴
+		JSONObject data =new JSONObject();
+		
+		//컬럼객체
+		JSONObject col1 =new JSONObject();
+		JSONObject col2 =new JSONObject();
+		JSONArray title =new JSONArray();
+		col1.put("label", "사원명");
+		col1.put("type", "string");
+		col2.put("label", "담당고객수");
+		col2.put("type" , "number");
+				
+		title.add(col1);
+		title.add(col2);
+				
+		data.put("cols", title);
+		
+		/*		
+		"rows": [
+			        {"c":[{"v":"Mushrooms"},{"v":3}]},
+			        {"c":[{"v":"Onions"},{"v":1}]},
+			       ]
+			       
+		rows : [ 배열 (객체 :배열[객체])]
+		
+		 */ 	
+
+		//들어갈 형태  ->  rows 객체 에 배열  <- 
+		//  <- [  c 라는 객체에 배열 <- 객체
+		//  data 객체 -> rows 배열 <-  c 객체  ->배열  <- v 객체 2개/
+		
+		List<EmployeeVO> employeeList = employeeService.selectEmployeeAll();
+		JSONArray  body =new JSONArray();
+		for(EmployeeVO e : employeeList) {
+			
+			EmployeeVO employee = new EmployeeVO();
+			
+			employee = employeeService.countEmployeeInCharge(e.getEmpno());
+//			System.out.println(employee.getCount());
+			int cnt = 0;
+			if(employee != null) {
+				cnt = employee.getCount();
+			} 
+			
+				
+										
+			JSONObject name =new JSONObject();
+			name.put("v", e.getName()); //상품이름 -> v 객체 
+			JSONObject price =new JSONObject();
+			price.put("v", cnt); //가격 ->v 객체
+			
+			//  v객체를 row 배열을 만든후 추가한다.
+			JSONArray row =new JSONArray();
+			row.add(name);
+			row.add(price);
+			
+			//   c 객체 를 만든후 row 배열을 담는다.
+			JSONObject c =new JSONObject();
+			c.put("c", row);		
+			// c 객체를 배열 형태의 body 에 담는다.
+			body.add(c);
+		}
+		
+		// 배열 형태의 body 를 rows 키값으로 객체 data 에 담는다.
+		data.put("rows", body);
+		
+		try{
+			 entity =new ResponseEntity<JSONObject>(data, HttpStatus.OK);
+		}catch (Exception e) {
+			System.out.println(" 에러            -- ");
+			entity =new ResponseEntity<JSONObject>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

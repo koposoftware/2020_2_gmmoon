@@ -20,4 +20,8 @@ public interface MemberService {
 	EmployeeVO myChargedStaff(int empno);
 	
 	MemberVO selectByCusno(int cusno);
+	
+	void modifyMyInfo(MemberVO member);
+	
+	void deleteMyInfo(MemberVO member);
 }
