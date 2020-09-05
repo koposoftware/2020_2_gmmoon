@@ -13,6 +13,17 @@
 		<result column="csdate" property="csdate"/>
 	</resultMap>
 	
+	<resultMap type="consultingreplyVO" id="consultingreplyMap">
+		<result column="no" property="no"/>
+		<result column="cs_serialno" property="cs_serialno"/>
+		<result column="empno" property="empno"/>
+		<result column="cusno" property="cusno"/>
+		<result column="cname" property="name"/>
+		<result column="cstype" property="type"/>
+		<result column="cscontent" property="content"/>
+		<result column="csdate" property="csdate"/>
+	</resultMap>
+	
 	<select id="inqueryConsulting" resultMap="consultingMap" resultType="consultingVO" parameterType="int">
 		select cs_serialno, empno, cusno, cname, cstype, cscontent, to_char(csdate, 'yyyy-mm-dd') as csdate 
 			from consulting
@@ -33,5 +44,16 @@
 	<select id="inqueryNumberConsulting" resultMap="consultingMap" resultType="consultingVO">
 		select cs_serialno 
 			from consulting
+	</select>
+	
+	<insert id="replyConsulting" parameterType="consultingreplyVO">
+		insert into consulting_reply(no , cs_serialno, empno, cusno, cname, cstype, cscontent) 
+			values( seq_consulting_reply_no.nextval, #{cs_serialno}, #{empno},
+			#{cusno}, #{name}, #{type}, #{content} )
+	</insert>
+	
+	<select id="inquertOneConsulting" parameterType="int" resultMap="consultingMap">
+		select * from consulting
+			where cs_serialno = #{no}
 	</select>
 </mapper>

@@ -296,8 +296,10 @@ public class EmployeeController {
 		return entity;
 	}
 	
-	
-	
+	@RequestMapping("employeeInfoCompany")
+	private String employeeInfoCompany() {
+		return "/pageComponent/about";
+	}
 	
 	
 	

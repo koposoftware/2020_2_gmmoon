@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
-		<title>하나생명4U</title>
+		<title>Insurance | Insurances type</title>
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
@@ -23,17 +23,22 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 
+<script>
+	function doAction(code) {
+		location.href = "${ pageContext.request.contextPath}/productDetail/"+code;
+	}
+</script>
+
 	</head>
 
 
 	<body>
 		
-		<div id="site-content">
-			<header class="site-header">
+		<header class="site-header">
 				<div class="top-header">
 					<div class="container">
 						<a href="${ pageContext.request.contextPath }" id="branding">
-							<img src="images/hanaicon.png" alt="Company Name" class="logo">
+							<img src="/hanalife/images/hanaicon.png" alt="Company Name" class="logo">
 							<div class="logo-text">
 								<h1 class="site-title">HANA 4U</h1>
 								<h2 class="description">당신을 위한 단 하나의 선택</h2>
@@ -49,11 +54,11 @@
 						</a> <!-- #branding -->
 					
 						<div class="right-section pull-right">
-							<a href="#" class="phone"><img src="images/icon-phone.png" class="icon">02-3709-7394</a>
+							<a href="#" class="phone"><img src="/hanalife/images/icon-phone.png" class="icon">02-3709-7394</a>
 					
 							<form action="#" class="search-form">
 								<input type="text" placeholder="검색">
-								<button type="submit"><img src="images/icon-search.png" alt=""></button>
+								<button type="submit"><img src="/hanalife/images/icon-search.png" alt=""></button>
 							</form>
 						</div>
 					</div> <!-- .container -->
@@ -75,7 +80,7 @@
 									</c:if>
 									<c:if test="${ not empty employee }">
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeelogout">로그아웃</a></li>
-									</c:if>									
+									</c:if>
 								</c:otherwise>
 							</c:choose>
 								<c:if test="${ empty loginVO and empty employee }">
@@ -117,7 +122,7 @@
 										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">찾아오시는길</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">찾아오시는길</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -144,121 +149,125 @@
 				
 			</header> <!-- .site-header -->
 
-			<div class="hero hero-slider">
-				<ul class="slides">
-					<li data-bg-image="images/hanaMain01.png" >
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-								<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-								<p>장기계약이 강점인 하나생명과 함께 
-									신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="images/hanaMain02.png">
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-									<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-									<p>장기계약이 강점인 하나생명과 함께 
-										신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="images/hanaMain06.png">
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-									<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-									<p>장기계약이 강점인 하나생명과 함께 
-										신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div> <!-- .hero-slider -->
-
 			<main class="main-content">
-				<div class="fullwidth-block greet-section">
+				<div class="breadcrumbs">
 					<div class="container">
-						<h2 class="section-title">하나생명을 소개합니다</h2>
-						<small class="section-subtitle">함께성장하며 행복을 나누는 금융, 신뢰받고 앞서가는 든든한 보험회사</small>
-
-						<div class="row">
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-phone-24"></i>
-									<h3 class="feature-title">24시간 제공되는 서비스</h3>
-									<p>언제나 이용 가능한 서비스를 만끽하세요!여러분이 필요료 할 때 옆에 있는 HANA 4U</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-hotel"></i>
-									<h3 class="feature-title">하나네트워크</h3>
-									<p>하나금융그룹사 소속으로 다양한 정보를 이용하여 가치를 창출</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-luggage"></i>
-									<h3 class="feature-title">노후대비 </h3>
-									<p>노후대비를 위한 적절한 상품이 있는 하나생명을 이용해보세요</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-credit-card-hand"></i>
-									<h3 class="feature-title">간편한 결제과정</h3>
-									<p>결제부터 안내까지 간단한 과정을 느껴보세요</p>
-								</div>
-							</div>
-						</div> <!-- .row -->
-
-						<div class="text-center">
-							<p>하나생명을 더 알고싶다면? <a href="about.jsp">더 알아보기</a></p>
-						</div>
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block" data-bg-color="#0f75bd">
-					<div class="container">
-						<div class="testimonial-slider">
-							<ul class="slides">
-								<li>
-									<blockquote>"모두의 기쁨, 그 하나를 위하여" <br>하나생명은 항상 손님의 인생 여정을 함께하는 동반자가 되겠습니다.<cite>-대표이사 사장 김인석-</cite></blockquote>
-								</li>
-								<li>
-									<blockquote>"고객의 기쁨은 나의 기쁨" <br>항상 최선을 다해서 더 나은 서비스를 제공하겠습니다.<cite>-우수사원 문건모-</cite></blockquote>
-								</li>
-								<li>
-									<blockquote>"글씨가 크고 간편하니 훨씬 사용하기 편해졌어요. <br>덕분에 보험도 잘 알아보고 좋은 상품을 들었습니다."<cite>-OOO 고객님-</cite></blockquote>
-									<!-- 후기같은 것을 제일 많이 올린 고객이름을 삽입??(기능 구현 예정) -->
-								</li>
-							</ul>
-						</div>
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block">
-					<div class="container">
-						<h2 class="section-title">하나금융네트워크</h2>
-
-						<div class="partners">
-							<a href="https://www.kebhana.com/"><img src="images/hanaBanklogo.png" alt=""></a>
-							<a href="https://www.hanacard.co.kr/index2.jsp"><img src="images/hanaCardlogo.png" alt=""></a>
-							<a href="https://www.educar.co.kr/"><img src="images/hanaLifeinsurancelogo.png" alt=""></a>
-							<a href="https://www.hanaw.com/main/main/index.cmd"><img src="images/hanaInvestmentlogo.png" alt=""></a>
-							<a href="https://www.hanati.co.kr/kor/main.jsp"><img src="images/hanaTilogo.png" alt=""></a>
-							<a href="https://www.hanacapital.co.kr/index.hnc"><img src="images/hanaCapitallogo.png" alt=""></a>
-						</div> <!-- .partners -->
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block">
-					<div class="map"></div>
+						<a href="index.jsp">Home</a>
+						<span>보험상품</span>
+					</div>
 				</div>
+
+				<div class="page">
+					<div class="container">
+						<h3 class="entry-title">하나생명의 다양한 보험상품을 둘러보세요</h3>
+						<p>특수보험, 종합보험, 어린이보험</p>
+
+						<div class="filter-links filterable-nav">
+							<select class="mobile-filter">
+								<option value="*">Show all</option>
+								<option value=".skyscraper">특수보험</option>
+								<option value=".shopping-center">종합보험</option>
+								<option value=".apartment">어린이보험</option>
+							</select>
+							<strong>Select Category: </strong>
+							<a href="#" class="current wow fadeInRight" data-filter="*">모두보기</a>
+							<a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter=".skyscraper">특수보험</a>
+							<a href="#" class="wow fadeInRight" data-wow-delay=".4s" data-filter=".shopping-center">종합보험</a>
+							<a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".apartment">어린이보험</a>
+						</div>
+
+						<div class="filterable-items">
+							<div class="insurance-item filterable-item shopping-center">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-sofa"></i></div>
+									<h3 class="insurance-title">종합암보험</h3>
+									<p>종합암보험입니다.</p>
+									<a href="javascript:doAction('A001')" class="button">See details</a>
+								</div>
+							</div>
+						
+
+							<div class="insurance-item filterable-item skyscraper">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-pool"></i></div>
+									<h3 class="insurance-title">특수암보험</h3>
+									<p>특수암보험입니다.</p>
+									<a href="javascript:doAction('A003')" class="button">See details</a>
+								</div>
+							</div>
+							
+							<div class="insurance-item filterable-item skyscraper">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-pool"></i></div>
+									<h3 class="insurance-title">특수화재보험</h3>
+									<p>특수화재보험입니다.</p>
+									<a href="javascript:doAction('C002')" class="button">See details</a>
+								</div>
+							</div>
+
+							<div class="insurance-item filterable-item apartment">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-nurse"></i></div>
+									<h3 class="insurance-title">어린이생명보험</h3>
+									<p>어린이생명보험입니다.</p>
+									<a href="javascript:doAction('D001')" class="button">See details</a>
+								</div>
+							</div>
+
+							<div class="insurance-item filterable-item shopping-center">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-weigher"></i></div>
+									<h3 class="insurance-title">종합상해보험</h3>
+									<p>종합상해보험입니다.</p>
+									<a href="javascript:doAction('B001')" class="button">See details</a>
+								</div>
+							</div>
+
+							<div class="insurance-item filterable-item apartment">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-car"></i></div>
+									<h3 class="insurance-title">어린이종합보험</h3>
+									<p>어린이상해보험입니다.</p>
+									<a href="javascript:doAction('D003')" class="button">See details</a>
+								</div>
+							</div>
+
+							<div class="insurance-item filterable-item skyscraper">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-shirt"></i></div>
+									<h3 class="insurance-title">특수상해보험</h3>
+									<p>특수상해보험입니다.</p>
+									<a href="javascript:doAction('B002')" class="button">See details</a>
+								</div>
+							</div>
+							
+							<div class="insurance-item filterable-item shopping-center">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-sofa"></i></div>
+									<h3 class="insurance-title">종합화재보험</h3>
+									<p>종합화재보험입니다.</p>
+									<a href="javascript:doAction('C001')" class="button">See details</a>
+								</div>
+							</div>
+							
+							<div class="insurance-item filterable-item apartment">
+								<div class="insurance-content">
+									<div class="insurance-icon"><i class="icon-car"></i></div>
+									<h3 class="insurance-title">어린이암보험</h3>
+									<p>어린이암보험입니다.</p>
+									<a href="javascript:doAction('D002')" class="button">See details</a>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="pagination">
+							<span class="current">1</span>
+							<a href="#">2</a>
+							<a href="#">3</a>
+						</div>
+					</div>
+				</div> <!-- .page -->
 			</main>
 
 			<div class="site-footer">
@@ -267,11 +276,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-4 col-md-2">
 								<div class="widget">
-									<h3 class="widget-title">회사소개</h3>
-									<address> 하나생명. 서울특별시 중구 을지로66
+									<h3 class="widget-title">Contact</h3>
+									<address> Company Name INC. 523 Burt Street, Omaha
 									</address>
-									<a href="#">Tel: 080-3488-7000</a>
-									<a href="mailto:info@company.com">hanalife@hl.co.kr</a>
+									<a href="#">Phone: +1 823 424 9134</a>
+									<a href="mailto:info@company.com">info@company.com</a>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-2">
@@ -310,7 +319,18 @@
 									</ul>
 								</div>
 							</div>
-							
+							<div class="col-xs-12 col-sm-4 col-md-2">
+								<div class="widget">
+									<h3 class="widget-title">Press Room</h3>
+									<ul class="no-bullet">
+									<li><a href="#">Advertisement</a></li>
+									<li><a href="#">Interviews</a></li>
+									<li><a href="#">Hot news</a></li>
+									<li><a href="#">Photos</a></li>
+									<li><a href="#">Marketing</a></li>
+									</ul>
+								</div>
+							</div>
 							<div class="col-xs-12 col-sm-4 col-md-2">
 								<div class="widget">
 									<h3 class="widget-title">Resources</h3>
@@ -330,21 +350,20 @@
 				<div class="bottom-footer">
 					<div class="container">
 						<nav class="footer-navigation">
-							<a href="index.jsp">Home</a>
-							<a href="about.jsp">하나생명소개</a>
-							<a href="insurance.jsp">보험상품</a>
-							<a href="resource.jsp">보험추천</a>
-							<a href="contact.jsp">찾아오시는길</a>
+							<a href="#">Home</a>
+							<a href="#">About us</a>
+							<a href="#">Insurance plans</a>
+							<a href="#">Resources</a>
+							<a href="#">Contact</a>
 						</nav>
 
-						<div class="colophon">Copyright 2020 Moongeonmo. Designed by Themezy. All rights reserved.</div>
+						<div class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved.</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/app.js"></script>
 		

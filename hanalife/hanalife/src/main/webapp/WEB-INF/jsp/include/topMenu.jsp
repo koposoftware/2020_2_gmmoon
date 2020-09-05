@@ -26,7 +26,7 @@
 				<div class="top-header">
 					<div class="container">
 						<a href="${ pageContext.request.contextPath }" id="branding">
-							<img src="images/hanaicon.png" alt="Company Name" class="logo">
+							<img src="/hanalife/images/hanaicon.png" alt="Company Name" class="logo">
 							<div class="logo-text">
 								<h1 class="site-title">HANA 4U</h1>
 								<h2 class="description">당신을 위한 단 하나의 선택</h2>
@@ -42,11 +42,11 @@
 						</a> <!-- #branding -->
 					
 						<div class="right-section pull-right">
-							<a href="#" class="phone"><img src="images/icon-phone.png" class="icon">02-3709-7394</a>
+							<a href="#" class="phone"><img src="/hanalife/images/icon-phone.png" class="icon">02-3709-7394</a>
 					
 							<form action="#" class="search-form">
 								<input type="text" placeholder="검색">
-								<button type="submit"><img src="images/icon-search.png" alt=""></button>
+								<button type="submit"><img src="/hanalife/images/icon-search.png" alt=""></button>
 							</form>
 						</div>
 					</div> <!-- .container -->
@@ -71,13 +71,21 @@
 									</c:if>
 								</c:otherwise>
 							</c:choose>
-								<li class="menu-item"><a href="${ pageContext.request.contextPath }/about.jsp">하나생명소개</a></li>
+								<c:if test="${ empty loginVO and empty employee }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/about">하나생명소개</a></li>
+								</c:if>
+								<c:if test="${ not empty loginVO }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/customerInfoCompany">하나생명소개</a></li>
+								</c:if>
+								<c:if test="${ not empty employee }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeeInfoCompany">하나생명소개</a></li>
+								</c:if>
 								<c:choose>
 									<c:when test="${ not empty employee }">
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">보험상품</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance">보험상품</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -85,12 +93,12 @@
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insuranceContractService">보험계약서비스관리</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">보험추천</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/resource">보험추천</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="insurance.jsp">상담서비스관리</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/consultingService">상담서비스관리</a></li>
 										<c:if test="${ employee.rank eq '과장'}">
 											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployee">사원관리</a></li>										
 										</c:if>

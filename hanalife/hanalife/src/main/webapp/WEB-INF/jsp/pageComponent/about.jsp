@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
-		<title>하나생명4U</title>
+		<title>Insurance | About Us</title>
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
@@ -28,8 +28,7 @@
 
 	<body>
 		
-		<div id="site-content">
-			<header class="site-header">
+		<header class="site-header">
 				<div class="top-header">
 					<div class="container">
 						<a href="${ pageContext.request.contextPath }" id="branding">
@@ -75,7 +74,7 @@
 									</c:if>
 									<c:if test="${ not empty employee }">
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeelogout">로그아웃</a></li>
-									</c:if>									
+									</c:if>
 								</c:otherwise>
 							</c:choose>
 								<c:if test="${ empty loginVO and empty employee }">
@@ -117,7 +116,7 @@
 										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">찾아오시는길</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">찾아오시는길</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -144,121 +143,119 @@
 				
 			</header> <!-- .site-header -->
 
-			<div class="hero hero-slider">
-				<ul class="slides">
-					<li data-bg-image="images/hanaMain01.png" >
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-								<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-								<p>장기계약이 강점인 하나생명과 함께 
-									신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="images/hanaMain02.png">
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-									<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-									<p>장기계약이 강점인 하나생명과 함께 
-										신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="images/hanaMain06.png">
-						<div class="container">
-							<div class="slide-content" style="border:1px solid black;">
-									<h2 class="slide-title">어서오세요 <strong>HANA 4U</strong></h2>
-									<p>장기계약이 강점인 하나생명과 함께 
-										신속하고 안정적인 선진 종합 금융 서비스를 시작하세요!</p>
-								<a href="${pageContext.request.contextPath }/signUp" class="button">회원가입</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div> <!-- .hero-slider -->
 
 			<main class="main-content">
-				<div class="fullwidth-block greet-section">
+				<div class="breadcrumbs">
 					<div class="container">
-						<h2 class="section-title">하나생명을 소개합니다</h2>
-						<small class="section-subtitle">함께성장하며 행복을 나누는 금융, 신뢰받고 앞서가는 든든한 보험회사</small>
-
-						<div class="row">
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-phone-24"></i>
-									<h3 class="feature-title">24시간 제공되는 서비스</h3>
-									<p>언제나 이용 가능한 서비스를 만끽하세요!여러분이 필요료 할 때 옆에 있는 HANA 4U</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-hotel"></i>
-									<h3 class="feature-title">하나네트워크</h3>
-									<p>하나금융그룹사 소속으로 다양한 정보를 이용하여 가치를 창출</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-luggage"></i>
-									<h3 class="feature-title">노후대비 </h3>
-									<p>노후대비를 위한 적절한 상품이 있는 하나생명을 이용해보세요</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<i class="icon-credit-card-hand"></i>
-									<h3 class="feature-title">간편한 결제과정</h3>
-									<p>결제부터 안내까지 간단한 과정을 느껴보세요</p>
-								</div>
-							</div>
-						</div> <!-- .row -->
-
-						<div class="text-center">
-							<p>하나생명을 더 알고싶다면? <a href="about.jsp">더 알아보기</a></p>
-						</div>
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block" data-bg-color="#0f75bd">
-					<div class="container">
-						<div class="testimonial-slider">
-							<ul class="slides">
-								<li>
-									<blockquote>"모두의 기쁨, 그 하나를 위하여" <br>하나생명은 항상 손님의 인생 여정을 함께하는 동반자가 되겠습니다.<cite>-대표이사 사장 김인석-</cite></blockquote>
-								</li>
-								<li>
-									<blockquote>"고객의 기쁨은 나의 기쁨" <br>항상 최선을 다해서 더 나은 서비스를 제공하겠습니다.<cite>-우수사원 문건모-</cite></blockquote>
-								</li>
-								<li>
-									<blockquote>"글씨가 크고 간편하니 훨씬 사용하기 편해졌어요. <br>덕분에 보험도 잘 알아보고 좋은 상품을 들었습니다."<cite>-OOO 고객님-</cite></blockquote>
-									<!-- 후기같은 것을 제일 많이 올린 고객이름을 삽입??(기능 구현 예정) -->
-								</li>
-							</ul>
-						</div>
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block">
-					<div class="container">
-						<h2 class="section-title">하나금융네트워크</h2>
-
-						<div class="partners">
-							<a href="https://www.kebhana.com/"><img src="images/hanaBanklogo.png" alt=""></a>
-							<a href="https://www.hanacard.co.kr/index2.jsp"><img src="images/hanaCardlogo.png" alt=""></a>
-							<a href="https://www.educar.co.kr/"><img src="images/hanaLifeinsurancelogo.png" alt=""></a>
-							<a href="https://www.hanaw.com/main/main/index.cmd"><img src="images/hanaInvestmentlogo.png" alt=""></a>
-							<a href="https://www.hanati.co.kr/kor/main.jsp"><img src="images/hanaTilogo.png" alt=""></a>
-							<a href="https://www.hanacapital.co.kr/index.hnc"><img src="images/hanaCapitallogo.png" alt=""></a>
-						</div> <!-- .partners -->
-					</div> <!-- .container -->
-				</div> <!-- .fullwidth-block -->
-
-				<div class="fullwidth-block">
-					<div class="map"></div>
+						<a href="index.jsp">Home</a>
+						<span>하나생명소개</span>
+					</div>
 				</div>
+
+				<div class="page">
+					<div class="fullwidth-block">
+						<div class="container">
+							<h1 class="entry-title">왜 <strong>하나생명</strong>인가?</h1>
+							<p>하나생명은 방카슈랑스 보험 청약 업무 지원을 위한 '모바일 신계약 서류보완 프로세스'를 도입했습니다. '모바일 신계약 서류보완 프로세스'는 고객이 카카오 인증 등을 거쳐 은행을 방문하지 않고도 직접 서류 보완을 처리할 수 있는 서비스다. 앞서 지난 2월에는 인슈어테크(보험+기술) 기업 보맵과 디지털 플랫폼 혁신을 위한 양해각서(MOU)를 체결하기도 했다. 
+							양 사는 디지털 전용 보험상품과 보맵의 제휴 사업자를 위한 플랫폼 전용 보험상품 등을 선보인다는 계획.</p>
+							
+							<div class="features">
+								<div class="feature-numbered">
+									<div class="num">1</div>
+									<h2 class="feature-title">Proin tempus</h2>
+									<p> Proin tempus velit dui eu lobortis justo laoreet nec phasellus luctus elit neque eu aliquam velit dignissim donec porttitor.</p>
+								</div>
+								<div class="feature-numbered">
+									<div class="num">2</div>
+									<h2 class="feature-title">Proin tempus</h2>
+									<p> Proin tempus velit dui eu lobortis justo laoreet nec phasellus luctus elit neque eu aliquam velit dignissim donec porttitor.</p>
+								</div>
+								<div class="feature-numbered">
+									<div class="num">3</div>
+									<h2 class="feature-title">Proin tempus</h2>
+									<p> Proin tempus velit dui eu lobortis justo laoreet nec phasellus luctus elit neque eu aliquam velit dignissim donec porttitor.</p>
+								</div>
+								<div class="feature-numbered">
+									<div class="num">4</div>
+									<h2 class="feature-title">Proin tempus</h2>
+									<p> Proin tempus velit dui eu lobortis justo laoreet nec phasellus luctus elit neque eu aliquam velit dignissim donec porttitor.</p>
+								</div>
+							</div>
+						</div> <!-- .container -->
+					</div> <!-- .fullwidth-block -->
+
+					<div class="fullwidth-block" data-bg-color="#f1f1f1">
+						<div class="container">
+							<h2 class="section-title">The history</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae leo ornare, fermentum libero eu, pharetra ante. Nunc consectetur pharetra tincidunt. Maecenas eget mattis ipsum. Quisque libero nisi, maximus id mauris non, imperdiet lacinia purus. Quisque a scelerisque quam, a finibus lectus.</p> 
+
+							<p>Duis luctus a magna luctus elementum. Integer scelerisque, turpis eu placerat elementum, libero risus sodales lacus, ac vulputate quam dui eget risus. Cras vel luctus urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus luctus varius massa, ac faucibus sem posuere sit amet. Nunc nec fermentum mi. Etiam ultricies sit amet turpis vitae iaculis. Sed eget sem turpis. Morbi sodales nisi sem, pretium volutpat lectus ornare quis. Aenean vel ante enim.</p>
+
+							<p>Nam posuere purus vitae est sollicitudin placerat. Praesent posuere porta dignissim. Phasellus viverra, urna a convallis tincidunt, ante mi tempor turpis, nec tempor mauris ligula ut sapien. Etiam euismod mi eu ante mollis commodo. Suspendisse porta nisi vitae dui hendrerit, eget ornare orci semper. Phasellus pharetra, erat sit amet rutrum porttitor, est eros consectetur elit, molestie consequat erat tellus in dui. Vestibulum a vehicula sem. Nullam commodo quis purus in volutpat. Integer semper lacus a lorem efficitur auctor. Curabitur tincidunt, ligula non ultrices eleifend, felis leo ultrices quam, vitae congue risus dui a justo. Phasellus dapibus justo lacus, eget scelerisque libero iaculis sed. Maecenas ullamcorper sit amet dui nec efficitur.</p>
+						</div> <!-- .container -->
+					</div> <!-- .fullwidth-block -->
+
+					<div class="fullwidth-block">
+						<div class="container">
+							<h2 class="section-title">Our Team</h2>
+
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="team">
+										<figure class="team-image"><img src="dummy/team-1.jpg" alt=""></figure>
+										<h2 class="team-name">Jessica Brown</h2>
+										<small class="team-title">CEO</small>
+										<div class="social-links">
+											<a href="#"><i class="fa fa-facebook"></i></a>
+											<a href="#"><i class="fa fa-twitter"></i></a>
+											<a href="#"><i class="fa fa-google-plus"></i></a>
+											<a href="#"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div> <!-- .team -->
+								</div> <!-- .col-md-3 -->
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="team">
+										<figure class="team-image"><img src="dummy/team-2.jpg" alt=""></figure>
+										<h2 class="team-name">Jeremy Stuart</h2>
+										<small class="team-title">Managing Director</small>
+										<div class="social-links">
+											<a href="#"><i class="fa fa-facebook"></i></a>
+											<a href="#"><i class="fa fa-twitter"></i></a>
+											<a href="#"><i class="fa fa-google-plus"></i></a>
+											<a href="#"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div> <!-- .team -->
+								</div> <!-- .col-md-3 -->
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="team">
+										<figure class="team-image"><img src="dummy/team-3.jpg" alt=""></figure>
+										<h2 class="team-name">Sarah Johnson</h2>
+										<small class="team-title">Public Relation</small>
+										<div class="social-links">
+											<a href="#"><i class="fa fa-facebook"></i></a>
+											<a href="#"><i class="fa fa-twitter"></i></a>
+											<a href="#"><i class="fa fa-google-plus"></i></a>
+											<a href="#"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div> <!-- .team -->
+								</div> <!-- .col-md-3 -->
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="team">
+										<figure class="team-image"><img src="dummy/team-4.jpg" alt=""></figure>
+										<h2 class="team-name">Paul ferguson</h2>
+										<small class="team-title">Consultant</small>
+										<div class="social-links">
+											<a href="#"><i class="fa fa-facebook"></i></a>
+											<a href="#"><i class="fa fa-twitter"></i></a>
+											<a href="#"><i class="fa fa-google-plus"></i></a>
+											<a href="#"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div> <!-- .team -->
+								</div> <!-- .col-md-3 -->
+							</div> <!-- .row -->
+						</div> <!-- .container -->
+					</div> <!-- .fullwidth-block -->
+				</div> <!-- .page -->
 			</main>
 
 			<div class="site-footer">
@@ -267,11 +264,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-4 col-md-2">
 								<div class="widget">
-									<h3 class="widget-title">회사소개</h3>
-									<address> 하나생명. 서울특별시 중구 을지로66
+									<h3 class="widget-title">Contact</h3>
+									<address> Company Name INC. 523 Burt Street, Omaha
 									</address>
-									<a href="#">Tel: 080-3488-7000</a>
-									<a href="mailto:info@company.com">hanalife@hl.co.kr</a>
+									<a href="#">Phone: +1 823 424 9134</a>
+									<a href="mailto:info@company.com">info@company.com</a>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-2">
@@ -310,7 +307,18 @@
 									</ul>
 								</div>
 							</div>
-							
+							<div class="col-xs-12 col-sm-4 col-md-2">
+								<div class="widget">
+									<h3 class="widget-title">Press Room</h3>
+									<ul class="no-bullet">
+									<li><a href="#">Advertisement</a></li>
+									<li><a href="#">Interviews</a></li>
+									<li><a href="#">Hot news</a></li>
+									<li><a href="#">Photos</a></li>
+									<li><a href="#">Marketing</a></li>
+									</ul>
+								</div>
+							</div>
 							<div class="col-xs-12 col-sm-4 col-md-2">
 								<div class="widget">
 									<h3 class="widget-title">Resources</h3>
@@ -330,21 +338,20 @@
 				<div class="bottom-footer">
 					<div class="container">
 						<nav class="footer-navigation">
-							<a href="index.jsp">Home</a>
-							<a href="about.jsp">하나생명소개</a>
-							<a href="insurance.jsp">보험상품</a>
-							<a href="resource.jsp">보험추천</a>
-							<a href="contact.jsp">찾아오시는길</a>
+							<a href="#">Home</a>
+							<a href="#">About us</a>
+							<a href="#">Insurance plans</a>
+							<a href="#">Resources</a>
+							<a href="#">Contact</a>
 						</nav>
 
-						<div class="colophon">Copyright 2020 Moongeonmo. Designed by Themezy. All rights reserved.</div>
+						<div class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved.</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/app.js"></script>
 		

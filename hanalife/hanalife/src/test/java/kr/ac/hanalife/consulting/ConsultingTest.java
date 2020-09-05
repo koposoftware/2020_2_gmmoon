@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.ac.hanalife.consulting.dao.ConsultingDAO;
+import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -50,6 +51,7 @@ public class ConsultingTest {
 		consultingDAO.insertConsulting(csVO);
 	}
 	
+	@Ignore
 	@Test
 	public void 상담내역번호전체조회테스트() throws Exception {
 		
@@ -58,5 +60,33 @@ public class ConsultingTest {
 		list = consultingDAO.inqueryNumberConsulting();
 		
 		assertNotNull(list);
+	}
+	
+	@Ignore
+	@Test
+	public void 상담내역댓글입력테스트() throws Exception {
+		
+		ConsultingReplyVO csrVO = new ConsultingReplyVO();
+		
+		csrVO.setCs_serialno(1000000011);
+		csrVO.setEmpno(71234);
+		csrVO.setCusno(10001);
+		csrVO.setName("구재희");
+		csrVO.setType("방문상담예약");
+		csrVO.setContent("가능한 날짜목록을 보냈습니다. 이를 확인하시려면 이메일을 확인해주세요");
+		
+		consultingDAO.replyConsulting(csrVO);
+		
+	}
+	
+	@Ignore
+	@Test
+	public void 상담내역번호별조회테스트() throws Exception {
+		
+		ConsultingVO csVO = consultingDAO.inqueryOneConsulting(1000000002);
+		System.out.println(csVO.getName());
+		System.out.println(csVO.getContent());
+		
+		assertNotNull(consultingDAO.inqueryOneConsulting(1000000002));
 	}
 }

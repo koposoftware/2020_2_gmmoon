@@ -181,4 +181,18 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping("customerInfoCompany")
+	public String customerInfoCompany() {
+		return "/pageComponent/about";
+	}
+	
+	@RequestMapping("about")
+	public String about() {
+		return "/pageComponent/about";
+	}
+	
+	@RequestMapping("resource")
+	public String resource() {
+		return "/pageComponent/resource";
+	}
 }

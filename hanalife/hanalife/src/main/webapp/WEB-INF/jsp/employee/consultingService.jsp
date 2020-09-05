@@ -41,15 +41,26 @@ $(document).ready(function(){
 	               <th>상담유형</th>
 	               <th width="50%">상담내용</th>
 	               <th width="10%">상담일자</th>
+	               <th width="10%">답변여부</th>
 	            </tr>
 	            <tbody id="myTable">
 		            <c:forEach items="${ consultingList }" var="list" varStatus="loop">
 		               <tr>
-		                  <td align="center">${ loop.count }</td>
+		                  <td align="center">
+		                  	<a href="${pageContext.request.contextPath }/replyConsulting/${list.no}">${ loop.count }</a>
+		                  </td>
 		                  <td align="center">${ list.name }</td>
 		                  <td align="center">${ list.type }</td>
 		                  <td align="center">${ list.content }</td>
 		                  <td align="center">${ list.csdate }</td>
+		                  <c:choose>
+		                  	<c:when test="${ consultingReplyNo eq list.no }">
+		                  		<td align="center">답변완료</td>
+		                  	</c:when>
+		                  	<c:otherwise>
+		                  		<td align="center">답변미완료</td>
+		                  	</c:otherwise>
+		                  </c:choose>	                  
 		               </tr>
 		            </c:forEach>
 	            </tbody>
