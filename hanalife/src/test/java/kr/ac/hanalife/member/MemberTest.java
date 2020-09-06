@@ -79,7 +79,8 @@ public class MemberTest {
 		newMember.setPassword("1111");
 		newMember.setName("송하나");
 		newMember.setHp("010-1478-1110");
-		newMember.setAddress("인천시 서구 경서동");
+		newMember.setPost("12345");
+		newMember.setAddr("인천시 서구 경서동");
 		newMember.setAge(22);
 		newMember.setEmail("songhana@naver.com");
 		
@@ -119,11 +120,49 @@ public class MemberTest {
 		assertNotNull(member);
 	}
 	
+	@Ignore
 	@Test
 	public void 고객을담당하는사원확인() throws Exception {
 		EmployeeVO member = memberDAO.myChargedStaff(71234);
 		
 		assertNotNull(member);
+	}
+	
+	@Ignore
+	@Test
+	public void 고객번호로고객정보확인테스트() throws Exception {
+		MemberVO member = memberDAO.selectByCusno(10001);
+		
+		assertNotNull(member);
+	}
+	
+	@Ignore
+	@Test
+	public void 고객회원정보수정테스트() throws Exception {
+		
+		MemberVO member = new MemberVO();
+		
+		member.setId("hanalove");
+		member.setPassword("2222");
+		member.setName("송하나");
+		member.setHp("010-0101-2098");
+		member.setPost("87654");
+		member.setAddr("광명시 철산동");
+		member.setEmail("hanalove@naver.com");
+		
+		memberDAO.modifyMyInfo(member);
+		
+	}
+	
+	@Ignore
+	@Test
+	public void 회원탈퇴테스트() throws Exception {
+		MemberVO member = new MemberVO();
+		
+		member.setId("hanalove");
+		member.setPassword("2222");
+		
+		memberDAO.deleteMyInfo(member);
 	}
 
 }

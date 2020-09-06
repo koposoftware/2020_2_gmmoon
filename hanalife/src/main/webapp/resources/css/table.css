@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.searchTag{
+	text-align: right;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+

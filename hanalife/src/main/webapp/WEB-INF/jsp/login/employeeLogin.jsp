@@ -36,7 +36,7 @@
 				</table>
 				<br>
 				<button type="submit">사원로그인</button> &nbsp;
-				<a href="${ pageContext.request.contextPath }/signUp" class="button">회원가입</a>
+				<a href="${ pageContext.request.contextPath }/employeeSignUp" class="button">사원회원가입</a>
 			</form>
 		</div>
 	</section>

@@ -8,7 +8,9 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String hp;
-	private String address;
+	private String post;
+//	private String address;
+	private String addr;
 	private int	   age;
 	private String email;
 	
@@ -47,12 +49,19 @@ public class MemberVO {
 	}
 	public void setHp(String hp) {
 		this.hp = hp;
+	}	
+	public String getPost() {
+		return post;
 	}
-	public String getAddress() {
-		return address;
+	public void setPost(String post) {
+		this.post = post;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	public int getAge() {
 		return age;

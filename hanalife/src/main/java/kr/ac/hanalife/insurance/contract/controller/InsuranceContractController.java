@@ -28,6 +28,16 @@ public class InsuranceContractController {
 		
 		List<InsuranceContractVO> insuranceContractList = new ArrayList<>();
 		insuranceContractList = insurancecontractService.selectInsuranceContract(empno);
+
+		String date = "";
+		for(InsuranceContractVO icVO : insuranceContractList) {
+			date = icVO.getJoin();
+			icVO.setJoin(date.substring(0, 10));
+			date = icVO.getMaturity();
+			icVO.setMaturity(date.substring(0, 10));
+			date = icVO.getTermination();
+			icVO.setTermination(date.substring(0, 10));
+		}
 		
 		ModelAndView mav = new ModelAndView("employee/insuranceContractService");
 		mav.addObject("insuranceContractList",insuranceContractList);

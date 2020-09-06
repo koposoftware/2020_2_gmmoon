@@ -9,6 +9,7 @@ public class ConsultingVO {
 	private	String	type;
 	private String	content;
 	private String	csdate;
+	private String	answer;
 	
 	public int getNo() {
 		return no;
@@ -51,6 +52,12 @@ public class ConsultingVO {
 	}
 	public void setCsdate(String csdate) {
 		this.csdate = csdate;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	
 	

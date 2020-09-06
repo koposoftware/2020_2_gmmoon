@@ -1,5 +1,7 @@
 package kr.ac.hanalife.insurance.contract.vo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class InsuranceContractVO {
 	
 	private	int no;
@@ -7,9 +9,14 @@ public class InsuranceContractVO {
 	private int cusno;
 	private String name;
 	private String code;
+	
+
 	private String join;
+	
 	private	String maturity;
+	
 	private String termination;
+	
 	private String beneficiary;
 	
 	public int getNo() {

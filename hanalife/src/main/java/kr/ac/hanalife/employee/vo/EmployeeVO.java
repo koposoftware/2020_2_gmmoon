@@ -10,6 +10,7 @@ public class EmployeeVO {
 	private String  hp;
 	private String	email;
 	private String	rank;
+	private int		count;
 	
 	public int getEmpno() {
 		return empno;
@@ -58,6 +59,12 @@ public class EmployeeVO {
 	}
 	public void setRank(String rank) {
 		this.rank = rank;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

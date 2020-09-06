@@ -7,30 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-table, th, td {
-	border: 1px solid #D4E0EE;
-	border-collapse: collapse;
-	font-family: verdana, sans-serif;
-	color: #555;
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+		
 }
 
-th, td {
-	padding : 5px;
+
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
 }
 
-td a:link, td a:visited {
-	color: #719ABE;
-	text-decoration: none;
+#formDiv {
+	margin: 0 auto;
+	width: 100%;
+	margin-left: 10%;
 }
 
-td a:hover {
-	text-decoration: underline;
-}
 
-table th {
-	background-color: #E6EDF5;
-	color: #4F76A3;
-}
 </style>
 </head>
 <body>
@@ -39,9 +37,11 @@ table th {
 </header>
 <section>
 	<hr>
-		<h2>보험 소개 내역입니다</h2>
+		<div class="w3-panel w3-green">
+    		<h2 class="w3-opacity">보험 소개 내역</h2>
+ 		</div>
 		<hr>
-		<table>
+		<table class="w3-table-all">
 			<tr>
 				<th>보험이름</th>
 				<td>${ ipVO.name }</td>
@@ -58,7 +58,9 @@ table th {
 		</table>
 		<P>납부보험료는 월 납부 보험료 기준입니다</P>
 		<c:if test="${ not empty loginVO }">
-			<a href="${pageContext.request.contextPath }" class="button">보험계약</a>
+			<div class="atag">
+				<a href="${pageContext.request.contextPath }" class="w3-button w3-green">보험계약</a>
+			</div>
 		</c:if>
 		
 </section>

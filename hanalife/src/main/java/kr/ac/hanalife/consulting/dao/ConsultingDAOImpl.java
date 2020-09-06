@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
 
 @Repository
@@ -40,6 +41,27 @@ public class ConsultingDAOImpl implements ConsultingDAO {
 		
 		return list;
 	}
+
+	@Override
+	public void replyConsulting(ConsultingReplyVO csrVO) {
+		sqlSession.insert("consulting.dao.ConsultingDAO.replyConsulting", csrVO);
+	}
+
+	@Override
+	public ConsultingVO inqueryOneConsulting(int no) {
+		return sqlSession.selectOne("consulting.dao.ConsultingDAO.inquertOneConsulting", no);
+	}
+
+	@Override
+	public ConsultingVO existConsultingReply(int cs_serialno) {
+		return sqlSession.selectOne("consulting.dao.ConsultingDAO.existConsultingReply", cs_serialno);
+	}
+
+	@Override
+	public ConsultingReplyVO inqueryReplyConsulting(int cs_serialno) {
+		return sqlSession.selectOne("consulting.dao.ConsultingDAO.inqueryReplyConsulting", cs_serialno);
+	}
+	
 	
 	
 }

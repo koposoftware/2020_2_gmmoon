@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="performance.management.dao.PerformanceManagementDAO" >
+	<resultMap type="performancemanagementVO" id="performancemanagementMap">
+		<result column="empno" property="empno"/>
+		<result column="edate" property="date"/>
+		<result column="contract_mg" property="contractManagement"/>
+		<result column="contract_rc" property="contractRecruiting"/>
+		<result column="agency_mg" property="agencyManagement"/>
+	</resultMap>
+	
+	<select id="selectPerformanceManagement" resultMap="performancemanagementMap" 
+			parameterType="int" resultType="performancemanagementVO">
+		select * from performance_management
+		 where empno = #{empno}
+	</select>
+	
+	<select id="selectContractManagement" resultMap="performancemanagementMap" parameterType="int">
+		select contract_mg from performance_management
+			where empno = #{empno}
+	</select>
+	
+	<select id="selectContractRecruiting" resultMap="performancemanagementMap" parameterType="int">
+		select contract_rc from performance_management
+			where empno = #{empno}
+	</select>
+	
+	<select id="selectAgencyManagement" resultMap="performancemanagementMap" parameterType="int">
+		select edate, agency_mg from performance_management
+			where empno = #{empno}
+	</select>
+	
+	<insert id="insertPerformanceManagement" parameterType="performancemanagementVO">
+		insert into PERFORMANCE_MANAGEMENT values (#{empno}, #{date}, #{contractManagement},
+			#{contractRecruiting}, #{agencyManagement})
+	</insert>
+</mapper>

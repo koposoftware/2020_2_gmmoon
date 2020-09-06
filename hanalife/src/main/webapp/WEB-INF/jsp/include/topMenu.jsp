@@ -12,10 +12,12 @@
 		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
 		<link href="/hanalife/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="/hanalife/fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
-
+		
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="/hanalife/style.css">
 		
+		<!-- w3css 사용 -->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
@@ -26,7 +28,7 @@
 				<div class="top-header">
 					<div class="container">
 						<a href="${ pageContext.request.contextPath }" id="branding">
-							<img src="images/hanaicon.png" alt="Company Name" class="logo">
+							<img src="/hanalife/images/hanaicon.png" alt="Company Name" class="logo">
 							<div class="logo-text">
 								<h1 class="site-title">HANA 4U</h1>
 								<h2 class="description">당신을 위한 단 하나의 선택</h2>
@@ -35,18 +37,18 @@
 										<h3 class="description">${ loginVO.name }님 환영합니다</h3>
 									</c:when>
 									<c:when test="${ not empty employee }">
-										<h3 class="description">${ employee.name }님 환영합니다</h3>
+										<h3 class="description">${ employee.name }&nbsp;&nbsp;${ employee.rank}님 환영합니다</h3>
 									</c:when>
 								</c:choose>
 							</div>
 						</a> <!-- #branding -->
 					
 						<div class="right-section pull-right">
-							<a href="#" class="phone"><img src="images/icon-phone.png" class="icon">02-3709-7394</a>
+							<a href="#" class="phone"><img src="/hanalife/images/icon-phone.png" class="icon">02-3709-7394</a>
 					
 							<form action="#" class="search-form">
 								<input type="text" placeholder="검색">
-								<button type="submit"><img src="images/icon-search.png" alt=""></button>
+								<button type="submit"><img src="/hanalife/images/icon-search.png" alt=""></button>
 							</form>
 						</div>
 					</div> <!-- .container -->
@@ -63,32 +65,68 @@
 									<li class="menu-item"><a href="${ pageContext.request.contextPath }/login">로그인</a></li>
 								</c:when>
 								<c:otherwise>
-									<li class="menu-item"><a href="${ pageContext.request.contextPath }/logout">로그아웃</a></li>
+									<c:if test="${ not empty loginVO }">
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/logout">로그아웃</a></li>
+									</c:if>
+									<c:if test="${ not empty employee }">
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeelogout">로그아웃</a></li>
+									</c:if>
 								</c:otherwise>
 							</c:choose>
-								<li class="menu-item"><a href="about.jsp">하나생명소개</a></li>
+								<c:if test="${ empty loginVO and empty employee }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/about">하나생명소개</a></li>
+								</c:if>
+								<c:if test="${ not empty loginVO }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/customerInfoCompany">하나생명소개</a></li>
+								</c:if>
+								<c:if test="${ not empty employee }">
+									<li class="menu-item"><a href="${ pageContext.request.contextPath }/employeeInfoCompany">하나생명소개</a></li>
+								</c:if>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="insurance.jsp">성과관리</a></li>
+										<c:if test="${ employee.rank eq '사원'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
+										</c:if>
+										<c:if test="${ employee.rank eq '대리'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
+										</c:if>
+										<c:if test="${ employee.rank eq '과장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '차장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '부장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">보험상품</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance">보험상품</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="insurance.jsp">보험계약서비스관리</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insuranceContractService">보험계약서비스관리</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">보험추천</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/resource">보험추천</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="insurance.jsp">상담서비스관리</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/consultingService">상담서비스관리</a></li>
+										<c:if test="${ employee.rank eq '과장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployee">사원관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '차장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployee">사원관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '부장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployee">사원관리</a></li>										
+										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="insurance.jsp">찾아오시는길</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">찾아오시는길</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.hanalife.consulting.dao.ConsultingDAO;
+import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
 
 @Service
@@ -35,6 +36,26 @@ public class ConsultingServiceImpl implements ConsultingService {
 	@Override
 	public List<ConsultingVO> inqeuryNumberConsultingCustomer() {
 		return consultingDAO.inqueryNumberConsulting();
+	}
+
+	@Override
+	public void replyConsulting(ConsultingReplyVO csrVO) {
+		consultingDAO.replyConsulting(csrVO);
+	}
+
+	@Override
+	public ConsultingVO inqueryOneConsulting(int no) {
+		return consultingDAO.inqueryOneConsulting(no);
+	}
+
+	@Override
+	public ConsultingVO existConsultingReply(int cs_serialno) {
+		return consultingDAO.existConsultingReply(cs_serialno);
+	}
+
+	@Override
+	public ConsultingReplyVO inqueryReplyConsulting(int cs_serialno) {
+		return consultingDAO.inqueryReplyConsulting(cs_serialno);
 	}
 	
 	

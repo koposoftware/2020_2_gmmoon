@@ -13,4 +13,14 @@ public interface EmployeeService {
 	List<MemberVO> myChargingCustomer(int empno);
 	
 	List<ConsultingVO> selectConsultingCustomer(int empno);
+	
+	void employeeSignUp(EmployeeVO employeeVO);
+	
+	EmployeeVO employeeCheckID(String eid);
+	
+	List<EmployeeVO> selectEmployeeAll();
+	
+	void AssignCustomer(MemberVO member);
+	
+	EmployeeVO countEmployeeInCharge(int empno);
 }

@@ -46,5 +46,23 @@ public interface MemberDAO {
 	 * @return 고객에게 배정된 담당 사원
 	 */
 	EmployeeVO myChargedStaff(int empno);
-
+	
+	/**
+	 * 고객의 고객번호로 고객정보를 불러오는 기능
+	 * @param cusno 고객번호
+	 * @return 해당 고객 정보
+	 */
+	MemberVO selectByCusno(int cusno);
+	
+	/**
+	 * 고객이 자신의 회원정보를 수정할 수 있는 기능
+	 * @param member 홈페이지에서 입력하는 수정할 모든정보
+	 */
+	void modifyMyInfo(MemberVO member);
+	
+	/**
+	 * 고객 회원탈퇴 기능 서비스
+	 * @param member 탈퇴할 회원 정보
+	 */
+	void deleteMyInfo(MemberVO member);
 }

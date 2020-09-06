@@ -30,5 +30,32 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public List<ConsultingVO> selectConsulting(int empno) {
 		return sqlSession.selectList("consulting.dao.ConsultingDAO.selectConsulting", empno);
 	}
+
+	@Override
+	public void employeeSignUp(EmployeeVO employeeVO) {
+		sqlSession.insert("employee.dao.EmployeeDAO.employeeSignUp", employeeVO);
+	}
+
+	@Override
+	public EmployeeVO employeeCheckID(String eid) {
+		return sqlSession.selectOne("employee.dao.EmployeeDAO.employeeCheckID", eid);
+	}
+
+	@Override
+	public List<EmployeeVO> selectEmployeeAll() {
+		return sqlSession.selectList("employee.dao.EmployeeDAO.selectEmployeeAll");
+	}
+
+	@Override
+	public void AssignCustomer(MemberVO member) {
+		sqlSession.update("employee.dao.EmployeeDAO.AssignCustomer", member);
+		
+	}
+
+	@Override
+	public EmployeeVO countEmployeeInCharge(int empno) {
+		return sqlSession.selectOne("employee.dao.EmployeeDAO.countEmployeeInCharge", empno);
+	}
+		
 		
 }

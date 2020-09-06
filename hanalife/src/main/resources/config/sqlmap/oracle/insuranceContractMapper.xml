@@ -18,6 +18,6 @@
 	<select id="selectInsuranceContract" resultMap="insurancecontractMap" 
 			resultType="insurancecontractVO" parameterType="int">
 		select * from insurance_contract
-			where empno = #{empno}
+		  where empno = #{empno}
 	</select>
 </mapper>

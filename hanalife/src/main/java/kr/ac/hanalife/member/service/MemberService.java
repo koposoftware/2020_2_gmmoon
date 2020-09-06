@@ -18,4 +18,10 @@ public interface MemberService {
 	MemberVO myPageProfileMember(String id);
 	
 	EmployeeVO myChargedStaff(int empno);
+	
+	MemberVO selectByCusno(int cusno);
+	
+	void modifyMyInfo(MemberVO member);
+	
+	void deleteMyInfo(MemberVO member);
 }

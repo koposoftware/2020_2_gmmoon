@@ -28,4 +28,9 @@ public class InsuranceProductController {
 		
 		return mav;
 	}
+	
+	@RequestMapping("insurance")
+	public String insurance() {
+		return "/pageComponent/insurance";
+	}
 }

@@ -4,11 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.dao.MemberDAO" >
 	<resultMap type="memberVO" id="memberMap">
+		<result column="cusno" property="cusno"/>
+		<result column="empno" property="empno"/>
 		<result column="cid" property="id"/>
 		<result column="cpassword" property="password"/>
 		<result column="cname" property="name"/>
 		<result column="chp" property="hp"/>
-		<result column="caddress" property="address"/>
+		<result column="cpost" property="post"/>
+		<result column="caddress" property="addr"/>
 		<result column="cage" property="age"/>
 		<result column="c_email" property="email"/>		
 	</resultMap>
@@ -29,8 +32,8 @@
 	</select>
 	
 	<insert id="signUp" parameterType="memberVO" >
-		insert into customer( cusno, empno, cid, cpassword, cname, chp, caddress, cage, c_email)
-		  values( #{cusno}, #{empno}, #{id}, #{password}, #{name}, #{hp}, #{address}, #{age}, #{email} )
+		insert into customer( cusno, empno, cid, cpassword, cname, chp, cpost, caddress, cage, c_email)
+		  values( #{cusno}, #{empno}, #{id}, #{password}, #{name}, #{hp}, #{post}, #{addr}, #{age}, #{email} )
 	</insert>
 	
 	<select id="membercusno" resultType="memberVO">
@@ -55,4 +58,22 @@
 			from employee
 		 where empno = #{empno}
 	</select>
+	
+	<select id="selectByCusno" resultType="memberVO" resultMap="memberMap" parameterType="int">
+		select * from customer
+		 where cusno = #{cusno} 
+	</select>
+	
+	<update id="modifyMyInfo" parameterType="memberVO">
+		update customer set  cpassword = #{password}, cname= #{name},
+			chp = #{hp}, cpost = #{post}, caddress = #{addr},
+			 c_email = #{email} 
+			where cid = #{id}			
+	</update>
+	
+	<delete id="deleteMyInfo" parameterType="memberVO">
+		delete from customer
+		 where cid = #{id} and cpassword = #{password}
+	</delete>
+	
 </mapper>
