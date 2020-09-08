@@ -1,7 +1,10 @@
 package kr.ac.hanalife.employee.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +27,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.hanalife.consulting.service.ConsultingService;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
 import kr.ac.hanalife.employee.service.EmployeeService;
 import kr.ac.hanalife.employee.vo.EmployeeVO;
 import kr.ac.hanalife.member.vo.MemberVO;
+import kr.ac.hanalife.performance.management.service.PerformanceManagementService;
+import kr.ac.hanalife.performance.management.vo.PerformanceManagementVO;
+import kr.ac.hanalife.util.PagingVO;
 
 @SessionAttributes({"employee","employeeList"})
 @Controller
@@ -34,6 +42,12 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private ConsultingService consultingService;
+	
+	@Autowired
+	private PerformanceManagementService performancemanagementService;
 	
 	@GetMapping("/employeeLogin")
 	public String employeeLoginForm() {
@@ -97,8 +111,11 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("consultingService")
-	public ModelAndView selectConsultingCustomer(HttpSession session) {
+	public ModelAndView selectConsultingCustomer(HttpSession session, PagingVO pgVO, 
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
+		/* 기존에 있던 조회방식
 		List<ConsultingVO> consultingList = new ArrayList<>();
 		EmployeeVO employee = (EmployeeVO)session.getAttribute("employee");
 		ModelAndView mav = new ModelAndView("employee/consultingService");
@@ -107,8 +124,63 @@ public class EmployeeController {
 		
 		consultingList = employeeService.selectConsultingCustomer(empno);
 		
+		for(ConsultingVO c : consultingList) {
+			
+			if(consultingService.existConsultingReply(c.getNo()) != null) {
+				c.setAnswer("Y");
+				
+			} else {
+				
+				c.setAnswer("N");
+			}
+		}
+		
+
 		mav.addObject("consultingList", consultingList);
 		
+		return mav;
+		*/
+		EmployeeVO employee = (EmployeeVO)session.getAttribute("employee");
+		int empno = employee.getEmpno();
+		
+		List<ConsultingVO> totalList = consultingService.inqeuryNumberConsultingCustomer();
+		
+		int total = totalList.size();
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		
+		pgVO = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+
+		pgVO.setEmpno(empno);
+
+		ModelAndView mav = new ModelAndView("employee/consultingService");
+		mav.addObject("paging", pgVO);
+		
+		List<ConsultingVO> consultingList = new ArrayList<>();
+		
+		consultingList = consultingService.selectPageConsulting(pgVO);
+		
+		
+		for(ConsultingVO c : consultingList) {
+			
+			if(consultingService.existConsultingReply(c.getNo()) != null) {
+				c.setAnswer("Y");
+				
+			} else {
+				
+				c.setAnswer("N");
+			}
+		}
+	
+		mav.addObject("consultingList", consultingList);
 		return mav;
 	}
 	
@@ -215,6 +287,8 @@ public class EmployeeController {
 	}
 	*/
 	
+	//사원관리
+	@SuppressWarnings("all")
 	@RequestMapping(value="employeeCustomer", method = RequestMethod.GET)
 	public ResponseEntity<JSONObject> employee_list(){
 		
@@ -301,7 +375,291 @@ public class EmployeeController {
 		return "/pageComponent/about";
 	}
 	
+	//단기계약유지지수평균
+	@SuppressWarnings("all")
+	@RequestMapping(value="employeePerformance", method = RequestMethod.GET)
+	public ResponseEntity<JSONObject> employee_performance(){
+		
+		ResponseEntity<JSONObject>  entity= null;
+		
+		//리스트 형태를 json 형태로 만들어서 리턴
+		JSONObject data =new JSONObject();
+		
+		//컬럼객체
+		JSONObject col1 =new JSONObject();
+		JSONObject col2 =new JSONObject();
+		JSONObject col3 =new JSONObject();
+		JSONArray title =new JSONArray();
+		col1.put("label", "사원명");
+		col1.put("type", "string");
+		col2.put("label", "단기계약유지지수평균");
+		col2.put("type" , "number");
+
+				
+		title.add(col1);
+		title.add(col2);
+				
+		data.put("cols", title);
+		
+		/*		
+		"rows": [
+			        {"c":[{"v":"Mushrooms"},{"v":3}]},
+			        {"c":[{"v":"Onions"},{"v":1}]},
+			       ]
+			       
+		rows : [ 배열 (객체 :배열[객체])]
+		
+		 */ 	
+
+		//들어갈 형태  ->  rows 객체 에 배열  <- 
+		//  <- [  c 라는 객체에 배열 <- 객체
+		//  data 객체 -> rows 배열 <-  c 객체  ->배열  <- v 객체 2개/
+		
+		List<EmployeeVO> employeeList = employeeService.selectEmployeeAll();
+		JSONArray  body =new JSONArray();
+		for(EmployeeVO e : employeeList) {
+			
+			PerformanceManagementVO pmVO = new PerformanceManagementVO();
+			pmVO = performancemanagementService.shortContractManagementAVG(e.getEmpno());
+			
+//			System.out.println(employee.getCount());
+			double cnt = 0;
+			if(pmVO != null) {
+				cnt = (pmVO.getAvg());
+			} 
+			
+				
+										
+			JSONObject name =new JSONObject();
+			name.put("v", e.getName()); //상품이름 -> v 객체 
+			JSONObject price =new JSONObject();
+			price.put("v", cnt); //가격 ->v 객체
+			
+			//  v객체를 row 배열을 만든후 추가한다.
+			JSONArray row =new JSONArray();
+			row.add(name);
+			row.add(price);
+			
+			//   c 객체 를 만든후 row 배열을 담는다.
+			JSONObject c =new JSONObject();
+			c.put("c", row);		
+			// c 객체를 배열 형태의 body 에 담는다.
+			body.add(c);
+		}
+		
+		// 배열 형태의 body 를 rows 키값으로 객체 data 에 담는다.
+		data.put("rows", body);
+		
+		try{
+			 entity =new ResponseEntity<JSONObject>(data, HttpStatus.OK);
+		}catch (Exception e) {
+			System.out.println(" 에러            -- ");
+			entity =new ResponseEntity<JSONObject>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
 	
+	//장기계약유지지수평균
+	@SuppressWarnings("all")
+	@RequestMapping(value="employeePerformance2", method = RequestMethod.GET)
+	public ResponseEntity<JSONObject> employee_performance2(){
+		
+		ResponseEntity<JSONObject>  entity= null;
+		
+		//리스트 형태를 json 형태로 만들어서 리턴
+		JSONObject data =new JSONObject();
+		
+		//컬럼객체
+		JSONObject col1 =new JSONObject();
+		JSONObject col2 =new JSONObject();
+		JSONObject col3 =new JSONObject();
+		JSONArray title =new JSONArray();
+		col1.put("label", "사원명");
+		col1.put("type", "string");
+		col2.put("label", "장기계약유지지수평균");
+		col2.put("type" , "number");
+
+				
+		title.add(col1);
+		title.add(col2);
+				
+		data.put("cols", title);
+		
+		/*		
+		"rows": [
+			        {"c":[{"v":"Mushrooms"},{"v":3}]},
+			        {"c":[{"v":"Onions"},{"v":1}]},
+			       ]
+			       
+		rows : [ 배열 (객체 :배열[객체])]
+		
+		 */ 	
+
+		//들어갈 형태  ->  rows 객체 에 배열  <- 
+		//  <- [  c 라는 객체에 배열 <- 객체
+		//  data 객체 -> rows 배열 <-  c 객체  ->배열  <- v 객체 2개/
+		
+		List<EmployeeVO> employeeList = employeeService.selectEmployeeAll();
+		JSONArray  body =new JSONArray();
+		for(EmployeeVO e : employeeList) {
+			
+			PerformanceManagementVO pmVO = new PerformanceManagementVO();
+			pmVO = performancemanagementService.longContractManagementAVG(e.getEmpno());
+			
+			double cnt = 0;
+			if(pmVO != null) {
+				cnt = (pmVO.getAvg());
+			} 
+			
+				
+										
+			JSONObject name =new JSONObject();
+			name.put("v", e.getName()); //상품이름 -> v 객체 
+			JSONObject price =new JSONObject();
+			price.put("v", cnt); //가격 ->v 객체
+			
+			//  v객체를 row 배열을 만든후 추가한다.
+			JSONArray row =new JSONArray();
+			row.add(name);
+			row.add(price);
+			
+			//   c 객체 를 만든후 row 배열을 담는다.
+			JSONObject c =new JSONObject();
+			c.put("c", row);		
+			// c 객체를 배열 형태의 body 에 담는다.
+			body.add(c);
+		}
+		
+		// 배열 형태의 body 를 rows 키값으로 객체 data 에 담는다.
+		data.put("rows", body);
+		
+		try{
+			 entity =new ResponseEntity<JSONObject>(data, HttpStatus.OK);
+		}catch (Exception e) {
+			System.out.println(" 에러            -- ");
+			entity =new ResponseEntity<JSONObject>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	//중도해지건수평균
+		@SuppressWarnings("all")
+		@RequestMapping(value="employeePerformance3", method = RequestMethod.GET)
+		public ResponseEntity<JSONObject> employee_performance3(){
+			
+			ResponseEntity<JSONObject>  entity= null;
+			
+			//리스트 형태를 json 형태로 만들어서 리턴
+			JSONObject data =new JSONObject();
+			
+			//컬럼객체
+			JSONObject col1 =new JSONObject();
+			JSONObject col2 =new JSONObject();
+			JSONObject col3 =new JSONObject();
+			JSONArray title =new JSONArray();
+			col1.put("label", "사원명");
+			col1.put("type", "string");
+			col2.put("label", "중도해지건수평균");
+			col2.put("type" , "number");
+
+					
+			title.add(col1);
+			title.add(col2);
+					
+			data.put("cols", title);
+			
+			/*		
+			"rows": [
+				        {"c":[{"v":"Mushrooms"},{"v":3}]},
+				        {"c":[{"v":"Onions"},{"v":1}]},
+				       ]
+				       
+			rows : [ 배열 (객체 :배열[객체])]
+			
+			 */ 	
+
+			//들어갈 형태  ->  rows 객체 에 배열  <- 
+			//  <- [  c 라는 객체에 배열 <- 객체
+			//  data 객체 -> rows 배열 <-  c 객체  ->배열  <- v 객체 2개/
+			
+			List<EmployeeVO> employeeList = employeeService.selectEmployeeAll();
+			JSONArray  body =new JSONArray();
+			for(EmployeeVO e : employeeList) {
+				
+				PerformanceManagementVO pmVO = new PerformanceManagementVO();
+				pmVO = performancemanagementService.selectTerminationAVG(e.getEmpno());
+				
+//				System.out.println(employee.getCount());
+				double cnt = 0;
+				if(pmVO != null) {
+					cnt = (pmVO.getAvg());
+				} 
+				
+					
+											
+				JSONObject name =new JSONObject();
+				name.put("v", e.getName()); //상품이름 -> v 객체 
+				JSONObject price =new JSONObject();
+				price.put("v", cnt); //가격 ->v 객체
+				
+				//  v객체를 row 배열을 만든후 추가한다.
+				JSONArray row =new JSONArray();
+				row.add(name);
+				row.add(price);
+				
+				//   c 객체 를 만든후 row 배열을 담는다.
+				JSONObject c =new JSONObject();
+				c.put("c", row);		
+				// c 객체를 배열 형태의 body 에 담는다.
+				body.add(c);
+			}
+			
+			// 배열 형태의 body 를 rows 키값으로 객체 data 에 담는다.
+			data.put("rows", body);
+			
+			try{
+				 entity =new ResponseEntity<JSONObject>(data, HttpStatus.OK);
+			}catch (Exception e) {
+				System.out.println(" 에러            -- ");
+				entity =new ResponseEntity<JSONObject>(HttpStatus.BAD_REQUEST);
+			}
+			
+			return entity;
+		}
+	
+	
+	
+	
+	@RequestMapping("manageEmployeeOfPerformance")
+	public ModelAndView manageEmployeeOfPerformance() {
+		
+		List<EmployeeVO> employeeList = new ArrayList<EmployeeVO>();
+		employeeList = employeeService.selectEmployeeAll();
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM");
+		String strdate = sdf.format(date);
+		ModelAndView mav = new ModelAndView("employee/manageEmployeeOfPerformance");
+		mav.addObject("employeeList",  employeeList);
+		mav.addObject("MM", strdate);
+		return mav;
+	}
+	
+	@PostMapping("insertPerformanceManagement")
+	public String insertPerformanceManagement(@Valid PerformanceManagementVO pmVO, BindingResult result) {
+		
+		System.out.println(pmVO.getDate());
+		performancemanagementService.insertPerformanceManagement(pmVO);
+		
+		if(result.hasErrors()) {
+			System.out.println("오류발생!!!...");
+			return "/employee/manageEmployeeOfPerformance";
+		}
+		
+		return "/employee/manageEmployeeOfPerformance";
+	}
 	
 	
 }

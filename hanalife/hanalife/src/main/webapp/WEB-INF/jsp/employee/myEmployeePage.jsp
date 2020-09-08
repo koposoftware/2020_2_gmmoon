@@ -6,6 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+		
+}
+
+
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#formDiv {
+	margin: 0 auto;
+	width: 100%;
+	margin-left: 10%;
+}
+
+
+</style>
 </head>
 <body>
 	<header>
@@ -15,43 +39,45 @@
 	<section>
 	
 	</section>
-		<hr>
-		<h2>My profile</h2>
-		<hr>
-		<table>
-			<tr>
-				<th>ID</th>
-				<td>${ employee.id }</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>${ employee.name }</td>
-			</tr>
-			<tr>
-				<th>직급</th>
-				<td>${ employee.rank }</td>
-			</tr>
-			<tr>
-				<th>휴대폰번호</th>
-				<td>${ employee.hp }</td>
-			</tr>
-			<tr>
-				<th>email</th>
-				<td>${ employee.email }</td>
-			</tr>						
-		</table>
-		<a href="${pageContext.request.contextPath }" class="button">회원정보수정</a>&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }" class="button">회원탈퇴</a>&nbsp;&nbsp;
+		<div class="w3-panel w3-green">
+    		<h2 class="w3-opacity">My Profile</h2>
+ 		</div>
+	
+			<table class="w3-table-all w3-centered" >
+				<tr>
+					<th>ID</th>
+					<td>${ employee.id }</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td>${ employee.name }</td>
+				</tr>
+				<tr>
+					<th>직급</th>
+					<td>${ employee.rank }</td>
+				</tr>
+				<tr>
+					<th>휴대폰번호</th>
+					<td>${ employee.hp }</td>
+				</tr>
+				<tr>
+					<th>email</th>
+					<td>${ employee.email }</td>
+				</tr>						
+			</table>
+
+		<div class="atag">
+			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원정보수정</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원탈퇴</a>&nbsp;&nbsp;
+		</div>
 		
 		<c:choose>
 			<c:when test="${ employee.rank eq '사원'}">
-				<br>
-				<hr>
-				<h2>나의 담당고객</h2>
-				<hr>
-				<br>
+			<div class="w3-panel w3-green">
+	    		<h2 class="w3-opacity">나의 담당고객</h2>
+	 		</div>
 		
-			<table border="1" style="width: 100%">
+			<table class="w3-table-all w3-centered">
 	            <tr>
 	               <th width="7%">번호</th>
 	               <th width="15%">고객이름</th>
@@ -71,13 +97,11 @@
 	         </table>
 			</c:when>
 			<c:when test="${ employee.rank eq '대리'}">
-				<br>
-				<hr>
-				<h2>나의 담당고객</h2>
-				<hr>
-				<br>
+				<div class="w3-panel w3-green">
+	    			<h2 class="w3-opacity">나의 담당고객</h2>
+	 			</div>
 		
-			<table border="1" style="width: 100%">
+			<table class="w3-table-all w3-centered">
 	            <tr>
 	               <th width="7%">번호</th>
 	               <th width="15%">고객이름</th>

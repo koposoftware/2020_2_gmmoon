@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.hanalife.consulting.dao.ConsultingDAO;
 import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
+import kr.ac.hanalife.util.PagingVO;
 
 @Service
 public class ConsultingServiceImpl implements ConsultingService {
@@ -46,6 +47,26 @@ public class ConsultingServiceImpl implements ConsultingService {
 	@Override
 	public ConsultingVO inqueryOneConsulting(int no) {
 		return consultingDAO.inqueryOneConsulting(no);
+	}
+
+	@Override
+	public ConsultingVO existConsultingReply(int cs_serialno) {
+		return consultingDAO.existConsultingReply(cs_serialno);
+	}
+
+	@Override
+	public ConsultingReplyVO inqueryReplyConsulting(int cs_serialno) {
+		return consultingDAO.inqueryReplyConsulting(cs_serialno);
+	}
+
+	@Override
+	public int countBoard(int empno) {
+		return consultingDAO.countBoard(empno);
+	}
+
+	@Override
+	public List<ConsultingVO> selectPageConsulting(PagingVO pgVO) {
+		return consultingDAO.selectPageConsulting(pgVO);
 	}
 	
 	

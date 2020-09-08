@@ -5,6 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#formDiv {
+	margin: 0 auto;
+	width: 100%;
+	margin-left: 10%;
+}
+
+
+</style>
 </head>
 <body>
 	<header>
@@ -12,16 +35,16 @@
 	</header>
 	
 	<section>
-		<hr>
-		<h2>상담답변서</h2>
-		<hr>
+		<div class="w3-panel w3-green">
+    		<h2 class="w3-opacity">상담답변서</h2>
+ 		</div>
 		<form action="${ pageContext.request.contextPath }/replyConsulting/write" method="post">			
 			<input type="hidden" name="cs_serialno" value="${ csVO.no }">
 			<input type="hidden" name="empno" value="${ csVO.empno }">
 			<input type="hidden" name="cusno" value="${ csVO.cusno }">
 			<input type="hidden" name="name" value="${ csVO.name }">
 			<input type="hidden" name="type" value="${ csVO.type }">
-			<table border="1" style="width: 80%">				
+			<table class="w3-table-all w3-centered">				
 				<tr>
 					<th width="23%">답변자</th>
 					<td>${ employee.name }&nbsp;${ employee.rank }</td>
@@ -41,8 +64,10 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="등록">
-			<a href="${pageContext.request.contextPath }/myConsultingService" class="button">작성취소</a>
+			<div class="atag">
+				<button type="submit" class="w3-button w3-green">등록</button>
+				<a href="${pageContext.request.contextPath }/myConsultingService" class="w3-button w3-green">작성취소</a>
+			</div>
 		</form>
 	</section>
 	

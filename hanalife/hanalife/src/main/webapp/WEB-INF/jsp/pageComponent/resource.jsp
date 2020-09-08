@@ -28,65 +28,10 @@
 
 	<body>
 		
-		<div id="site-content">
-			<header class="site-header">
-				<div class="top-header">
-					<div class="container">
-						<a href="${ pageContext.request.contextPath }" id="branding">
-							<img src="images/hanaicon.png" alt="Company Name" class="logo">
-							<div class="logo-text">
-								<h1 class="site-title">HANA 4U</h1>
-								<h2 class="description">환영합니다</h2>
-								<c:if test="${ not empty loginVO }">
-									<h3 class="description">${ loginVO.id }님 환영합니다</h3>
-								</c:if>
-							</div>
-						</a> <!-- #branding -->
-					
-						<div class="right-section pull-right">
-							<a href="#" class="phone"><img src="images/icon-phone.png" class="icon">+1 823 424 9134</a>
-					
-							<form action="#" class="search-form">
-								<input type="text" placeholder="Search...">
-								<button type="submit"><img src="images/icon-search.png" alt=""></button>
-							</form>
-						</div>
-					</div> <!-- .container -->
-				</div> <!-- .top-header -->
-
-				
-				<div class="bottom-header">
-					<div class="container">
-						<div class="main-navigation">
-							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-							<ul class="menu">
-								<c:choose>
-								<c:when test="${ empty loginVO }">
-									<li class="menu-item"><a href="${ pageContext.request.contextPath }/login">로그인</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="menu-item"><a href="${ pageContext.request.contextPath }/logout">로그아웃</a></li>
-								</c:otherwise>
-							</c:choose>
-								<li class="menu-item"><a href="about.jsp">하나생명소개</a></li>
-								<li class="menu-item"><a href="insurance.jsp">보험상품</a></li>
-								<li class="menu-item"><a href="resource.jsp">보험추천</a></li>
-								<li class="menu-item"><a href="contact.jsp">찾아오시는길</a></li>
-							</ul> <!-- .menu -->
-						</div> <!-- .main-navigation -->
-						
-						<div class="social-links">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-							<a href="#"><i class="fa fa-pinterest"></i></a>
-						</div>
-						
-						<div class="mobile-navigation"></div>
-					</div>
-				</div>
-				
-			</header> <!-- .site-header -->
+		<header>
+			<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
+		</header>
+		
 
 			<main class="main-content">
 				<div class="breadcrumbs">

@@ -1,6 +1,7 @@
 package kr.ac.hanalife.performance.management.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,6 +30,26 @@ public class PerformanceManagementDAOImpl implements PerformanceManagementDAO {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public PerformanceManagementVO shortContractManagementAVG(int empno) {
+		return sqlSession.selectOne("performance.management.dao.PerformanceManagementDAO.shortContractManagementAVG",empno);
+	}
+
+	@Override
+	public PerformanceManagementVO longContractManagementAVG(int empno) {
+		return sqlSession.selectOne("performance.management.dao.PerformanceManagementDAO.longContractManagementAVG", empno);
+	}
+
+	@Override
+	public PerformanceManagementVO selectTerminationAVG(int empno) {
+		return sqlSession.selectOne("performance.management.dao.PerformanceManagementDAO.selectTerminationAVG", empno);
+	}
+
+	@Override
+	public void insertPerformanceManagement(PerformanceManagementVO pmVO) {
+		sqlSession.insert("performance.management.dao.PerformanceManagementDAO.insertPerformanceManagement", pmVO);
 	}
 	
 	

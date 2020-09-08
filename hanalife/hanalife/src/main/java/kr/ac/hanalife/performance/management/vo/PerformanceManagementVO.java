@@ -1,12 +1,15 @@
 package kr.ac.hanalife.performance.management.vo;
 
+import java.util.Date;
+
 public class PerformanceManagementVO {
 	
 	private int empno;
 	private String date;
-	private String contractManagement;
-	private String contractRecruiting;
-	private String agencyManagement;
+	private double shortContract;
+	private double longContract;
+	private double numberOfTermination;
+	private double avg;
 	
 	public int getEmpno() {
 		return empno;
@@ -14,29 +17,37 @@ public class PerformanceManagementVO {
 	public void setEmpno(int empno) {
 		this.empno = empno;
 	}
+	
 	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getContractManagement() {
-		return contractManagement;
+	public double getShortContract() {
+		return shortContract;
 	}
-	public void setContractManagement(String contractManagement) {
-		this.contractManagement = contractManagement;
+	public void setShortContract(double shortContract) {
+		this.shortContract = shortContract;
 	}
-	public String getContractRecruiting() {
-		return contractRecruiting;
+	public double getLongContract() {
+		return longContract;
 	}
-	public void setContractRecruiting(String contractRecruiting) {
-		this.contractRecruiting = contractRecruiting;
+	public void setLongContract(double longContract) {
+		this.longContract = longContract;
 	}
-	public String getAgencyManagement() {
-		return agencyManagement;
+	public double getNumberOfTermination() {
+		return numberOfTermination;
 	}
-	public void setAgencyManagement(String agencyManagement) {
-		this.agencyManagement = agencyManagement;
-	}	
+	public void setNumberOfTermination(double numberOfTermination) {
+		this.numberOfTermination = numberOfTermination;
+	}
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+	
 
 }

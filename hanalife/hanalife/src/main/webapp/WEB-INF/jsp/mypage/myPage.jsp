@@ -11,31 +11,30 @@
 	
 </script>
 <style>
-table, th, td {
-	border: 1px solid #D4E0EE;
-	border-collapse: collapse;
-	font-family: verdana, sans-serif;
-	color: #555;
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+		
 }
 
-th, td {
-	padding : 5px;
+
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
 }
 
-td a:link, td a:visited {
-	color: #719ABE;
-	text-decoration: none;
+#formDiv {
+	margin: 0 auto;
+	width: 100%;
+	margin-left: 10%;
 }
 
-td a:hover {
-	text-decoration: underline;
-}
 
-table th {
-	background-color: #E6EDF5;
-	color: #4F76A3;
-}
 </style>
+
 </head>
 <body>
 	<header>
@@ -43,10 +42,10 @@ table th {
 	</header>
 	<section>
 	
-		<hr>
-		<h2>My profile</h2>
-		<hr>
-		<table>
+		<div class="w3-panel w3-green">
+    		<h2 class="w3-opacity">My Profile</h2>
+ 		</div>
+		<table class="w3-table-all w3-centered">
 			<tr>
 				<th>ID</th>
 				<td>${ loginVO.id }</td>
@@ -76,14 +75,16 @@ table th {
 				<td>${ loginVO.email }</td>
 			</tr>						
 		</table>
-		<a href="${pageContext.request.contextPath }/modifyInfo" class="button">회원정보수정</a>&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }/withdrawalCustomer" class="button">회원탈퇴</a>&nbsp;&nbsp;
+		<div class="atag">
+			<a href="${pageContext.request.contextPath }/modifyInfo" class="w3-button w3-green">회원정보수정</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/withdrawalCustomer" class="w3-button w3-green">회원탈퇴</a>&nbsp;&nbsp;
+		</div>
 		<br>
-		<hr>
-		<h2>나의 담당사원</h2>
-		<hr>
+		<div class="w3-panel w3-green">
+    		<h2 class="w3-opacity">나의 담당사원</h2>
+ 		</div>
 		<br>
-		<table>
+		<table class="w3-table-all w3-centered">
 			<tr>
 				<th>이름</th>
 				<td>${ employeeVO.name }</td>
@@ -97,9 +98,10 @@ table th {
 				<td>${ employeeVO.email }</td>
 			</tr>				
 		</table>
-		<a href="${pageContext.request.contextPath }/insertConsulting" class="button">상담신청</a>&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }/inqueryConsulting/${ loginVO.cusno }" class="button" id="viewBoard">상담내역보기</a>&nbsp;&nbsp;
-		
+		<div class="atag">
+			<a href="${pageContext.request.contextPath }/inqueryConsulting/${ loginVO.cusno }" class="w3-button w3-green" id="viewBoard">상담내역보기</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/insertConsulting" class="w3-button w3-green">상담신청</a>&nbsp;&nbsp;
+		</div>
 		<div id="consultingBoard">
 		
 		</div>

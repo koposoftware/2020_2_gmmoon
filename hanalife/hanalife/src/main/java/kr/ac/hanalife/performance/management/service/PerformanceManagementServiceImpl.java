@@ -18,6 +18,26 @@ public class PerformanceManagementServiceImpl implements PerformanceManagementSe
 	public List<PerformanceManagementVO> selectPerformanceManagement(int empno) {
 		return performancemanagementDAO.selectPerformanceManagement(empno);
 	}
+
+	@Override
+	public PerformanceManagementVO shortContractManagementAVG(int empno) {
+		return  performancemanagementDAO.shortContractManagementAVG(empno);
+	}
+
+	@Override
+	public PerformanceManagementVO longContractManagementAVG(int empno) {
+		return performancemanagementDAO.longContractManagementAVG(empno);
+	}
+
+	@Override
+	public PerformanceManagementVO selectTerminationAVG(int empno) {
+		return performancemanagementDAO.selectTerminationAVG(empno);
+	}
+
+	@Override
+	public void insertPerformanceManagement(PerformanceManagementVO pmVO) {
+		performancemanagementDAO.insertPerformanceManagement(pmVO);
+	}
 	
 	
 }

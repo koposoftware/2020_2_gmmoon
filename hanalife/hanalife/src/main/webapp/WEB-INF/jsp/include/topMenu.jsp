@@ -12,10 +12,12 @@
 		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
 		<link href="/hanalife/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="/hanalife/fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
-
+		
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="/hanalife/style.css">
 		
+		<!-- w3css 사용 -->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
@@ -82,7 +84,21 @@
 								</c:if>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
+										<c:if test="${ employee.rank eq '사원'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
+										</c:if>
+										<c:if test="${ employee.rank eq '대리'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/performanceManagementService">성과관리</a></li>
+										</c:if>
+										<c:if test="${ employee.rank eq '과장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '차장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
+										<c:if test="${ employee.rank eq '부장'}">
+											<li class="menu-item"><a href="${ pageContext.request.contextPath }/manageEmployeeOfPerformance">성과관리</a></li>										
+										</c:if>
 									</c:when>
 									<c:otherwise>
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance">보험상품</a></li>

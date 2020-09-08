@@ -6,6 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/hanalife/resources/css/table.css">
+<style>
+.atag {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+		
+}
+
+
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#formDiv {
+	margin: 0 auto;
+	width: 100%;
+	margin-left: 10%;
+}
+
+
+</style>
 </head>
 <body>
 	<header>
@@ -14,12 +39,11 @@
 	
 	<section>
 		<br>
-	         <hr width="100%">
-	         <h2>성과관리</h2>
-	         <hr width="100%">
-	         <br>
+	        <div class="w3-panel w3-green">
+    			<h2 class="w3-opacity">성과관리</h2>
+ 			</div>
 	         
-	         <table border="1" style="width: 100%">
+	         <table class="w3-table-all">
 	            <tr>
 	               <th width="7%">번호</th>
 	               <th width="7%">사원이름</th>	               
@@ -39,7 +63,9 @@
 	               </tr>
 	            </c:forEach>
 	         </table>
-	         <a href="${pageContext.request.contextPath }" class="button">홈으로</a>
+	         <div class="atag">
+		         <a href="${pageContext.request.contextPath }" class="w3-button w3-green">홈으로</a>
+	         </div>
 	</section>
 	
 	<footer>

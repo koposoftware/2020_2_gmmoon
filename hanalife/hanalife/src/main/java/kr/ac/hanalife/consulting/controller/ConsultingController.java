@@ -32,6 +32,18 @@ public class ConsultingController {
 		
 		consultinglist = consultingService.inqueryConsultingCustomer(cusno);
 		ModelAndView mav = new ModelAndView("consultingboard/inqueryConsulting");
+		
+		for(ConsultingVO c : consultinglist) {
+			
+			if(consultingService.existConsultingReply(c.getNo()) != null) {
+				c.setAnswer("Y");
+				
+			} else {
+				
+				c.setAnswer("N");
+			}
+		}
+		
 		session.setAttribute("consultinglist", consultinglist);
 		mav.addObject("consultinglist", consultinglist);
 		
@@ -81,6 +93,18 @@ public class ConsultingController {
 		session.setAttribute("consultingReplyNo", consultingReplyNo);
 		
 		return "redirect:/consultingService";
+	}
+	
+	@RequestMapping("/inqueryReplyConsulting/{no}")
+	public ModelAndView inqueryReplyConsulting(@PathVariable("no") int cs_serialno) {
+		
+		ConsultingReplyVO csrVO = consultingService.inqueryReplyConsulting(cs_serialno);
+		
+		ModelAndView mav = new ModelAndView("consultingboard/inqueryReplyConsulting");
+		
+		mav.addObject("csrVO", csrVO);
+		
+		return mav;
 	}
 	
 	

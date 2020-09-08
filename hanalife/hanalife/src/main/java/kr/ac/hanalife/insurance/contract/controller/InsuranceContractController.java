@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.ac.hanalife.employee.vo.EmployeeVO;
 import kr.ac.hanalife.insurance.contract.service.InsuranceContractService;
 import kr.ac.hanalife.insurance.contract.vo.InsuranceContractVO;
+import kr.ac.hanalife.member.vo.MemberVO;
 
 @Controller
 public class InsuranceContractController {
@@ -41,6 +42,17 @@ public class InsuranceContractController {
 		
 		ModelAndView mav = new ModelAndView("employee/insuranceContractService");
 		mav.addObject("insuranceContractList",insuranceContractList);
+		
+		return mav;
+	}
+	
+	@RequestMapping("insuranceContract")
+	public ModelAndView insuranceContract(HttpSession session) {
+		
+		
+		ModelAndView mav = new ModelAndView("insuranceproduct/insuranceContract");
+		
+		
 		
 		return mav;
 	}

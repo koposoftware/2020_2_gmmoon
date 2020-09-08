@@ -21,7 +21,7 @@
 		<result column="cname" property="name"/>
 		<result column="cstype" property="type"/>
 		<result column="cscontent" property="content"/>
-		<result column="csdate" property="csdate"/>
+		<result column="csdate" property="date"/>
 	</resultMap>
 	
 	<select id="inqueryConsulting" resultMap="consultingMap" resultType="consultingVO" parameterType="int">
@@ -55,5 +55,33 @@
 	<select id="inquertOneConsulting" parameterType="int" resultMap="consultingMap">
 		select * from consulting
 			where cs_serialno = #{no}
+	</select>
+	
+	<select id="existConsultingReply" parameterType="int" resultType="consultingVO" resultMap="consultingMap">
+		select c.CS_SERIALNO
+    		from consulting c, consulting_reply r
+   			 where c.cs_serialno = #{no}  and r.cs_serialno = #{no}
+	</select>
+	
+	<select id="inqueryReplyConsulting" parameterType="int" resultMap="consultingreplyMap">
+		select * from consulting_reply
+			where cs_serialno = #{cs_serialno}
+	</select>
+	
+	<select id="countBoard" resultType="consultingVO" parameterType="int">
+		select empno, count(*) count
+			from consulting
+		  group by empno
+		  having empno = #{empno}
+	</select>
+	
+	<select id="selectPageConsulting" resultType="consultingVO" parameterType="pagingVO" resultMap="consultingMap">
+		select * from (
+				select rownum rn, a.* from
+				(select * from
+				consulting c
+				order by c.csdate desc) a
+		)
+		 where empno = #{empno} and rn between #{start} and #{end}
 	</select>
 </mapper>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/hanalife/resources/css/table.css">
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -168,7 +169,7 @@
 	<div id="chart_div">
  
  	</div>
-	
+	<button id="btn" type="button" onclick="drawChart2()">새로고침</button>
 
 		         
 	</section>
