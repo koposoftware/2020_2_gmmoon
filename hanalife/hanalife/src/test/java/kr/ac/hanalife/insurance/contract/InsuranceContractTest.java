@@ -25,6 +25,7 @@ public class InsuranceContractTest {
 	@Autowired
 	private InsuranceContractDAO insurancecontractDAO;
 	
+	@Ignore
 	@Test
 	public void 보험계약리스트조회테스트() throws Exception {
 		
@@ -53,5 +54,18 @@ public class InsuranceContractTest {
 		}
 		
 		assertTrue(b);
+	}
+	
+	@Ignore
+	@Test
+	public void 고객이자신의보험계약리스트조회테스트() {
+		
+		List<InsuranceContractVO> list = new ArrayList<InsuranceContractVO>();
+		
+		list = insurancecontractDAO.selectInsuranceMyContract(10001);
+		
+		for(InsuranceContractVO c : list) {
+			System.out.println(c.getName() + " : " + c.getBeneficiary());
+		}
 	}
 }

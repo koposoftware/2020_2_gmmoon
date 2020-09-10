@@ -39,4 +39,19 @@
 		insert into PERFORMANCE_MANAGEMENT values (#{empno}, #{date}, #{contractManagement},
 			#{contractRecruiting}, #{agencyManagement})
 	</insert>
+	
+	<select id="lookUpShortContract" resultMap="performancemanagementMap" parameterType="performancemanagementVO">
+		select edate, short_contract from performance_management
+			where empno = #{empno} and edate between TO_DATE('2020-01', 'YYYY-MM') and #{date}
+	</select>
+	
+	<select id="lookUpLongContract" resultMap="performancemanagementMap" parameterType="performancemanagementVO">
+		select edate, long_contract from performance_management
+			where empno = #{empno} and edate between TO_DATE('2020-01', 'YYYY-MM') and #{date}
+	</select>
+	
+	<select id="lookUpTermination" resultMap="performancemanagementMap" parameterType="performancemanagementVO">
+		select edate, termination from performance_management
+			where empno = #{empno} and edate between TO_DATE('2020-01', 'YYYY-MM') and #{date}
+	</select>
 </mapper>

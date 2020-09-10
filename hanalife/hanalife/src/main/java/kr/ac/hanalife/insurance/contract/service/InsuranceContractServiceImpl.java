@@ -18,6 +18,11 @@ public class InsuranceContractServiceImpl implements InsuranceContractService {
 	public List<InsuranceContractVO> selectInsuranceContract(int empno) {
 		return insurancecontractDAO.selectInsuranceContract(empno);
 	}
+
+	@Override
+	public List<InsuranceContractVO> selectInsuranceMyContract(int cusno) {
+		return insurancecontractDAO.selectInsuranceMyContract(cusno);
+	}
 	
 	
 }

@@ -108,6 +108,42 @@
 		
 
 	</section>
+	<section>
+		<div class="w3-panel w3-green">
+    			<h2 class="w3-opacity">보험 계약목록</h2>
+ 			</div>
+	         
+	         <table class="w3-table-all">
+	            <tr>
+	               <th width="7%">번호</th>
+	               <th width="7%">고객이름</th>	               
+	               <th width="7%">담당자이름</th>	               
+	               <th width="7%">보험상품코드</th>
+	               <th width="10%">가입일</th>
+	               <th width="10%">만기일</th>
+	               <th width="10%">해지일</th>
+	               <th width="10%">보험수익자</th>
+	            </tr>
+	            <c:forEach items="${ insuranceContractList }" var="list" varStatus="loop">
+	               <tr>
+	                  <td align="center">${ loop.count }</td>
+	                  <td align="center">${ list.name }</td>
+	                  <td align="center">${ employee.name }</td>
+	                  <td align="center">${ list.code }</td>
+	                  <td align="center">
+	                  ${ list.join }
+	                  </td>
+	                  <td align="center">${ list.maturity }</td>
+	                  <td align="center">${ list.termination }</td>
+	                  <td align="center">${ list.beneficiary }</td>
+	               </tr>
+	            </c:forEach>
+	         </table>
+	         <div class="atag">
+	         	 <a href="${pageContext.request.contextPath }" class="w3-button w3-green">보험해지</a>
+		         <a href="${pageContext.request.contextPath }" class="w3-button w3-green">홈으로</a>
+	         </div>
+	</section>
 	<footer>
 		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>
 	</footer>

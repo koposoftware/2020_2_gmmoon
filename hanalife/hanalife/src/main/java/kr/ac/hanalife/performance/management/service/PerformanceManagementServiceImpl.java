@@ -38,6 +38,21 @@ public class PerformanceManagementServiceImpl implements PerformanceManagementSe
 	public void insertPerformanceManagement(PerformanceManagementVO pmVO) {
 		performancemanagementDAO.insertPerformanceManagement(pmVO);
 	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpShortContract(PerformanceManagementVO pmVO) {
+		return performancemanagementDAO.lookUpShortContract(pmVO);
+	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpLongContract(PerformanceManagementVO pmVO) {
+		return performancemanagementDAO.lookUpLongContract(pmVO);
+	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpTermination(PerformanceManagementVO pmVO) {
+		return performancemanagementDAO.lookUpTermination(pmVO);
+	}
 	
 	
 }

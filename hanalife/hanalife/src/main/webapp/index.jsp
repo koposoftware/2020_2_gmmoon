@@ -134,12 +134,12 @@
 						<h2 class="section-title">하나금융네트워크</h2>
 
 						<div class="partners">
-							<a href="https://www.kebhana.com/"><img src="images/hanaBanklogo.png" alt=""></a>
-							<a href="https://www.hanacard.co.kr/index2.jsp"><img src="images/hanaCardlogo.png" alt=""></a>
-							<a href="https://www.educar.co.kr/"><img src="images/hanaLifeinsurancelogo.png" alt=""></a>
-							<a href="https://www.hanaw.com/main/main/index.cmd"><img src="images/hanaInvestmentlogo.png" alt=""></a>
-							<a href="https://www.hanati.co.kr/kor/main.jsp"><img src="images/hanaTilogo.png" alt=""></a>
-							<a href="https://www.hanacapital.co.kr/index.hnc"><img src="images/hanaCapitallogo.png" alt=""></a>
+							<a href="https://www.kebhana.com/"><img src="/hanalife/images/hanaBanklogo.jpg" ></a>
+							<a href="https://www.hanacard.co.kr/index2.jsp"><img src="/hanalife/images/hanaCardlogo.jpg"></a>
+							<a href="https://www.educar.co.kr/"><img src="/hanalife/images/hanaLifeinsurancelogo.jpg"></a>
+							<a href="https://www.hanaw.com/main/main/index.cmd"><img src="/hanalife/images/hanaInvestmentlogo.jpg"></a>
+							<a href="https://www.hanati.co.kr/kor/main.jsp"><img src="/hanalife/images/hanaTilogo.jpg"></a>
+							<a href="https://www.hanacapital.co.kr/index.hnc"><img src="/hanalife/images/hanaCapitallogo.jpg"></a>
 						</div> <!-- .partners -->
 					</div> <!-- .container -->
 				</div> <!-- .fullwidth-block -->
@@ -229,7 +229,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>

@@ -12,4 +12,11 @@ public interface InsuranceContractDAO {
 	 * @return 보험계약리스트
 	 */
 	List<InsuranceContractVO> selectInsuranceContract(int empno);
+	
+	/**
+	 * 고객이 자신의 보험계약리스트를 조회할 수 있는 기능
+	 * @param cusno 고객의 고객번호
+	 * @return 보험계약리스트
+	 */
+	List<InsuranceContractVO> selectInsuranceMyContract(int cusno);
 }

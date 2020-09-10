@@ -40,5 +40,24 @@ public interface PerformanceManagementDAO {
 	 */
 	void insertPerformanceManagement(PerformanceManagementVO pmVO);
 	
+	/**
+	 * 사원의 단기계약지수를 월별로 살펴 볼 수 있는 기능
+	 * @param pmVO 사원번호, 월 선택(보고싶은 기간의 끝 월)
+	 * @return 사원의 월별 단기계약지수 리스트
+	 */
+	List<PerformanceManagementVO> lookUpShortContract(PerformanceManagementVO pmVO);
 	
+	/**
+	 * 사원의 장기계약지수를 월별로 살펴 볼 수 있는 기능
+	 * @param pmVO 사원번호, 월 선택(보고싶은 기간의 끝 월)
+	 * @return 사원의 월별 장기계약지수 리스트
+	 */
+	List<PerformanceManagementVO> lookUpLongContract(PerformanceManagementVO pmVO);
+	
+	/**
+	 * 사원의 중도해지건수를 월별로 살펴 볼 수 있는 기능
+	 * @param pmVO 사원번호, 월 선택(보고싶은 기간의 끝 월)
+	 * @return 사원의 월별 중도해지건수 리스트
+	 */
+	List<PerformanceManagementVO> lookUpTermination(PerformanceManagementVO pmVO);
 }

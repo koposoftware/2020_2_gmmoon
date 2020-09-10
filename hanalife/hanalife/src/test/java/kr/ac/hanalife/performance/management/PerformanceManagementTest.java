@@ -89,4 +89,35 @@ public class PerformanceManagementTest {
 		
 		performancemanagementDAO.insertPerformanceManagement(pmVO);
 	}
+	
+	@Ignore
+	@Test
+	public void 사원월별단기계약지수조회테스트() throws Exception {
+		PerformanceManagementVO pmVO = new PerformanceManagementVO();
+		pmVO.setEmpno(71234);
+		pmVO.setDate("2020-09-10");
+		
+		List<PerformanceManagementVO> list = performancemanagementDAO.lookUpShortContract(pmVO);
+		for(PerformanceManagementVO p : list) {
+			System.out.println(p.getDate().substring(5, 7) + " : " + p.getShortContract());
+		}
+		
+	}
+	
+	//@WebAppConfiguration - xml에 mockup안붙여도됌, 관련오류시 이 어노테이션 쓸 것!
+	@Ignore
+	@Test
+	public void 사원월별장기계약지수조회테스트() throws Exception {
+		PerformanceManagementVO pmVO = new PerformanceManagementVO();
+		pmVO.setEmpno(71234);
+		pmVO.setDate("2020-09-10");
+		
+		List<PerformanceManagementVO> list = performancemanagementDAO.lookUpLongContract(pmVO);
+		for(PerformanceManagementVO p : list) {
+			System.out.println(p.getDate().substring(5, 7) + " : " + p.getLongContract());
+		}
+		
+	}
+	
+	
 }

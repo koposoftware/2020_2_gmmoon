@@ -51,6 +51,21 @@ public class PerformanceManagementDAOImpl implements PerformanceManagementDAO {
 	public void insertPerformanceManagement(PerformanceManagementVO pmVO) {
 		sqlSession.insert("performance.management.dao.PerformanceManagementDAO.insertPerformanceManagement", pmVO);
 	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpShortContract(PerformanceManagementVO pmVO) {
+		return sqlSession.selectList("performance.management.dao.PerformanceManagementDAO.lookUpShortContract", pmVO);
+	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpLongContract(PerformanceManagementVO pmVO) {
+		return sqlSession.selectList("performance.management.dao.PerformanceManagementDAO.lookUpLongContract", pmVO);
+	}
+
+	@Override
+	public List<PerformanceManagementVO> lookUpTermination(PerformanceManagementVO pmVO) {
+		return sqlSession.selectList("performance.management.dao.PerformanceManagementDAO.lookUpTermination", pmVO);
+	}
 	
 	
 }

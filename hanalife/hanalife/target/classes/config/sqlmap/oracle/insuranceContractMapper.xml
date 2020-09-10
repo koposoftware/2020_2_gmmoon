@@ -20,4 +20,9 @@
 		select * from insurance_contract
 		  where empno = #{empno}
 	</select>
+	
+	<select id="selectInsuranceMyContract" resultMap="insurancecontractMap" parameterType="int">
+		select * from insurance_contract
+		  where cusno = #{cusno}
+	</select>
 </mapper>

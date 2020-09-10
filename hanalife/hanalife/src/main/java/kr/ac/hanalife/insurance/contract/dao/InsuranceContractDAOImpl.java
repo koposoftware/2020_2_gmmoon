@@ -18,6 +18,11 @@ public class InsuranceContractDAOImpl implements InsuranceContractDAO {
 	public List<InsuranceContractVO> selectInsuranceContract(int empno) {
 		return sqlSession.selectList("insurance.contract.dao.InsuranceContractDAO.selectInsuranceContract", empno);
 	}
+
+	@Override
+	public List<InsuranceContractVO> selectInsuranceMyContract(int cusno) {
+		return sqlSession.selectList("insurance.contract.dao.InsuranceContractDAO.selectInsuranceMyContract", cusno);
+	}
 	
 	
 }
