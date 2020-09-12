@@ -115,8 +115,8 @@
 				
 				//draw(데이터, 옵션)
 				chart.draw(data, {
-					width : 400,
-					height : 240
+					width : 600,
+					height : 400
 			});
 
 	 }
@@ -126,6 +126,18 @@
 
 	
 </script>
+<style type="text/css">
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#chart_div {
+	margin-left: 30%;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -135,13 +147,14 @@
 	<section>
 		<br>
 		<hr>
-		<h2>사원목록</h2>
+		<div class="w3-panel w3-blue">
+    		<h2 class="w3-opacity">사원목록</h2>
+ 		</div>
 		<hr>
 		<br>
-		
+		<div>
 			<table border="1" style="width: 100%">
 	            <tr>
-	               <th width="7%">선택</th>
 	               <th width="7%">번호</th>
 	               <th width="7%">사원번호</th>
 	               <th width="15%">사원이름</th>
@@ -152,7 +165,6 @@
 	            </tr>
 	            <c:forEach items="${ employeeList }" var="list" varStatus="loop">
 	               <tr>
-	                  <td align="center"><input type="checkbox" value="${ list.empno }"></td>
 	                  <td align="center">${ loop.count }</td>
 	                  <td align="center">${ list.empno }</td>
 	                  <td align="center">${ list.name }</td>
@@ -163,10 +175,11 @@
 	               </tr>
 	            </c:forEach>
 	         </table>
+		</div>
 	         
   
   <!-- 그래프 구현 부분 -->
-	<div id="chart_div">
+	<div id="chart_div" >
  
  	</div>
 	<button id="btn" type="button" onclick="drawChart2()">새로고침</button>
@@ -176,7 +189,9 @@
 	<section>
 				<br>
 				<hr>
-				<h2>배정미정고객</h2>
+				<div class="w3-panel w3-blue">
+    				<h2 class="w3-opacity">배정미정고객</h2>
+ 				</div>
 				<hr>
 				<br>
 		

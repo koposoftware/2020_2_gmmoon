@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js" ></script>
 <script>
@@ -27,7 +28,7 @@
 					if(data == 1){
 						// alert('아이디 중복체크를 시작합니다');
 						
-						$('#msgView').text('이미 사용중인 아이디입니다');
+						$('#msgView').text('이미 사용중인 아이디입니다').css('color','red');
 											
 							
 							$('#signUpBtn').attr('disabled', true);
@@ -36,7 +37,7 @@
 					} 
 						
 					if( data == 0) {
-						$('#msgView').text('사용할 수 있는 아이디 입니다');
+						$('#msgView').text('사용할 수 있는 아이디 입니다').css('color','blue');
 						//console.log(checkpw)
 						if(checkpw == 1){
 							
@@ -64,19 +65,19 @@
 					if(firstpw == $('#check_pw').val()) {
 					
 						msg = '비밀번호 값이 일치합니다';
-						$('#msgView2').text(msg).show();
+						$('#msgView2').text(msg).css('color','blue').show();
 						return checkpw = 1;
 						
 					} else {
 					
 						msg = '비밀번호 값이 일치하지않습니다';
-						$('#msgView2').text(msg).show();
+						$('#msgView2').text(msg).css('color','red').show();
 						return checkpw = 0;
 					}
 					
 				} else {
 					msg = '비밀번호 값을 먼저 입력해주세요';
-					$('#msgView2').text(msg).show();
+					$('#msgView2').text(msg).css('color','red').show();
 					return checkpw = 0;				
 				}
 		
@@ -124,6 +125,21 @@
     }
 	
 </script>
+<style type="text/css">
+#div1 {
+	margin-top:15px;
+	margin-left: 25%;
+	margin-bottom: 15px;
+}
+
+label {
+	text-align: left;
+}
+
+p {
+	text-align: left;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -131,6 +147,7 @@
 	</header>
 	
 	<section>
+		<!--  
 		<div class="w3-container w3-teal">
   			<h2>회원가입</h2>
 		</div>
@@ -169,92 +186,69 @@
 			<div>
 				<button type="submit" id="signUpBtn" disabled="">회원가입</button>
 			</div>
-			<!--  			
-			<table style="width: 60%">
-				<tr>
-					<th><label class="w3-text-teal"><b>ID</b></label></th>
-					<td><input type="text" name="id" placeholder="ID" required="required"  class="w3-input w3-border w3-light-grey" /></td>
-					<td>
-						<p  id="msgView"></p>
-					</td>
-					<td>
-						<input type="button" value="아이디중복체크"  id="checkid" class="w3-button w3-green"/>
-					</td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>PASSWORD</b></label></th>
-					<td colspan="2">
-						<input type="text" name="password" placeholder="PASSWORD" id="input_pw" required="required" class="w3-input w3-border w3-light-grey" >
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>PASSWORD재입력</b></label></th>
-					<td colspan="2">
-						<input type="text" name="password_re" placeholder="PASSWORD 재입력" id="check_pw" class="w3-input w3-border w3-light-grey" >
-					</td>
-					<td></td>
-					<td><p id="msgView2"></p></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>이름</b></label></th>
-					<td colspan="2">
-						<input type="text" name="name" placeholder="이름" required="required" class="w3-input w3-border w3-light-grey" >						
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>전화번호</b></label></th>
-					<td colspan="2">
-						<input type="text" name="hp" placeholder="전화번호" required="required" class="w3-input w3-border w3-light-grey" >					
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>주소</b></label></th>
-					<td>
-						<input type="text" name="post" id="post" placeholder="도로명번호" required="required" class="w3-input w3-border w3-light-grey" >						
-					</td>
-					<td colspan="2">
-						<button onclick="execDaumPostcode();" class="btn btn-outline-info py-2 px-1 px-md-3">주소검색</button>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td colspan="2">
-						<input type="text" name="addr" id="addr" placeholder="주소" required="required" class="w3-input w3-border w3-light-grey" >					
-					</td>
-					<td>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>나이</b></label></th>
-					<td colspan="2">
-						<input type="text" name="age" placeholder="나이" required="required" class="w3-input w3-border w3-light-grey">					
-					</td>
-					<td>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<th><label class="w3-text-teal"><b>email</b></label></th>
-					<td colspan="2">
-						<input type="email" name="email" placeholder="email" required="required" class="w3-input w3-border w3-light-grey" >					
-					</td>
-					<td>
-					</td>
-					<td></td>
-				</tr>
-			</table>
-			<button type="submit" id="signUpBtn" disabled="" class="w3-button w3-green">회원가입</button>
-			-->
 		</form>
-		
+		-->
+		<div align="center" style="border:1px solid black; height: 975px; width: 750px;" id="div1">
+			<hr>
+			<div class="w3-container w3-green">
+				<h3>회원가입</h3>
+			</div>
+			<hr>
+			
+			<form action="${ pageContext.request.contextPath }/signUp" method="post" name="sform" class="w3-container">
+				<p>
+				  <label>ID</label>
+				  <input type="text" name="id"  required="required" class="w3-input">
+				  <input type="button" value="아이디중복체크"  id="checkid" class="w3-button w3-green"/>
+				  <span id="msgView"></span>
+				</p>
+		 		 <!-- <p  id="msgView"></p> -->
+		 		
+		 		<p>
+				  <label>PASSWORD</label>
+				  <input type="text" name="password"  id="input_pw" required="required" class="w3-input">
+				</p>
+		 		<br>
+		 		<p>
+				  <label>PASSWORD 확인</label>
+				  <input type="text" name="password_re"  id="check_pw" class="w3-input">
+				</p>
+				
+				<p id="msgView2"></p>
+		 		
+		 		<p>
+				  <label>이름</label>
+				  <input type="text" name="name"  required="required" class="w3-input">
+				</p>
+				
+		 		<p>
+				  <label>전화번호</label>
+				  <input type="text" name="hp"  required="required" class="w3-input">
+				</p>
+				
+		 		<p>
+				  <label>도로명번호</label>
+				  <input type="text" name="post" id="post"  required="required" class="w3-input">
+				<button onclick="execDaumPostcode();" class="btn btn-outline-info py-2 px-1 px-md-3 w3-button w3-green">주소검색</button>
+				</p>
+		 		<p>
+				  <label>주소</label>
+				  <input type="text" name="addr" id="addr"  required="required" class="w3-input">
+				</p>
+				
+		 		<p>
+				  <label>나이</label>
+				  <input type="text" name="age"  required="required" class="w3-input">
+				</p>
+
+		 		<p>
+				  <label>Email</label>
+				  <input type="email" name="email"  required="required" class="w3-input">
+				</p>
+				
+		 		<button type="submit" id="signUpBtn" disabled="" class="w3-button w3-green">회원가입</button>
+			</form>
+		</div>
 	
 	</section>
 	

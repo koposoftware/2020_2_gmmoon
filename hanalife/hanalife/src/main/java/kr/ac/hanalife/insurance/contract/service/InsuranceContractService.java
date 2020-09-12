@@ -9,4 +9,12 @@ public interface InsuranceContractService {
 	List<InsuranceContractVO> selectInsuranceContract(int empno);
 	
 	List<InsuranceContractVO> selectInsuranceMyContract(int cusno);
+	
+	void terminationContract(int ic_serialno);
+	
+	InsuranceContractVO InsuranceMyOneContract(int no);
+	
+	void insertInsuranceContract(InsuranceContractVO icVO);
+	
+	List<InsuranceContractVO> selectEntireContract();
 }

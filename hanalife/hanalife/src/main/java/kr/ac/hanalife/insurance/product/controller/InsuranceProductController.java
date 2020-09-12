@@ -1,12 +1,12 @@
 package kr.ac.hanalife.insurance.product.controller;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.hanalife.insurance.product.service.InsuranceProductService;
@@ -19,7 +19,7 @@ public class InsuranceProductController {
 	private InsuranceProductService insuranceProductService;
 	
 	@RequestMapping("/productDetail/{code}")
-	public ModelAndView productDetail(@PathVariable("code") String code) {
+	public ModelAndView productDetail(@PathVariable("code") String code, HttpSession session) {
 		
 		InsuranceProductVO ipVO = insuranceProductService.searchProduct(code);
 		
@@ -33,4 +33,6 @@ public class InsuranceProductController {
 	public String insurance() {
 		return "/pageComponent/insurance";
 	}
+	
+
 }

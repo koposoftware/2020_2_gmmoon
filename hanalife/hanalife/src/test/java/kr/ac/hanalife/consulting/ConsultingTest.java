@@ -57,7 +57,7 @@ public class ConsultingTest {
 	@Test
 	public void 상담내역번호전체조회테스트() throws Exception {
 		
-		List<ConsultingVO> list = new ArrayList();
+		List<ConsultingVO> list = new ArrayList<>();
 		
 		list = consultingDAO.inqueryNumberConsulting();
 		
@@ -127,7 +127,7 @@ public class ConsultingTest {
 	@Test
 	public void 사원별상담게시글페이징처리테스트() throws Exception {
 		
-		List<ConsultingVO> list = new ArrayList();
+		List<ConsultingVO> list = new ArrayList<>();
 		
 		PagingVO pgVO = new PagingVO();
 		

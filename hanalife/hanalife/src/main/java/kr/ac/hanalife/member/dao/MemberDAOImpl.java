@@ -3,7 +3,6 @@ package kr.ac.hanalife.member.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private static int cusno = 10012;
+//	private static int cusno = 10012;
 	
 	@Override
 	public MemberVO login(MemberVO member) {
@@ -85,6 +84,13 @@ public class MemberDAOImpl implements MemberDAO {
 	public void deleteMyInfo(MemberVO member) {
 		sqlSession.delete("member.dao.MemberDAO.deleteMyInfo", member);
 	}
+
+	@Override
+	public MemberVO authentication(MemberVO member) {
+		return sqlSession.selectOne("member.dao.MemberDAO.authentication", member);
+	}
+
+	
 	
 	
 		

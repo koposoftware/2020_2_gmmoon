@@ -76,4 +76,9 @@
 		 where cid = #{id} and cpassword = #{password}
 	</delete>
 	
+	<select id="authentication" parameterType="memberVO" resultMap="memberMap">
+		select cid, c_email from customer
+			where cid= #{id} and c_email = #{email}
+	</select>
+	
 </mapper>

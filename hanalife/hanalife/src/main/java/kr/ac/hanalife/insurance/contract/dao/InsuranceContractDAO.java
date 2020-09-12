@@ -19,4 +19,29 @@ public interface InsuranceContractDAO {
 	 * @return 보험계약리스트
 	 */
 	List<InsuranceContractVO> selectInsuranceMyContract(int cusno);
+	
+	/**
+	 * 고객이 보험계약을 해지하는 서비스
+	 * @param ic_serialno 보험계약일련번호
+	 */
+	void terminationContract(int ic_serialno);
+	
+	/**
+	 * 보험일련번호로 고객의 보험계약조회
+	 * @param no 보험일련번호
+	 * @return 보험계약
+	 */
+	InsuranceContractVO InsuranceMyOneContract(int no);
+	
+	/**
+	 * 고객이 보험상품에 가입하는 서비스
+	 * @param icVO 해당 보험 상품
+	 */
+	void insertInsuranceContract(InsuranceContractVO icVO);
+	
+	/**
+	 * 전체 계약건수의 일련번호를 가져오는 기능
+	 * @return 전체 계약 건수 일련번호
+	 */
+	List<InsuranceContractVO> selectEntireContract();
 }

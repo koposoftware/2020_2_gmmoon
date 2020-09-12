@@ -121,10 +121,11 @@
 		</div> <!-- 옵션선택 끝 -->
 		
 		<!-- 검색기능 -->
+		<!--  
 		<div class="searchTag">
 		      <input class="form-control" id="myInput" type="text" placeholder="Search..">
 	    </div>
-	    
+	    -->
 		<table border="1">
 			<tr class="w3-green">
 	               <th width="7%" class="w3-center">번호</th>

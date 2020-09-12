@@ -105,7 +105,7 @@
 						</div> <!-- .row -->
 
 						<div class="text-center">
-							<p>하나생명을 더 알고싶다면? <a href="about.jsp">더 알아보기</a></p>
+							<p>하나생명을 더 알고싶다면? <a href="${pageContext.request.contextPath }/about">더 알아보기</a></p>
 						</div>
 					</div> <!-- .container -->
 				</div> <!-- .fullwidth-block -->
@@ -143,10 +143,12 @@
 						</div> <!-- .partners -->
 					</div> <!-- .container -->
 				</div> <!-- .fullwidth-block -->
-
+				
+				<!--  
 				<div class="fullwidth-block">
 					<div class="map"></div>
 				</div>
+				-->
 			</main>
 
 			<div class="site-footer">
@@ -232,7 +234,6 @@
 		
 
 		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/app.js"></script>
 		

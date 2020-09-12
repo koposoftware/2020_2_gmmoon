@@ -23,6 +23,26 @@ public class InsuranceContractDAOImpl implements InsuranceContractDAO {
 	public List<InsuranceContractVO> selectInsuranceMyContract(int cusno) {
 		return sqlSession.selectList("insurance.contract.dao.InsuranceContractDAO.selectInsuranceMyContract", cusno);
 	}
+
+	@Override
+	public void terminationContract(int ic_serialno) {
+		sqlSession.delete("insurance.contract.dao.InsuranceContractDAO.terminationContract", ic_serialno);
+	}
+
+	@Override
+	public InsuranceContractVO InsuranceMyOneContract(int no) {
+		return sqlSession.selectOne("insurance.contract.dao.InsuranceContractDAO.InsuranceMyOneContract", no);
+	}
+
+	@Override
+	public void insertInsuranceContract(InsuranceContractVO icVO) {
+		sqlSession.insert("insurance.contract.dao.InsuranceContractDAO.insertInsuranceContract", icVO);
+	}
+
+	@Override
+	public List<InsuranceContractVO> selectEntireContract() {
+		return sqlSession.selectList("insurance.contract.dao.InsuranceContractDAO.selectEntireContract");
+	}
 	
 	
 }

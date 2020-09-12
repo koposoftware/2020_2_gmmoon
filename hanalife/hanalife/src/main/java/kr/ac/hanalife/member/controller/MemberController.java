@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -147,6 +145,7 @@ public class MemberController {
 			icVO.setJoin(icVO.getJoin().substring(0, 10));
 			icVO.setMaturity(icVO.getMaturity().substring(0, 10));
 			icVO.setTermination(icVO.getTermination().substring(0, 10));
+			icVO.setEname(employeeVO.getName());
 		}
 		
 		//sessionø° memberVO, employeeVO¿˙¿Â

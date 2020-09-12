@@ -64,22 +64,29 @@
 			<ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+  
+  <!-- 메일보내기 -->
+
+   <bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="gmoon0619@gmail.com" />
+      <property name="password" value="gjsqud0619@" />
+      <property name="defaultEncoding" value="utf-8"/>
+      <property name="javaMailProperties">
+         <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+ 
+   </bean>
+ 
+	
 
 </beans>
 
-<!-- 회원가입 메일 인증 -->
-	<beans:bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl " >
-		<beans:property name="host" value="smtp.gmail.com" />
-		<beans:property name="port" value="587" /><!-- 465 or 25 -->
-		<beans:property name="username" value="이메일@gmail.com" />
-		<beans:property name="password" value="비밀번호" />
-		<beans:property name="defaultEncoding" value="utf-8" />
-		<beans:property name="javaMailProperties">
-			<beans:props>
-				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
-				<beans:prop key="mail.smtp.auth">true</beans:prop>
-				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
-				<beans:prop key="mail.debug">true</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean>
+

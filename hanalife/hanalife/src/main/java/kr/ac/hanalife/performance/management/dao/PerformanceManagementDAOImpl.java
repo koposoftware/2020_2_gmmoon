@@ -1,7 +1,6 @@
 package kr.ac.hanalife.performance.management.dao;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;

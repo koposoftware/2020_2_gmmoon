@@ -1,6 +1,5 @@
 package kr.ac.hanalife.insurance.contract.vo;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 public class InsuranceContractVO {
 	
