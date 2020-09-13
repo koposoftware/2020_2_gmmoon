@@ -168,7 +168,7 @@ public class EmployeeController {
 		
 		
 		for(ConsultingVO c : consultingList) {
-			
+			c.setCsdate(c.getCsdate().substring(0, 16));
 			if(consultingService.existConsultingReply(c.getNo()) != null) {
 				c.setAnswer("Y");
 				

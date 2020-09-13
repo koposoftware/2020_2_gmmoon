@@ -126,7 +126,7 @@
 										</c:if>
 									</c:when>
 									<c:otherwise>
-										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance.jsp">찾아오시는길</a></li>
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/insurance">찾아오시는길</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>

@@ -156,7 +156,7 @@
 	</div>
 	</section>
 	<section>
-		<div  align="center" style="border:1px solid black; height: 300px; width: 90%;" id="div2">
+		<div  align="center" style="border:1px solid black; width: 90%;" id="div2">
 			<hr>
 			<div class="w3-panel w3-green">
     			<h2 class="w3-opacity">보험 계약목록</h2>

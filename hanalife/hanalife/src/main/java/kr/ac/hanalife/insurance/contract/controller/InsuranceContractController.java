@@ -157,6 +157,6 @@ public class InsuranceContractController {
 			return "redirect:/insuranceContract";
 		}
 		
-		return "mypage/myPage";
+		return "redirect:/myPage";
 	}
 }

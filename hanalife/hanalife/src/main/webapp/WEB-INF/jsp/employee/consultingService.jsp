@@ -45,6 +45,18 @@
 	margin-top: 5px;
 	text-align: center;
 }
+
+#div1 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
+
+#outter {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
 </style>
 </head>
 <body>
@@ -106,8 +118,8 @@
 	         </div>
 	         -->
 	       
-	    <div id="outter">
-		<div style="float: left;">
+	    <div id="outter" align="right" style=" width: 90%;">
+		<div >
 			<select id="cntPerPage" name="sel" onchange="selChange()">
 				<option value="5"
 					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
@@ -119,13 +131,15 @@
 					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
 			</select>
 		</div> <!-- 옵션선택 끝 -->
-		
+		</div>
 		<!-- 검색기능 -->
 		<!--  
 		<div class="searchTag">
 		      <input class="form-control" id="myInput" type="text" placeholder="Search..">
 	    </div>
 	    -->
+	    
+	    <div align="center" style="border:1px solid black; width: 90%;" id="div1">
 		<table border="1">
 			<tr class="w3-green">
 	               <th width="7%" class="w3-center">번호</th>
@@ -150,7 +164,18 @@
 		                  </c:choose>
 		                  <td class="w3-center">${ list.name }</td>
 		                  <td class="w3-center">${ list.type }</td>
-		                  <td >${ list.content }</td>
+		                  
+		                  <c:choose>
+		                  	<c:when test="${ list.answer eq 'Y' }">
+			                  <td >${ list.content }</td>		                  	
+		                  	</c:when>
+		                  	<c:otherwise>
+		                  		<td>
+		                  			<a href="${pageContext.request.contextPath }/replyConsulting/${list.no}">${ list.content }</a>
+		                  		</td>
+		                  	</c:otherwise>
+		                  </c:choose>
+		                  
 		                  <td class="w3-center">${ list.csdate }</td>
 		                  <c:choose>
 		                  	<c:when test="${ list.answer eq 'Y' }">
@@ -166,6 +191,7 @@
 		            </c:forEach>
 	            </tbody>
 		</table>
+		</div> 
 		
 		<div style="display: block; text-align: center;">		
 			<c:if test="${paging.startPage != 1 }">
@@ -185,8 +211,8 @@
 				<a href="${pageContext.request.contextPath }/consultingService?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 			</c:if>
 		</div>
-	</div>  
-	         
+	 
+	      
 	         
 	</section>
 	<footer>

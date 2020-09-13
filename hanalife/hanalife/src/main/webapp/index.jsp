@@ -132,7 +132,8 @@
 				<div class="fullwidth-block">
 					<div class="container">
 						<h2 class="section-title">하나금융네트워크</h2>
-
+						
+						<!--  
 						<div class="partners">
 							<a href="https://www.kebhana.com/"><img src="/hanalife/images/hanaBanklogo.jpg" ></a>
 							<a href="https://www.hanacard.co.kr/index2.jsp"><img src="/hanalife/images/hanaCardlogo.jpg"></a>
@@ -140,7 +141,9 @@
 							<a href="https://www.hanaw.com/main/main/index.cmd"><img src="/hanalife/images/hanaInvestmentlogo.jpg"></a>
 							<a href="https://www.hanati.co.kr/kor/main.jsp"><img src="/hanalife/images/hanaTilogo.jpg"></a>
 							<a href="https://www.hanacapital.co.kr/index.hnc"><img src="/hanalife/images/hanaCapitallogo.jpg"></a>
-						</div> <!-- .partners -->
+						</div> 
+						-->
+						<!-- .partners -->
 					</div> <!-- .container -->
 				</div> <!-- .fullwidth-block -->
 				

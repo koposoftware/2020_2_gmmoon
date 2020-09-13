@@ -28,7 +28,16 @@
 	margin-left: 10%;
 }
 
-
+#div1 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
+#div2 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
 </style>
 </head>
 <body>
@@ -39,6 +48,7 @@
 	<section>
 	
 	</section>
+	<div align="center" style="border:1px solid black; height: 350px; width: 90%;" id="div1">
 		<div class="w3-panel w3-green">
     		<h2 class="w3-opacity">My Profile</h2>
  		</div>
@@ -65,12 +75,14 @@
 					<td>${ employee.email }</td>
 				</tr>						
 			</table>
-
+		
 		<div class="atag">
 			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원정보수정</a>&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원탈퇴</a>&nbsp;&nbsp;
 		</div>
+		</div>
 		
+		<div align="center" style="border:1px solid black; height: 30%; width: 90%;" id="div2">
 		<c:choose>
 			<c:when test="${ employee.rank eq '사원'}">
 			<div class="w3-panel w3-green">
@@ -123,7 +135,7 @@
 			<c:otherwise>
 			</c:otherwise>
 		</c:choose>
-						
+		</div>				
 		
 	<footer>
 		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>
