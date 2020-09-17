@@ -12,6 +12,7 @@
 <script>
 	//아이디중복체크 기능 AJAX
 	$(document).ready(function() {
+		
 		$('#checkid').click(function() {
 			
 			
@@ -38,7 +39,9 @@
 						
 					if( data == 0) {
 						$('#msgView').text('사용할 수 있는 아이디 입니다').css('color','blue');
-						//console.log(checkpw)
+						
+						
+						console.log(checkpw)
 						if(checkpw == 1){
 							
 							$('#signUpBtn').attr('disabled', false);
@@ -68,6 +71,7 @@
 						$('#msgView2').text(msg).css('color','blue').show();
 						return checkpw = 1;
 						
+						
 					} else {
 					
 						msg = '비밀번호 값이 일치하지않습니다';
@@ -83,7 +87,7 @@
 		
 			 
 		})
-		
+		console.log(checkpw);
 		
 	})
 	

@@ -22,7 +22,11 @@
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
+<!--  -->
+<script>
 
+</script>
 	</head>
 	<header class="site-header">
 				<div class="top-header">
@@ -45,11 +49,12 @@
 					
 						<div class="right-section pull-right">
 							<a href="#" class="phone"><img src="/hanalife/images/icon-phone.png" class="icon">02-3709-7394</a>
-					
+							<!--  
 							<form action="#" class="search-form">
 								<input type="text" placeholder="검색">
 								<button type="submit"><img src="/hanalife/images/icon-search.png" alt=""></button>
 							</form>
+							-->
 						</div>
 					</div> <!-- .container -->
 				</div> <!-- .top-header -->
@@ -135,6 +140,11 @@
 									</c:when>
 									<c:when test="${ not empty employee }">
 										<li class="menu-item"><a href="${ pageContext.request.contextPath }/myEmployeePage">My Page</a></li>																		
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${ not empty employee }">
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/chatting">Chat</a></li>																		
 									</c:when>
 								</c:choose>
 							</ul> <!-- .menu -->

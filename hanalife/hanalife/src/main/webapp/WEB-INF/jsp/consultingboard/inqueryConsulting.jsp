@@ -45,7 +45,7 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
 	</header>
 	<section>
-		<div align="center" style="border:1px solid black; height: 975px; width: 90%;" id="div1">
+		<div align="center" style="border:1px solid black;  width: 90%;" id="div1">
 			 <hr>
 	         <div class="w3-panel w3-green">
     			<h2 class="w3-opacity">상담내역목록</h2>

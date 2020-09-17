@@ -659,5 +659,8 @@ public class EmployeeController {
 		return "/employee/manageEmployeeOfPerformance";
 	}
 	
-	
+	@RequestMapping("chatting")
+	public String chatting() {
+		return "/chatting/chatting";
+	}
 }
