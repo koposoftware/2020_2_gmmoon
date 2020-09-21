@@ -24,4 +24,6 @@ public interface MemberService {
 	void modifyMyInfo(MemberVO member);
 	
 	void deleteMyInfo(MemberVO member);
+	
+	public MemberVO authentication(MemberVO member); 
 }

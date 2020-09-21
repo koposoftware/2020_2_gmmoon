@@ -1,5 +1,6 @@
 package kr.ac.hanalife.consulting;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import kr.ac.hanalife.consulting.dao.ConsultingDAO;
 import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
+import kr.ac.hanalife.util.PagingVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/*.xml"})
@@ -55,7 +57,7 @@ public class ConsultingTest {
 	@Test
 	public void 상담내역번호전체조회테스트() throws Exception {
 		
-		List<ConsultingVO> list = new ArrayList();
+		List<ConsultingVO> list = new ArrayList<>();
 		
 		list = consultingDAO.inqueryNumberConsulting();
 		
@@ -110,5 +112,38 @@ public class ConsultingTest {
 		ConsultingReplyVO csrVO = consultingDAO.inqueryReplyConsulting(1000000005);
 		
 		assertNotNull(csrVO);
+	}
+	
+	@Ignore
+	@Test
+	public void 사원별상담게시글갯수() throws Exception {
+		
+		int cnt = consultingDAO.countBoard(71236);
+		System.out.println(cnt);
+		assertNotNull(cnt);
+	}
+	
+	@Ignore
+	@Test
+	public void 사원별상담게시글페이징처리테스트() throws Exception {
+		
+		List<ConsultingVO> list = new ArrayList<>();
+		
+		PagingVO pgVO = new PagingVO();
+		
+		pgVO.setEmpno(71234);
+		pgVO.setStart(0);
+		pgVO.setEnd(5);
+		
+		list = consultingDAO.selectPageConsulting(pgVO);
+		
+		for(ConsultingVO c : list) {
+			System.out.println(c.getRn());
+			System.out.println(c.getName());
+			System.out.println(c.getCsdate());
+		}
+		
+		boolean b = list.isEmpty();
+		assertFalse(b);
 	}
 }

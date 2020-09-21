@@ -10,6 +10,8 @@ public class ConsultingVO {
 	private String	content;
 	private String	csdate;
 	private String	answer;
+	private int		count;
+	private int		rn;
 	
 	public int getNo() {
 		return no;
@@ -58,6 +60,18 @@ public class ConsultingVO {
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 	
 	

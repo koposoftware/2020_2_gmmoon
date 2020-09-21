@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -33,6 +32,7 @@ import kr.ac.hanalife.employee.vo.EmployeeVO;
 import kr.ac.hanalife.member.vo.MemberVO;
 import kr.ac.hanalife.performance.management.service.PerformanceManagementService;
 import kr.ac.hanalife.performance.management.vo.PerformanceManagementVO;
+import kr.ac.hanalife.util.PagingVO;
 
 @SessionAttributes({"employee","employeeList"})
 @Controller
@@ -109,8 +109,11 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("consultingService")
-	public ModelAndView selectConsultingCustomer(HttpSession session) {
+	public ModelAndView selectConsultingCustomer(HttpSession session, PagingVO pgVO, 
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
+		/* 기존에 있던 조회방식
 		List<ConsultingVO> consultingList = new ArrayList<>();
 		EmployeeVO employee = (EmployeeVO)session.getAttribute("employee");
 		ModelAndView mav = new ModelAndView("employee/consultingService");
@@ -130,13 +133,52 @@ public class EmployeeController {
 			}
 		}
 		
-		// test
-//		for(ConsultingVO c : consultingList) {
-//			System.out.println(c.getAnswer());
-//		}
-		
+
 		mav.addObject("consultingList", consultingList);
 		
+		return mav;
+		*/
+		EmployeeVO employee = (EmployeeVO)session.getAttribute("employee");
+		int empno = employee.getEmpno();
+		
+		List<ConsultingVO> totalList = consultingService.inqeuryNumberConsultingCustomer();
+		
+		int total = totalList.size();
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		
+		pgVO = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+
+		pgVO.setEmpno(empno);
+
+		ModelAndView mav = new ModelAndView("employee/consultingService");
+		mav.addObject("paging", pgVO);
+		
+		List<ConsultingVO> consultingList = new ArrayList<>();
+		
+		consultingList = consultingService.selectPageConsulting(pgVO);
+		
+		
+		for(ConsultingVO c : consultingList) {
+			c.setCsdate(c.getCsdate().substring(0, 16));
+			if(consultingService.existConsultingReply(c.getNo()) != null) {
+				c.setAnswer("Y");
+				
+			} else {
+				
+				c.setAnswer("N");
+			}
+		}
+	
+		mav.addObject("consultingList", consultingList);
 		return mav;
 	}
 	
@@ -331,7 +373,7 @@ public class EmployeeController {
 		return "/pageComponent/about";
 	}
 	
-	//단기계약유지율
+	//단기계약유지지수평균
 	@SuppressWarnings("all")
 	@RequestMapping(value="employeePerformance", method = RequestMethod.GET)
 	public ResponseEntity<JSONObject> employee_performance(){
@@ -348,7 +390,7 @@ public class EmployeeController {
 		JSONArray title =new JSONArray();
 		col1.put("label", "사원명");
 		col1.put("type", "string");
-		col2.put("label", "단기계약유지율");
+		col2.put("label", "단기계약유지지수평균");
 		col2.put("type" , "number");
 
 				
@@ -376,12 +418,12 @@ public class EmployeeController {
 		for(EmployeeVO e : employeeList) {
 			
 			PerformanceManagementVO pmVO = new PerformanceManagementVO();
-			pmVO = performancemanagementService.selectContractManagement(e.getEmpno());
+			pmVO = performancemanagementService.shortContractManagementAVG(e.getEmpno());
 			
 //			System.out.println(employee.getCount());
-			int cnt = 0;
+			double cnt = 0;
 			if(pmVO != null) {
-				cnt = Integer.parseInt(pmVO.getContractManagement());
+				cnt = (pmVO.getAvg());
 			} 
 			
 				
@@ -416,7 +458,7 @@ public class EmployeeController {
 		return entity;
 	}
 	
-	//월초계약집중율
+	//장기계약유지지수평균
 	@SuppressWarnings("all")
 	@RequestMapping(value="employeePerformance2", method = RequestMethod.GET)
 	public ResponseEntity<JSONObject> employee_performance2(){
@@ -433,7 +475,7 @@ public class EmployeeController {
 		JSONArray title =new JSONArray();
 		col1.put("label", "사원명");
 		col1.put("type", "string");
-		col2.put("label", "월초계약집중율");
+		col2.put("label", "장기계약유지지수평균");
 		col2.put("type" , "number");
 
 				
@@ -461,11 +503,11 @@ public class EmployeeController {
 		for(EmployeeVO e : employeeList) {
 			
 			PerformanceManagementVO pmVO = new PerformanceManagementVO();
-			pmVO = performancemanagementService.selectContractRecruiting(e.getEmpno());
+			pmVO = performancemanagementService.longContractManagementAVG(e.getEmpno());
 			
-			int cnt = 0;
+			double cnt = 0;
 			if(pmVO != null) {
-				cnt = Integer.parseInt(pmVO.getContractRecruiting());
+				cnt = (pmVO.getAvg());
 			} 
 			
 				
@@ -500,7 +542,7 @@ public class EmployeeController {
 		return entity;
 	}
 	
-	//대리점운영지표
+	//중도해지건수평균
 		@SuppressWarnings("all")
 		@RequestMapping(value="employeePerformance3", method = RequestMethod.GET)
 		public ResponseEntity<JSONObject> employee_performance3(){
@@ -517,7 +559,7 @@ public class EmployeeController {
 			JSONArray title =new JSONArray();
 			col1.put("label", "사원명");
 			col1.put("type", "string");
-			col2.put("label", "대리점운영지표");
+			col2.put("label", "중도해지건수평균");
 			col2.put("type" , "number");
 
 					
@@ -545,12 +587,12 @@ public class EmployeeController {
 			for(EmployeeVO e : employeeList) {
 				
 				PerformanceManagementVO pmVO = new PerformanceManagementVO();
-				pmVO = performancemanagementService.selectAgencyManagement(e.getEmpno());
+				pmVO = performancemanagementService.selectTerminationAVG(e.getEmpno());
 				
 //				System.out.println(employee.getCount());
-				int cnt = 0;
+				double cnt = 0;
 				if(pmVO != null) {
-					cnt = Integer.parseInt(pmVO.getAgencyManagement());
+					cnt = (pmVO.getAvg());
 				} 
 				
 					
@@ -617,5 +659,8 @@ public class EmployeeController {
 		return "/employee/manageEmployeeOfPerformance";
 	}
 	
-	
+	@RequestMapping("chatting")
+	public String chatting() {
+		return "/chatting/chatting";
+	}
 }

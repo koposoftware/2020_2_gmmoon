@@ -67,4 +67,21 @@
 		select * from consulting_reply
 			where cs_serialno = #{cs_serialno}
 	</select>
+	
+	<select id="countBoard" resultType="consultingVO" parameterType="int">
+		select empno, count(*) count
+			from consulting
+		  group by empno
+		  having empno = #{empno}
+	</select>
+	
+	<select id="selectPageConsulting" resultType="consultingVO" parameterType="pagingVO" resultMap="consultingMap">
+		select * from (
+				select rownum rn, a.* from
+				(select * from
+				consulting c
+				order by c.csdate desc) a
+		)
+		 where empno = #{empno} and rn between #{start} and #{end}
+	</select>
 </mapper>

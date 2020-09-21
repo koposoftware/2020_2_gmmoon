@@ -29,6 +29,11 @@
 	margin-left: 10%;
 }
 
+#div1 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
 
 </style>
 </head>
@@ -38,11 +43,13 @@
 	</header>
 	
 	<section>
-		<br>
+		<div align="center" style="border:1px solid black; width: 90%;" id="div1">
+			<br>
+			 <hr>
 	         <div class="w3-panel w3-green">
     			<h2 class="w3-opacity">보험 계약목록</h2>
  			</div>
-	         
+	         <hr>
 	         <table class="w3-table-all">
 	            <tr>
 	               <th width="7%">번호</th>
@@ -72,6 +79,7 @@
 	         <div class="atag">
 		         <a href="${pageContext.request.contextPath }" class="w3-button w3-green">홈으로</a>
 	         </div>
+	      </div>
 	</section>
 	
 	<footer>

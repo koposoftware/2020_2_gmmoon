@@ -19,7 +19,11 @@
 	    });
 	  });
 	});
-
+	
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="${pageContext.request.contextPath }/consultingService?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
 
 </script>
 <style>
@@ -41,6 +45,18 @@
 	margin-top: 5px;
 	text-align: center;
 }
+
+#div1 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
+
+#outter {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
 </style>
 </head>
 <body>
@@ -49,7 +65,7 @@
 	</header>
 	
 	<section>
-		<br>
+		<!--  기존에 있던 상담내역목록
 	         <div class="w3-panel w3-green">
     			<h2 class="w3-opacity">상담내역목록</h2>
  			 </div>
@@ -100,6 +116,104 @@
 	         <div class="atag">
 		         <a href="${pageContext.request.contextPath }" class="w3-button w3-green">홈으로</a>
 	         </div>
+	         -->
+	       
+	    <div id="outter" align="right" style=" width: 90%;">
+		<div >
+			<select id="cntPerPage" name="sel" onchange="selChange()">
+				<option value="5"
+					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+				<option value="10"
+					<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+				<option value="15"
+					<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+				<option value="20"
+					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+			</select>
+		</div> <!-- 옵션선택 끝 -->
+		</div>
+		<!-- 검색기능 -->
+		<!--  
+		<div class="searchTag">
+		      <input class="form-control" id="myInput" type="text" placeholder="Search..">
+	    </div>
+	    -->
+	    
+	    <div align="center" style="border:1px solid black; width: 90%;" id="div1">
+		<table border="1">
+			<tr class="w3-green">
+	               <th width="7%" class="w3-center">번호</th>
+	               <th width="7%" class="w3-center">고객이름</th>	               
+	               <th class="w3-center">상담유형</th>
+	               <th width="50%" class="w3-center">상담내용</th>
+	               <th width="10%" class="w3-center">상담일자</th>
+	               <th width="10%" class="w3-center">답변여부</th>
+	        </tr>
+			<tbody id="myTable">
+		            <c:forEach items="${ consultingList }" var="list" varStatus="loop">
+		               <tr>
+		                  <c:choose>
+		                  	<c:when test="${ list.answer eq 'Y' }">
+		                  		<td class="w3-center">${ loop.count }</td>
+		                  	</c:when>
+		                  	<c:otherwise>
+		                  		<td class="w3-center">
+		                  			<a href="${pageContext.request.contextPath }/replyConsulting/${list.no}">${ loop.count }</a>
+		                  		</td>
+		                  	</c:otherwise>
+		                  </c:choose>
+		                  <td class="w3-center">${ list.name }</td>
+		                  <td class="w3-center">${ list.type }</td>
+		                  
+		                  <c:choose>
+		                  	<c:when test="${ list.answer eq 'Y' }">
+			                  <td >${ list.content }</td>		                  	
+		                  	</c:when>
+		                  	<c:otherwise>
+		                  		<td>
+		                  			<a href="${pageContext.request.contextPath }/replyConsulting/${list.no}">${ list.content }</a>
+		                  		</td>
+		                  	</c:otherwise>
+		                  </c:choose>
+		                  
+		                  <td class="w3-center">${ list.csdate }</td>
+		                  <c:choose>
+		                  	<c:when test="${ list.answer eq 'Y' }">
+		                  		<td class="w3-center">
+		                  			<a href="${pageContext.request.contextPath }/inqueryReplyConsulting/${list.no}">답변완료</a>
+		                  		</td>
+		                  	</c:when>
+		                  	<c:otherwise>
+		                  		<td class="w3-center" style="color: red">답변미완료</td>
+		                  	</c:otherwise>
+		                  </c:choose>	                  
+		               </tr>
+		            </c:forEach>
+	            </tbody>
+		</table>
+		</div> 
+		
+		<div style="display: block; text-align: center;">		
+			<c:if test="${paging.startPage != 1 }">
+				<a href="${pageContext.request.contextPath }/consultingService?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			</c:if>
+			<c:forEach  begin="${paging.startPage }" end="${paging.endPage }" var="p">
+				<c:choose>
+					<c:when test="${p == paging.nowPage }">
+						<b>${ p }</b>
+					</c:when>
+					<c:when test="${p != paging.nowPage }">
+						<a href="${pageContext.request.contextPath }/consultingService?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.endPage != paging.lastPage}">
+				<a href="${pageContext.request.contextPath }/consultingService?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			</c:if>
+		</div>
+	 
+	      
+	         
 	</section>
 	<footer>
 		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>

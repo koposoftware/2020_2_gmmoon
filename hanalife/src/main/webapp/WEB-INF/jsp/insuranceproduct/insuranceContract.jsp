@@ -1,29 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script>
-	document.getElementsByClassName("tablink")[0].click();
-	
-	function openCity(evt, cityName) {
-	  var i, x, tablinks;
-	  x = document.getElementsByClassName("city");
-	  for (i = 0; i < x.length; i++) {
-	    x[i].style.display = "none";
-	  }
-	  tablinks = document.getElementsByClassName("tablink");
-	  for (i = 0; i < x.length; i++) {
-	    tablinks[i].classList.remove("w3-light-grey");
-	  }
-	  document.getElementById(cityName).style.display = "block";
-	  evt.currentTarget.classList.add("w3-light-grey");
+	window.onload = function() {
+		
+		document.getElementsByClassName("tablink")[0].click();
 	}
+		function openCity(evt, cityName) {
+		  var i, x, tablinks;
+		  x = document.getElementsByClassName("city");
+		  for (i = 0; i < x.length; i++) {
+		    x[i].style.display = "none";
+		  }
+		  tablinks = document.getElementsByClassName("tablink");
+		  for (i = 0; i < x.length; i++) {
+		    tablinks[i].classList.remove("w3-light-grey");
+		  }
+		  document.getElementById(cityName).style.display = "block";
+		  evt.currentTarget.classList.add("w3-light-grey");
+		}
+		
+	$(document).ready(function() {
+		
+		$('#emailBtn').attr("disabled", "disabled");
+		$('input[name="checkTerms"]').on('click', function() {
+			//check박스가 2개모두 체크가 안되면 클로즈를 못누름
+			
+			if($('input[name="checkTerms"]:checked').length < 2){
+				$('#checkTermsBtn').attr("disabled", "disabled");
+				
+			} else {
+				$('#checkTermsBtn').removeAttr("disabled");
+				$('#emailBtn').removeAttr("disabled");
+			}
+		})
+		
+		
+		
+	})
+	
 </script>
 <style>
 .city {display:none}
+
+#div1 {
+	margin-top:15px;
+	margin-left: 30%;
+	margin-bottom: 15px;
+}
+
+strong {
+	color: blue;
+}
 </style>
 </head>
 <body>
@@ -33,12 +67,30 @@
 	
 	<section>
 	
+		<div align="center" style="border:1px solid black; height: 400px; width: 600px;" id="div1">
+			<hr>
+			<div class="w3-container w3-green">
+			<h3>이메일 인증 (이용약관 동의 후 실행가능)</h3>
+			</div>
+			<hr> 
+		 	<form action="${ pageContext.request.contextPath }/authContract/${ code }" method="post" class="w3-container">
+		 		<p>
+				  <label>Email</label>
+				  <input class="w3-input" type="email" name="e_mail" placeholder="  이메일주소를 입력하세요. "></p>
+		 		<br>
+		 		<button type="submit" name="submit" class="w3-button w3-green" id="emailBtn">이메일 인증받기 (이메일 보내기)</button>
+		 		
+		 	</form>
+		</div>
 	</section>
+	
+	
+	
 	
 	<!-- 모달 창! -->
 		<div class="w3-container">
 			<div class="w3-center">
-				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black ">이용약관</button>
+				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black " >이용약관</button>
 			</div>
 		<div id="id01" class="w3-modal">
 		 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
@@ -53,7 +105,7 @@
 		   <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">유의사항</button>
 		  </div>
 		
-		  <div id="London" class="w3-container city">
+		  <div id="London" class="w3-container city" style="overflow:scroll; width:900px; height:900px;">
 		   <h1>이용약관</h1>
 				<dl>
 						<dt>제 1조 (목적)</dt>
@@ -151,7 +203,7 @@
 								<li>① 회사가 작성한 저작물에 대한 저작권 및 기타 지적재산권은 회사에 귀속합니다.</li>
 								<li>② 이용자는 회사 웹사이트을 이용함으로써 얻은 정보를 회사의 사전 승낙없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안됩니다. </li>
 							</ul>
-						</dd>
+						</dd> 
 						<dt>제 12조 (분쟁조정)</dt>
 						<dd>
 							이용자가 회사의 전자거래의 처리에 관하여 이의가 있을 때에는 회사의 분쟁처리기구에 그 해결을 요구하거나 금융감독원의 금융분쟁조정위원회, 한국소비자보호원의 소비자분쟁조정위원회 등을 통하여 분쟁조정을 신청할 수 있습니다.
@@ -160,10 +212,11 @@
 						<dd>이 약관에서 정하지 아니한 사항은 대한민국법령을 적용합니다.</dd>
 					</dl>
 					<p class="mt50">부 칙 [2008.04.01]<br />제1조(시행일) 본 약관은 2008년 4월 1일부터 적용하고, 종전의 약관은 본 약관으로 대체합니다.</p>
-					<p class="mt15">부 칙 [2013.06.14]<br />제1조(시행일) 본 약관은 2013년 6월 21일부터 적용하고, 종전의 약관은 본 약관으로 대체합니다.</p>		   
+					<p class="mt15">부 칙 [2013.06.14]<br />제1조(시행일) 본 약관은 2013년 6월 21일부터 적용하고, 종전의 약관은 본 약관으로 대체합니다.</p>
+					<strong>상기 약관을 동의합니다</strong>&nbsp;&nbsp;<input type="checkbox" name="checkTerms">		   
 		  </div>
 		
-		  <div id="Paris" class="w3-container city">
+		  <div id="Paris" class="w3-container city" style="overflow:scroll; width:900px; height:900px;">
 		   <h1>유의사항</h1>
 		   <div class="Protection_area">
 		   	<dl class="rule">
@@ -188,13 +241,14 @@
 						<dt class="or">10. 선수금 입금 요구, 상식수준 이상의 대출 조건을 제시하는 경우 해당 금융회사에 동 대출 취급여부를 직접 확인하기</dt>
 						<dd>최근 인터넷 포털 사이트 등에 신용에 관계없이 즉시 대출을 해준다는 등 상식수준 이상의 대출 조건을 제시하는 광고를 게재한 후 이를 통해 급전이 필요한 사람에게 접근하여 은행직원을 사칭, 거래실적이 필요하다면서 돈을 입금토록 하는 등 선수금 입금을 요구하는 사기 금융하고가 발생하고 있으므로 이에 유의해야 합니다.</dd>
 					</dl>
+						<strong>상기 약관을 동의합니다</strong>&nbsp;&nbsp;<input type="checkbox" name="checkTerms">	
 		   	</div>
 		  </div>
 		
 		
 		  <div class="w3-container w3-light-grey w3-padding">
 		   <button class="w3-button w3-right w3-white w3-border" 
-		   onclick="document.getElementById('id01').style.display='none'">Close</button>
+		   onclick="document.getElementById('id01').style.display='none'" id="checkTermsBtn" >Close</button>
 		  </div>
 		 </div>
 		</div>

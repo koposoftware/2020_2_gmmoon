@@ -14,12 +14,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import kr.ac.hanalife.employee.vo.EmployeeVO;
 import kr.ac.hanalife.member.dao.MemberDAO;
 import kr.ac.hanalife.member.service.MemberService;
 import kr.ac.hanalife.member.vo.MemberVO;
 
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/*.xml"})
 public class MemberTest {
@@ -163,6 +165,17 @@ public class MemberTest {
 		member.setPassword("2222");
 		
 		memberDAO.deleteMyInfo(member);
+	}
+	
+	@Test
+	public void 이메일인증테스트() throws Exception {
+		MemberVO member = new MemberVO();
+		
+		member.setId("test0101");
+		member.setEmail("koo@naver.com");
+		
+		assertNotNull(memberDAO.authentication(member));
+		
 	}
 
 }

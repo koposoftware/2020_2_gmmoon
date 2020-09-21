@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
+import kr.ac.hanalife.util.PagingVO;
 
 public interface ConsultingDAO {
 	
@@ -52,4 +53,18 @@ public interface ConsultingDAO {
 	 * @return 상담내역답글
 	 */
 	ConsultingReplyVO inqueryReplyConsulting(int cs_serialno);
+	
+	/**
+	 * 사원이 담당하는 상담내역 갯수
+	 * @param empno 해당 사원번호
+	 * @return
+	 */
+	public int countBoard(int empno);
+	
+	/**
+	 * 페이지 처리된 사원이 담당하는 상담내역 조회
+	 * @param pgVO 페이징
+	 * @return 사원이 담당하는 상담내역
+	 */
+	public List<ConsultingVO> selectPageConsulting(PagingVO pgVO);
 }

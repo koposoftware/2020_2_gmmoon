@@ -11,5 +11,6 @@
   	<typeAlias type="kr.ac.hanalife.insurance.contract.vo.InsuranceContractVO" alias="insurancecontractVO"/>
   	<typeAlias type="kr.ac.hanalife.performance.management.vo.PerformanceManagementVO" alias="performancemanagementVO"/>
   	<typeAlias type="kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO" alias="consultingreplyVO"/>
+  	<typeAlias type="kr.ac.hanalife.util.PagingVO" alias="pagingVO"/>
   </typeAliases>
 </configuration>

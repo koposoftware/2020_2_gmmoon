@@ -1,8 +1,6 @@
 package kr.ac.hanalife.insurance.contract;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -25,6 +23,7 @@ public class InsuranceContractTest {
 	@Autowired
 	private InsuranceContractDAO insurancecontractDAO;
 	
+	@Ignore
 	@Test
 	public void 보험계약리스트조회테스트() throws Exception {
 		
@@ -53,5 +52,67 @@ public class InsuranceContractTest {
 		}
 		
 		assertTrue(b);
+	}
+	
+	@Ignore
+	@Test
+	public void 고객이자신의보험계약리스트조회테스트() {
+		
+		List<InsuranceContractVO> list = new ArrayList<InsuranceContractVO>();
+		
+		list = insurancecontractDAO.selectInsuranceMyContract(10001);
+		
+		for(InsuranceContractVO c : list) {
+			System.out.println(c.getName() + " : " + c.getBeneficiary());
+		}
+	}
+	
+	@Ignore
+	@Test
+	public void 보험계약해지테스트() throws Exception {
+		insurancecontractDAO.terminationContract(1000000009);
+	}
+	
+	@Ignore
+	@Test
+	public void 보험계약상품조회테스트() throws Exception {
+		
+		InsuranceContractVO icVO = insurancecontractDAO.InsuranceMyOneContract(1000000003);
+		
+		assertNotNull(icVO);
+	}
+	
+	@Ignore
+	@Test
+	public void 보험상품가입테스트() throws Exception {
+		
+		InsuranceContractVO icVO = new InsuranceContractVO();
+		
+		List<InsuranceContractVO> list = insurancecontractDAO.selectEntireContract();
+		int no = list.get(list.size() - 1).getNo() + 1;
+		
+		icVO.setNo(no);
+		icVO.setEmpno(11111);
+		icVO.setCusno(10012);
+		icVO.setName("유하나");
+		icVO.setCode("B001");
+		icVO.setJoin("2020-09-12");
+		icVO.setMaturity("2040-09-12");
+		icVO.setTermination("2040-09-12");
+		icVO.setBeneficiary("유바다");
+		
+		insurancecontractDAO.insertInsuranceContract(icVO);
+	}
+	
+	@Ignore
+	@Test
+	public void 보험계약일련번호전체조회테스트() throws Exception {
+		 
+		List<InsuranceContractVO> list = insurancecontractDAO.selectEntireContract();
+		
+		for(InsuranceContractVO c : list) {
+			System.out.println(c.getNo());
+		}
+		System.out.println(list.get(list.size() - 1).getNo() + 1);
 	}
 }

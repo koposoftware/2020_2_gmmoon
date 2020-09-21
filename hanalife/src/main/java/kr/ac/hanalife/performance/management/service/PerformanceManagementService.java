@@ -8,11 +8,17 @@ public interface PerformanceManagementService {
 	
 	List<PerformanceManagementVO> selectPerformanceManagement(int empno);
 	
-	PerformanceManagementVO selectContractManagement(int empno);
+	PerformanceManagementVO shortContractManagementAVG(int empno);
 	
-	PerformanceManagementVO selectContractRecruiting(int empno);
+	PerformanceManagementVO longContractManagementAVG(int empno);
 	
-	PerformanceManagementVO selectAgencyManagement(int empno);
+	PerformanceManagementVO selectTerminationAVG(int empno);
 	
 	void insertPerformanceManagement(PerformanceManagementVO pmVO);
+	
+	List<PerformanceManagementVO> lookUpShortContract(PerformanceManagementVO pmVO);
+	
+	List<PerformanceManagementVO> lookUpLongContract(PerformanceManagementVO pmVO);
+	
+	List<PerformanceManagementVO> lookUpTermination(PerformanceManagementVO pmVO);
 }

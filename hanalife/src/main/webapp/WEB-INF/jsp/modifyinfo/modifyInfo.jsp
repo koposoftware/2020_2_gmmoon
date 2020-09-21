@@ -111,6 +111,21 @@
     }
 	
 </script>
+<style>
+#div1 {
+	margin-top:15px;
+	margin-left: 25%;
+	margin-bottom: 15px;
+}
+
+label {
+	text-align: left;
+}
+
+p {
+	text-align: left;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -118,6 +133,7 @@
 	</header>
 	
 	<section>
+	<!--  
 		<hr>
 		<h2>회원수정</h2>
 		<hr>
@@ -155,6 +171,70 @@
 			</div>
 			
 		</form>
+		-->
+		<div align="center" style="border:1px solid black; height: 975px; width: 750px;" id="div1">
+			<hr>
+			<div class="w3-container w3-green">
+				<h3>회원정보수정</h3>
+			</div>
+			<hr>
+			
+			<form action="${ pageContext.request.contextPath }/modifyInfo" method="post" name="mform" class="w3-container">
+				<p>
+				  <label>ID</label>
+				  <input type="text" name="id"  required="required" class="w3-input" placeholder="${ loginVO.id }">
+				  <input type="button" value="아이디중복체크"  id="checkid" class="w3-button w3-green"/>
+				  <span id="msgView"></span>
+				</p>
+		 		 <!-- <p  id="msgView"></p> -->
+		 		
+		 		<p>
+				  <label>PASSWORD</label>
+				  <input type="text" name="password"  id="input_pw" required="required" class="w3-input" placeholder="${ loginVO.password }">
+				</p>
+		 		<br>
+		 		<p>
+				  <label>PASSWORD 확인</label>
+				  <input type="text" name="password_re"  id="check_pw" class="w3-input" >
+				</p>
+				
+				<p id="msgView2"></p>
+		 		
+		 		<p>
+				  <label>이름</label>
+				  <input type="text" name="name"  required="required" class="w3-input" placeholder="${ memberVO.name }">
+				</p>
+				
+		 		<p>
+				  <label>전화번호</label>
+				  <input type="text" name="hp"  required="required" class="w3-input" placeholder="${ memberVO.hp }">
+				</p>
+				
+		 		<p>
+				  <label>도로명번호</label>
+				  <input type="text" name="post" id="post"  required="required" class="w3-input" placeholder="${ memberVO.post }">
+				<button onclick="execDaumPostcode();" class="btn btn-outline-info py-2 px-1 px-md-3 w3-button w3-green">주소검색</button>
+				</p>
+		 		<p>
+				  <label>주소</label>
+				  <input type="text" name="addr" id="addr"  required="required" class="w3-input" placeholder="${ memberVO.addr }">
+				</p>
+				
+		 		<p>
+				  <label>나이</label>
+				  <input type="text" name="age"  required="required" class="w3-input">
+				</p>
+
+		 		<p>
+				  <label>Email</label>
+				  <input type="email" name="email"  required="required" class="w3-input" placeholder="${ memberVO.email }">
+				</p>
+				
+		 		<button type="submit" id="signUpBtn" disabled="" class="w3-button w3-green">회원정보수정</button>
+		 		<input type="reset" value="초기화" class="w3-button w3-green"/>
+			</form>
+		</div>
+		
 	</section>
 	
 	<footer>

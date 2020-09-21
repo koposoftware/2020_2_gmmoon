@@ -65,4 +65,7 @@ public interface MemberDAO {
 	 * @param member 탈퇴할 회원 정보
 	 */
 	void deleteMyInfo(MemberVO member);
+	
+	//회원 인증관련 메소드
+	public MemberVO authentication(MemberVO member);        
 }

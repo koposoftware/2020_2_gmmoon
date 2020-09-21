@@ -3,8 +3,6 @@ package kr.ac.hanalife.performance.management;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +44,9 @@ public class PerformanceManagementTest {
 		
 		PerformanceManagementVO pmVO = new PerformanceManagementVO();
 		
-		pmVO = performancemanagementDAO.selectContractManagement(71235);
+		pmVO = performancemanagementDAO.shortContractManagementAVG(71234);
 		
+		System.out.println(pmVO.getAvg());
 		assertNotNull(pmVO);
 	
 	}
@@ -57,7 +56,9 @@ public class PerformanceManagementTest {
 	public void 사원월초계약집중율조회테스트() throws Exception {
 		
 		PerformanceManagementVO pmVO = new PerformanceManagementVO();
-		pmVO = performancemanagementDAO.selectContractManagement(71235);
+		pmVO = performancemanagementDAO.longContractManagementAVG(71235);
+		
+		System.out.println(pmVO.getAvg());
 		assertNotNull(pmVO);
 	}
 	
@@ -65,7 +66,9 @@ public class PerformanceManagementTest {
 	@Test
 	public void 대리점운영지표조회테스트() throws Exception {
 		PerformanceManagementVO pmVO = new PerformanceManagementVO();
-		pmVO = performancemanagementDAO.selectContractManagement(71235);
+		pmVO = performancemanagementDAO.selectTerminationAVG(71235);
+		
+		System.out.println(pmVO.getAvg());
 		assertNotNull(pmVO);
 	}
 	
@@ -78,10 +81,41 @@ public class PerformanceManagementTest {
 		java.sql.Date date = java.sql.Date.valueOf(strDate);
 		System.out.println(date);
 		pmVO.setDate(strDate);
-		pmVO.setContractManagement("90");
-		pmVO.setContractRecruiting("80");
-		pmVO.setAgencyManagement("20");
+//		pmVO.setContractManagement("90");
+//		pmVO.setContractRecruiting("80");
+//		pmVO.setAgencyManagement("20");
 		
 		performancemanagementDAO.insertPerformanceManagement(pmVO);
 	}
+	
+	@Ignore
+	@Test
+	public void 사원월별단기계약지수조회테스트() throws Exception {
+		PerformanceManagementVO pmVO = new PerformanceManagementVO();
+		pmVO.setEmpno(71234);
+		pmVO.setDate("2020-09-10");
+		
+		List<PerformanceManagementVO> list = performancemanagementDAO.lookUpShortContract(pmVO);
+		for(PerformanceManagementVO p : list) {
+			System.out.println(p.getDate().substring(5, 7) + " : " + p.getShortContract());
+		}
+		
+	}
+	
+	//@WebAppConfiguration - xml에 mockup안붙여도됌, 관련오류시 이 어노테이션 쓸 것!
+	@Ignore
+	@Test
+	public void 사원월별장기계약지수조회테스트() throws Exception {
+		PerformanceManagementVO pmVO = new PerformanceManagementVO();
+		pmVO.setEmpno(71234);
+		pmVO.setDate("2020-09-10");
+		
+		List<PerformanceManagementVO> list = performancemanagementDAO.lookUpLongContract(pmVO);
+		for(PerformanceManagementVO p : list) {
+			System.out.println(p.getDate().substring(5, 7) + " : " + p.getLongContract());
+		}
+		
+	}
+	
+	
 }

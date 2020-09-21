@@ -1,6 +1,5 @@
 package kr.ac.hanalife.insurance.contract.vo;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 public class InsuranceContractVO {
 	
@@ -18,6 +17,8 @@ public class InsuranceContractVO {
 	private String termination;
 	
 	private String beneficiary;
+	
+	private String ename;
 	
 	public int getNo() {
 		return no;
@@ -72,6 +73,12 @@ public class InsuranceContractVO {
 	}
 	public void setBeneficiary(String beneficiary) {
 		this.beneficiary = beneficiary;
+	}
+	public String getEname() {
+		return ename;
+	}
+	public void setEname(String ename) {
+		this.ename = ename;
 	}
 	
 	

@@ -10,15 +10,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
-	//검색
-	$(document).ready(function(){
-	  $("#myInput").on("keyup", function() {
-	    var value = $(this).val().toLowerCase();
-	    $("#myTable tr").filter(function() {
-	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-	    });
-	  });
-	});
 
 
 </script>
@@ -41,6 +32,12 @@
 	margin-top: 5px;
 	text-align: center;
 }
+
+#div1 {
+	margin-top:15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+}
 </style>
 </head>
 <body>
@@ -48,15 +45,13 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
 	</header>
 	<section>
-		<br>
+		<div align="center" style="border:1px solid black;  width: 90%;" id="div1">
+			 <hr>
 	         <div class="w3-panel w3-green">
     			<h2 class="w3-opacity">상담내역목록</h2>
  			 </div>
-	         <br>
+	         <hr>
 	         
-	         <div class="searchTag">
-		         <input class="form-control" id="myInput" type="text" placeholder="Search..">
-	         </div>
 	         <table border="1" style="width: 100%" class="w3-table-all">
 	            <tr>
 	               <th width="7%" class="w3-center">번호</th>
@@ -89,6 +84,7 @@
 	          <div class="atag">
 		         <a href="${pageContext.request.contextPath }/myPage" class="w3-button w3-green">My Page</a>
 	          </div>
+	     </div>
 	</section>
 	<footer>
 		<jsp:include page="/WEB-INF/jsp/include/footer.jsp"></jsp:include>

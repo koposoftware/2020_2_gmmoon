@@ -20,4 +20,27 @@
 		select * from insurance_contract
 		  where empno = #{empno}
 	</select>
+	
+	<select id="selectInsuranceMyContract" resultMap="insurancecontractMap" parameterType="int">
+		select * from insurance_contract
+		  where cusno = #{cusno}
+	</select>
+	
+	<delete id="terminationContract" parameterType="int">
+		delete from insurance_contract where ic_serialno = #{no}
+	</delete>
+	
+	<select id="InsuranceMyOneContract" resultMap="insurancecontractMap" parameterType="int">
+		select * from insurance_contract
+		  where ic_serialno = #{no}
+	</select>
+	
+	<insert id="insertInsuranceContract" parameterType="insurancecontractVO">
+		insert into insurance_contract values(#{no}, #{empno}, #{cusno}, #{name},
+		#{code}, #{join}, #{maturity}, #{termination}, #{beneficiary})
+	</insert>
+	
+	<select id="selectEntireContract" resultMap="insurancecontractMap">
+		select ic_serialno from insurance_contract
+	</select>
 </mapper>

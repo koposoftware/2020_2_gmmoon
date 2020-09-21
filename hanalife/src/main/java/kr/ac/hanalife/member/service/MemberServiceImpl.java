@@ -69,6 +69,11 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteMyInfo(MemberVO member) {
 		memberDAO.deleteMyInfo(member);
 	}
+
+	@Override
+	public MemberVO authentication(MemberVO member) {
+		return memberDAO.authentication(member);
+	}
 		
 	
 }

@@ -115,8 +115,8 @@
 				
 				//draw(데이터, 옵션)
 				chart.draw(data, {
-					width : 400,
-					height : 240
+					width : 600,
+					height : 400
 			});
 
 	 }
@@ -126,6 +126,31 @@
 
 	
 </script>
+<style type="text/css">
+.w3-opacity{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#div1 {
+	margin-top:15px;
+	margin-left:5%;
+	margin-bottom: 15px;
+}
+
+#div2 {
+	margin-top:15px;
+	margin-left:5%;
+	margin-bottom: 15px;
+}
+#div3 {
+	margin-top:15px;
+	margin-left:5%;
+	margin-bottom: 15px;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -133,15 +158,16 @@
 	</header>
 	
 	<section>
-		<br>
+	<div align="center" style="border:1px solid black; width: 90%;" id="div1">
 		<hr>
-		<h2>사원목록</h2>
+		<div class="w3-panel w3-blue">
+    		<h2 class="w3-opacity">사원목록</h2>
+ 		</div>
 		<hr>
-		<br>
 		
+		<div>
 			<table border="1" style="width: 100%">
 	            <tr>
-	               <th width="7%">선택</th>
 	               <th width="7%">번호</th>
 	               <th width="7%">사원번호</th>
 	               <th width="15%">사원이름</th>
@@ -152,7 +178,6 @@
 	            </tr>
 	            <c:forEach items="${ employeeList }" var="list" varStatus="loop">
 	               <tr>
-	                  <td align="center"><input type="checkbox" value="${ list.empno }"></td>
 	                  <td align="center">${ loop.count }</td>
 	                  <td align="center">${ list.empno }</td>
 	                  <td align="center">${ list.name }</td>
@@ -163,22 +188,26 @@
 	               </tr>
 	            </c:forEach>
 	         </table>
-	         
+		</div>
+	     </div>    
   
   <!-- 그래프 구현 부분 -->
-	<div id="chart_div">
- 
- 	</div>
-	<button id="btn" type="button" onclick="drawChart2()">새로고침</button>
-
+  	<div class="w3-display-container " style="border:1px solid black; width: 90%;" id="div2">
+		<div id="chart_div" >
+	 
+	 	</div>
+		<button id="btn" type="button" onclick="drawChart2()" class="w3-button w3-blue">새로고침</button>
+	</div>
 		         
 	</section>
 	<section>
-				<br>
+		<div class="w3-display-container " style="border:1px solid black; width: 90%;" id="div3">		
 				<hr>
-				<h2>배정미정고객</h2>
+				<div class="w3-panel w3-blue">
+    				<h2 class="w3-opacity">배정미정고객</h2>
+ 				</div>
 				<hr>
-				<br>
+				
 		
 			<table border="1" style="width: 100%">
 	            <tr>
@@ -208,7 +237,8 @@
 				</c:forEach>
 			</select>
 						
-	         <button id="assignBtn">사원배정</button>
+	         <button id="assignBtn" class="w3-button w3-blue">사원배정</button>
+	      </div>
 	</section>
 	
 	<footer>
