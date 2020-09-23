@@ -144,7 +144,7 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${ not empty employee }">
-										<li class="menu-item"><a href="${ pageContext.request.contextPath }/chatting">Chat</a></li>																		
+										<li class="menu-item"><a href="${ pageContext.request.contextPath }/room">Chat</a></li>																		
 									</c:when>
 								</c:choose>
 							</ul> <!-- .menu -->

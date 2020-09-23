@@ -11,7 +11,7 @@
 	var userid = '${ employee.name }';
 	
 	function connect() {
-		ws = new WebSocket('ws://localhost:5054/hanalife/chat');
+		ws = new WebSocket('ws://localhost:9999/hanalife/chat');
 		
 		ws.onopen = function() {
 			console.log('연결생성');
@@ -21,7 +21,7 @@
 		ws.onmessage = function(e) {
 			console.log('메세지받음');
 			var data = e.data;
-			alert(data);
+			//alert(data);
 			addMsg(data);
 		};
 		
@@ -32,7 +32,7 @@
 	
 	function addMsg(msg) {
 		var chat = $('#msgArea').val();
-		chat = chat + "\n상대방 : " + msg;
+		chat = chat + "\n "+ $('#targetUser').val() + " : " + msg;
 		$('#msgArea').val(chat);
 	}
 	
@@ -73,7 +73,7 @@
 		<textarea rows="5" cols="30" id="msgArea">
 		</textarea>
 		<br>메세지 : <input type="text" id="chatMsg">
-		<br>상대아이디 : <input type="text" id="targetUser">
+		<br>보낼사람이름 : <input type="text" id="targetUser">
 		<br>
 		<input type="button" value="전송" id="btnSend">
 	</section>

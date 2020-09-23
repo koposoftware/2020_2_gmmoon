@@ -174,8 +174,37 @@
 		<artifactId>json</artifactId>
 		<version>20160810</version>
 	</dependency>
+   
+   	<!-- Logging -->
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-core</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.10</version>
+	</dependency>
+	<!-- 조건부 설정을 사용하려면 아래의 디펜던시를 추가해 주어야 한다. -->
+	<dependency>
+	    <groupId>org.codehaus.janino</groupId>
+	    <artifactId>janino</artifactId>
+	    <version>2.7.7</version>
+	</dependency>
 	
-		
+	<!-- DB Logback --> 
+	<dependency> 
+		<groupId>org.bgee.log4jdbc-log4j2</groupId> 
+		<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> 
+		<version>1.16</version> 
+	</dependency>
+
 		
   </dependencies>
   

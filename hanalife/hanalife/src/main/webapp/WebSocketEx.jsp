@@ -25,7 +25,7 @@
 		//connect();
 		
 		function connect() {
-			ws = new WebSocket('ws://localhost:5054/hanalife/chat');
+			ws = new WebSocket('ws://192.168.217.222:9999/hanalife/chat');
 			//ws = new SockJS('//localhost:5054/hanalife/chat');
 			
 			ws._original_send_func = ws.send;

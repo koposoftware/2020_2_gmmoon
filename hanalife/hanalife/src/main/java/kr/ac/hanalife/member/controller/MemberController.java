@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.ac.hanalife.employee.vo.EmployeeVO;
 import kr.ac.hanalife.insurance.contract.service.InsuranceContractService;
 import kr.ac.hanalife.insurance.contract.vo.InsuranceContractVO;
+import kr.ac.hanalife.logger.LogBack;
 import kr.ac.hanalife.member.service.MemberService;
 import kr.ac.hanalife.member.vo.MemberVO;
 @SessionAttributes({"loginVO","memberVO","employeeVO"}) 
@@ -34,6 +35,9 @@ public class MemberController {
 	@Autowired
 	private InsuranceContractService insurancecontractService;
 	
+	@Autowired
+	private LogBack log;
+		
 	
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	@GetMapping("/login")
@@ -74,6 +78,7 @@ public class MemberController {
 		}
 		
 		mav.addObject("loginVO", loginVO);
+		//log.infoLog("login", loginVO.getName() + "님이 로그인했습니다");
 		
 		return mav;
 	}

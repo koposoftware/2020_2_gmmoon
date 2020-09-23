@@ -135,6 +135,8 @@ public class MemberTest {
 	public void 고객번호로고객정보확인테스트() throws Exception {
 		MemberVO member = memberDAO.selectByCusno(10001);
 		
+		
+		
 		assertNotNull(member);
 	}
 	
