@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
@@ -11,7 +12,9 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd 
     http://www.springframework.org/schema/websocket
-    http://www.springframework.org/schema/websocket/spring-websocket.xsd ">
+    http://www.springframework.org/schema/websocket/spring-websocket.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd ">
 
 	<context:component-scan
 		base-package="kr.ac.hanalife" />
@@ -37,7 +40,9 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
-	
+	<!-- AOP 오토프록시 -->
+	<aop:aspectj-autoproxy />
+	  
 	<!--  
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -50,6 +55,7 @@
 	</bean>
 	-->
     
+     <!-- sql log 설정 -->
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
@@ -119,15 +125,17 @@
 		/> </websocket:handshake-interceptors> </websocket:handlers> -->
 	
 	 
+	 
 	<websocket:handlers>
 		<websocket:mapping handler="socketHandler"
-			path="/chat/" />
+			path="/chat" />
 		<websocket:handshake-interceptors>
 			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
 		</websocket:handshake-interceptors>
 	</websocket:handlers>
 	<bean id="socketHandler" class="kr.ac.hanalife.util.SocketHandler"></bean>
 	
+	  
 	<bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
 		<property name="maxTextMessageBufferSize" value="8192"/>
         <property name="maxBinaryMessageBufferSize" value="8192"/>

@@ -55,6 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public EmployeeVO countEmployeeInCharge(int empno) {
 		return employeeDAO.countEmployeeInCharge(empno);
 	}
+
+	@Override
+	public void withdrawalEmployee(EmployeeVO employeeVO) {
+		employeeDAO.withdrawalEmployee(employeeVO);
+	}
 		
 	
 }

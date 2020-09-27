@@ -663,4 +663,23 @@ public class EmployeeController {
 	public String chatting() {
 		return "/chatting/chatting";
 	}
+	
+	@GetMapping("withdrawalEmployee")
+	public String withdrawalEmployeeForm() {
+		return "withdrawal/withdrawalEmployee";
+	}
+	
+	@PostMapping("withdrawalEmployee")
+	public String withdrawalEmployee(@Valid EmployeeVO employeeVO, BindingResult result) {
+		
+		employeeService.withdrawalEmployee(employeeVO);
+		
+		if(result.hasErrors()) {
+			System.out.println("오류발생!!!...");
+			return "/withdrawal/withdrawalEmployee";
+		}
+		
+		return "redirect:/employeelogout";
+	}
+	
 }

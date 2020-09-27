@@ -1,0 +1,145 @@
+1511 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+1573 [main] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+1574 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+1575 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+1577 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy32
+1590 [main] DEBUG o.h.v.i.x.c.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+1592 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via user class loader
+1593 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+1594 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+1594 [main] DEBUG o.h.v.i.x.c.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+1602 [main] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
+1883 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+1898 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+1898 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
+1899 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+1899 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+1899 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+9672 [http-nio-9999-exec-7] INFO  jdbc.connection - 2. Connection opened
+9672 [http-nio-9999-exec-6] INFO  jdbc.connection - 1. Connection opened
+9673 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. Connection.new Connection returned 
+9673 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. Connection.new Connection returned 
+9674 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. Connection.getAutoCommit() returned true
+9674 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. Connection.getAutoCommit() returned true
+9883 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.new PreparedStatement returned 
+9883 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.new PreparedStatement returned 
+9884 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. Connection.prepareStatement(select * from customer
+		 where cid = ? and cpassword = ?) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@5c46f0ee
+9884 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. Connection.prepareStatement(select * from customer
+		 where cid = ? and cpassword = ?) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@18941ce4
+9885 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.setString(1, "test0101") returned 
+9885 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.setString(1, "test0101") returned 
+9885 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.setString(2, "1111") returned 
+9885 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.setString(2, "1111") returned 
+9885 [http-nio-9999-exec-7] INFO  jdbc.sqlonly - select * from customer
+		 where cid = 'test0101' and cpassword = '1111'
+
+9886 [http-nio-9999-exec-6] INFO  jdbc.sqlonly - select * from customer
+		 where cid = 'test0101' and cpassword = '1111'
+
+10026 [http-nio-9999-exec-7] DEBUG jdbc.sqltiming -  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+2. select * from customer
+		 where cid = 'test0101' and cpassword = '1111'
+ {executed in 140 msec}
+10026 [http-nio-9999-exec-6] DEBUG jdbc.sqltiming -  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+1. select * from customer
+		 where cid = 'test0101' and cpassword = '1111'
+ {executed in 140 msec}
+10026 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.execute() returned true
+10027 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.execute() returned true
+10033 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.new ResultSet returned 
+10033 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.new ResultSet returned 
+10033 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@3b7e04b1
+10034 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@5b669362
+10037 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@70ca2fcf
+10037 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@7a5dac75
+10039 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getType() returned 1003
+10039 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getType() returned 1003
+10039 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.isClosed() returned false
+10039 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.isClosed() returned false
+10039 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.next() returned true
+10039 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.next() returned true
+10040 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getInt(cusno) returned 10001
+10040 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getInt(cusno) returned 10001
+10040 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getInt(empno) returned 71234
+10041 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getInt(empno) returned 71234
+10041 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(cid) returned test0101
+10041 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(cid) returned test0101
+10041 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(cpassword) returned 1111
+10041 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(cpassword) returned 1111
+10041 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(cname) returned 구재희
+10041 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(cname) returned 구재희
+10041 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(chp) returned 010-1390-0981
+10042 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(chp) returned 010-1390-0981
+10042 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(cpost) returned 22531
+10042 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(cpost) returned 22531
+10042 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(caddress) returned 서울시 구로구 가리봉동 831-1,101동 303호
+10042 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(caddress) returned 서울시 구로구 가리봉동 831-1,101동 303호
+10042 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getInt(cage) returned 26
+10043 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getInt(cage) returned 26
+10043 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.getString(c_email) returned koo@naver.com
+10043 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.getString(c_email) returned koo@naver.com
+10043 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.isClosed() returned false
+10043 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.isClosed() returned false
+10045 [http-nio-9999-exec-7] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+|cusno |empno |cid      |cpassword |cname |chp           |cpost |caddress                     |cage |c_email       |
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+|10001 |71234 |test0101 |1111      |구재희   |010-1390-0981 |22531 |서울시 구로구 가리봉동 831-1,101동 303호 |26   |koo@naver.com |
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+
+10045 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.next() returned false
+10046 [http-nio-9999-exec-6] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+|cusno |empno |cid      |cpassword |cname |chp           |cpost |caddress                     |cage |c_email       |
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+|10001 |71234 |test0101 |1111      |구재희   |010-1390-0981 |22531 |서울시 구로구 가리봉동 831-1,101동 303호 |26   |koo@naver.com |
+|------|------|---------|----------|------|--------------|------|-----------------------------|-----|--------------|
+
+10046 [http-nio-9999-exec-7] INFO  jdbc.resultset - 2. ResultSet.close() returned void
+10046 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.next() returned false
+10046 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.getConnection() returned net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@79ddf480
+10046 [http-nio-9999-exec-6] INFO  jdbc.resultset - 1. ResultSet.close() returned void
+10046 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@66976bde
+10046 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.getConnection() returned net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@726cd53d
+10047 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. PreparedStatement.close() returned 
+10047 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@abf253a
+10047 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. PreparedStatement.close() returned 
+10055 [http-nio-9999-exec-7] INFO  jdbc.connection - 2. Connection closed
+10055 [http-nio-9999-exec-6] INFO  jdbc.connection - 1. Connection closed
+10055 [http-nio-9999-exec-7] INFO  jdbc.audit - 2. Connection.close() returned 
+10055 [http-nio-9999-exec-6] INFO  jdbc.audit - 1. Connection.close() returned 
+1285 [Catalina-utility-2] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+1331 [Catalina-utility-2] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+1331 [Catalina-utility-2] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+1332 [Catalina-utility-2] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+1334 [Catalina-utility-2] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy64
+1341 [Catalina-utility-2] DEBUG o.h.v.i.x.c.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+1343 [Catalina-utility-2] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via user class loader
+1345 [Catalina-utility-2] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+1345 [Catalina-utility-2] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+1345 [Catalina-utility-2] DEBUG o.h.v.i.x.c.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+1353 [Catalina-utility-2] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
+1617 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+1631 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+1631 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
+1631 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+1632 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+1632 [Catalina-utility-2] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+1406 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+1457 [main] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+1458 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+1459 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+1461 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy32
+1468 [main] DEBUG o.h.v.i.x.c.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+1470 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via user class loader
+1472 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+1472 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+1472 [main] DEBUG o.h.v.i.x.c.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+1486 [main] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
+1758 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+1773 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+1773 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
+1773 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+1774 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+1774 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.

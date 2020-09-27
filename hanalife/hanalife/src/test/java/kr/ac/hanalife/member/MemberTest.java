@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import kr.ac.hanalife.employee.vo.EmployeeVO;
+import kr.ac.hanalife.logger.LogBack;
 import kr.ac.hanalife.member.dao.MemberDAO;
 import kr.ac.hanalife.member.service.MemberService;
 import kr.ac.hanalife.member.vo.MemberVO;
@@ -38,6 +39,10 @@ public class MemberTest {
 	@Autowired
 	private SqlSessionTemplate session;
 	
+	@Autowired
+	private LogBack log;
+	
+	
 	@Ignore
 	@Test
 	public void sqlSession테스트() {
@@ -48,6 +53,18 @@ public class MemberTest {
 	@Test
 	public void ds테스트() {
 		assertNotNull(ds);
+	}
+	
+	@Ignore
+	@Test
+	public void log테스트() {
+		assertNotNull(log);
+	}
+	
+	@Ignore
+	@Test
+	public void logAspect테스트() {
+		
 	}
 	
 	@Ignore
@@ -103,6 +120,8 @@ public class MemberTest {
 			System.out.println(list);
 		}
 		
+//		log.logBefore();
+//		log.logException(exception);
 		assertNotNull(list);
 	}
 	
@@ -169,6 +188,7 @@ public class MemberTest {
 		memberDAO.deleteMyInfo(member);
 	}
 	
+	@Ignore
 	@Test
 	public void 이메일인증테스트() throws Exception {
 		MemberVO member = new MemberVO();

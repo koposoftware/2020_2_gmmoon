@@ -5,6 +5,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+  <!-- AOP설정 - aspectj -->
+  <properties>
+  	<org.aspectj-version>1.7.3</org.aspectj-version>
+  </properties>
+  
   <dependencies>
   	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 		<dependency>
@@ -146,7 +151,37 @@
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-websocket</artifactId>
 	    <version>4.3.28.RELEASE</version>
+	</dependency> 
+	
+	<!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
+	<!-- websocket 추가 이후 -->
+	<!-- junit test 해결 start -->
+	<dependency>
+	    <groupId>javax.websocket</groupId>
+	    <artifactId>javax.websocket-api</artifactId>
+	    <version>1.1</version>
+	    <scope>provided</scope>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-websocket -->
+	<dependency>
+	    <groupId>org.apache.tomcat.embed</groupId>
+	    <artifactId>tomcat-embed-websocket</artifactId>
+	    <version>9.0.38</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+	<dependency>
+	    <groupId>javax.el</groupId>
+	    <artifactId>javax.el-api</artifactId>
+	    <version>3.0.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.glassfish.web/el-impl -->
+	<dependency>
+	    <groupId>org.glassfish.web</groupId>
+	    <artifactId>el-impl</artifactId>
+	    <version>2.2</version>
+	</dependency>
+	<!-- junit test 해결 end -->
 	
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 	<dependency>
@@ -204,9 +239,43 @@
 		<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> 
 		<version>1.16</version> 
 	</dependency>
-
+	
+	<!-- AOP설정 version 1.9.5 start -->
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	    <version>1.9.5</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.9.5</version>
+	    <scope>runtime</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjtools</artifactId>
+	    <version>1.9.5</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-aop</artifactId>
+	    <version>4.3.28.RELEASE</version>
+	</dependency>
+		
+	<!-- AOP설정 end -->
+	
 		
   </dependencies>
+  
+
   
   <build>
     <plugins>

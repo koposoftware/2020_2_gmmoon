@@ -122,6 +122,7 @@ public class EmployeeTest {
 		employeeDAO.AssignCustomer(member);
 	}
 	
+	@Ignore
 	@Test
 	public void 사원이담당하는고객수조회테스트() throws Exception {
 		
@@ -132,6 +133,20 @@ public class EmployeeTest {
 //		System.out.println(employee.getCount());
 		
 		assertNull(employee);
+	}
+	
+	@Ignore
+	@Test
+	public void 사원퇴사기능테스트() throws Exception {
+		
+		EmployeeVO employee = new EmployeeVO();
+		
+		employee.setEmpno(71244);
+		employee.setId("hana1244");
+		employee.setPassword("1111");
+		
+		employeeDAO.withdrawalEmployee(employee);
+		
 	}
 	
 }

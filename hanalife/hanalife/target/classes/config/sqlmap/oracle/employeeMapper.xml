@@ -65,4 +65,9 @@
  			group by empno
  				having empno= #{empno}
 	</select>
+	
+	<delete id="withdrawalEmployee" parameterType="employeeVO">
+		delete from employee 
+			where empno = #{empno} and eid = #{id} and epassword = #{password}
+	</delete>
 </mapper>

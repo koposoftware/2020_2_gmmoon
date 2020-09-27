@@ -56,6 +56,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public EmployeeVO countEmployeeInCharge(int empno) {
 		return sqlSession.selectOne("employee.dao.EmployeeDAO.countEmployeeInCharge", empno);
 	}
+
+	@Override
+	public void withdrawalEmployee(EmployeeVO employeeVO) {
+		sqlSession.delete("employee.dao.EmployeeDAO.withdrawalEmployee",employeeVO);
+	}
 		
 		
 }

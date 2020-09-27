@@ -23,4 +23,6 @@ public interface EmployeeService {
 	void AssignCustomer(MemberVO member);
 	
 	EmployeeVO countEmployeeInCharge(int empno);
+	
+	void withdrawalEmployee(EmployeeVO employeeVO);
 }

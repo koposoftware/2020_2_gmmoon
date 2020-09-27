@@ -63,4 +63,10 @@ public interface EmployeeDAO {
 	 */
 	EmployeeVO countEmployeeInCharge(int empno);
 	
+	/**
+	 * 사원이 퇴사하는 기능
+	 * @param employeeVO 퇴사할 사원 정보
+	 */
+	void withdrawalEmployee(EmployeeVO employeeVO);
+	
 }

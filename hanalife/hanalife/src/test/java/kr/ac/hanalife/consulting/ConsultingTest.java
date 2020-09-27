@@ -12,18 +12,24 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import kr.ac.hanalife.consulting.dao.ConsultingDAO;
 import kr.ac.hanalife.consulting.reply.vo.ConsultingReplyVO;
 import kr.ac.hanalife.consulting.vo.ConsultingVO;
+import kr.ac.hanalife.logger.LogBack;
 import kr.ac.hanalife.util.PagingVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:config/spring/*.xml"})
+@ContextConfiguration(locations = {"classpath:config/**/*.xml"})
+@WebAppConfiguration
 public class ConsultingTest {
 	
 	@Autowired
 	private ConsultingDAO consultingDAO;
+	
+	@Autowired
+	private LogBack log;
 	
 	@Ignore
 	@Test
@@ -120,6 +126,7 @@ public class ConsultingTest {
 		
 		int cnt = consultingDAO.countBoard(71236);
 		System.out.println(cnt);
+		
 		assertNotNull(cnt);
 	}
 	

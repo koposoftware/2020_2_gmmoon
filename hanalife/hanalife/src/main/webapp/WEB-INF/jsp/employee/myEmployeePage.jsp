@@ -78,7 +78,7 @@
 		
 		<div class="atag">
 			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원정보수정</a>&nbsp;&nbsp;
-			<a href="${pageContext.request.contextPath }" class="w3-button w3-green">회원탈퇴</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/withdrawalEmployee" class="w3-button w3-green">회원탈퇴</a>&nbsp;&nbsp;
 		</div>
 		</div>
 		

@@ -31,7 +31,7 @@
 					</tr>
 				</table>
 				<br>
-				<button type="submit">회원탈퇴</button> &nbsp;
+				<button type="submit" class="w3-button w3-blue">회원탈퇴</button> &nbsp;
 				<a href="${ pageContext.request.contextPath }" class="button">홈으로</a>
 			</form>
 		</div>
