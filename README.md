@@ -21,12 +21,11 @@ ERD
 <img src="giterd.png"/>
 
 
-발표영상
-"https://www.youtube.com/watch?v=6i9u4xs3Jo8
  
 
 # 3. 프로젝트 결과
-프로젝트 결과를 추가하세요. 발표자료. 시연동영상을 추가하세요.
+발표영상
+"https://www.youtube.com/watch?v=6i9u4xs3Jo8
 
 ## 발표 ppt 
    <img src="ppt.jpg"/>[발표자료](/project.pptx)<br>
@@ -39,13 +38,13 @@ ERD
 
 본인 소개를 추가하세요
 
-|이름 |고길동|![gdKO](/gdko.jpg)|
-|연락처 | gdko(@)kopo.ac.kr|
+|이름 |문건모|
+|연락처 | gmoon0619@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
-|자격증|  |
+|자격증|  SCBP,SCSBA,ADSP|
 |수상| |
-|특기사항|  TOEIC 990 |
+|특기사항|  TOEIC 810 |
 
 # 5. 기타
 그외 프로젝트를 더욱 설명할수 있는 것들을 추가하세요
