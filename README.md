@@ -21,7 +21,7 @@ HANA 4U POINT
 # 2. 프로젝트 제안서
 
 ERD
-<img src="giterd.png" width="100" height="100"/>
+<img src="giterd.png" width="400" height="500"/>
 
 ### 수행기간
 
