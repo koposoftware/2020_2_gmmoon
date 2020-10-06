@@ -28,7 +28,8 @@ ERD
 "https://www.youtube.com/watch?v=6i9u4xs3Jo8
 
 ## 발표 ppt 
-   <img src="ppt.jpg"/>[발표자료](/project.pptx)<br>
+[발표자료 pdf](/github.pdf)<br>
+<img src="ppt.jpg"/>[발표자료](/project.pptx)<br>
 
 ## 시연 동영상 
 
