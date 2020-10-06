@@ -23,6 +23,14 @@ HANA 4U POINT
 ERD
 <img src="giterd.png"/>
 
+### 수행기간
+
+2020.09.02 ~ 2020.10.05
+
+### 개발 환경
+
+JDK 1.8, Window10, Oracle 11g express, Tomcat9
+<br>
 
  
 
@@ -34,6 +42,21 @@ ERD
 [발표자료 pdf](/github.pdf)<br>
 <img src="git1.png"/><br>
 
+### Language / Tool / DB
+
+Language : HTML, CSS, Javascript, Python, Java<br>
+Framework : Spring, MyBatis, Bootstrap, WebSocket<br>
+Database : Oracle DBMS<br>
+Server : Tomcat<br>
+
+
+### 기대효과
+-보험계약유지율 증가 예상, 중도해지율 감소 예상
+
+### 보완점
+1.보안 : Spring security와 같은 보안적 요소 추가 요망
+2.CSS : 유저 친화적인 UI 추가 요망
+3.기능 : 손님의 컴플레인에 따른 담당사원 바꾸기 기능 추가 요망
 
 
 
