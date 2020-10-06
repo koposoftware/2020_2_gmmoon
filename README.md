@@ -29,7 +29,7 @@ ERD
 
 ## 발표 ppt 
 [발표자료 pdf](/github.pdf)<br>
-<img src="git1.jpg"/>[발표자료](/project.pptx)<br>
+<img src="git1.png"/>[발표자료](/project.pptx)<br>
 
 ## 시연 동영상 
 
