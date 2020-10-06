@@ -17,8 +17,8 @@ HANA 4U POINT
 
 # 2. 프로젝트 제안서
 
-아키텍쳐
-
+ERD
+<img src="giterd.png"/>
 
 
 발표영상
