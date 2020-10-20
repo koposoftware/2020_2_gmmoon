@@ -21,7 +21,7 @@ HANA 4U POINT
 # 2. 프로젝트 제안서
 
 간트차트
-<img src="ganttchart" width="400" height="500"/>
+<img src="ganttchart.jpg" width="400" height="500"/>
 
 ### 수행기간
 
